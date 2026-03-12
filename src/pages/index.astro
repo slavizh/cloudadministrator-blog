@@ -1,0 +1,248 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import HeroCarousel from "../components/HeroCarousel.astro";
+import { withBase } from "../utils/paths";
+import { resolveAssetUrl } from "../utils/assets";
+import { sortPosts } from "../utils/blog";
+
+const posts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
+const featuredPosts = posts.slice(0, 3);
+const latestPosts = posts.slice(0, 12);
+
+// Top 20 tags from posts in the last 2 years
+const twoYearsAgo = new Date();
+twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+const recentPosts = posts.filter((p) => p.data.pubDate >= twoYearsAgo);
+const tagCounts = new Map<string, number>();
+for (const post of recentPosts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const topTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 20)
+  .map(([name]) => name);
+
+// All posts as lightweight JSON for client-side filtering
+const allPostsData = posts.map((post) => {
+  const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+  const readTime = Math.max(1, Math.round(wordCount / 200));
+  return {
+    title: post.data.title,
+    excerpt: post.data.excerpt ?? "",
+    slug: withBase(`${post.slug}/`),
+    image: resolveAssetUrl(post.data.heroImage),
+    tags: post.data.tags,
+    pubDate:post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+    readTime
+  };
+});
+const siteUrl = "https://cloudadministrator.net";
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cloud Administrator in Azure World",
+  "description": "Begin Your Azure Management Journey with the Cloud Administrator",
+  "url": siteUrl,
+  "author": {
+    "@type": "Person",
+    "name": "Stanislav Zhelyazkov",
+    "url": `${siteUrl}/about/`
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/search/?q={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<BaseLayout canonicalUrl={Astro.url.toString()} jsonLd={websiteLd}>
+  <!-- Tagline -->
+  <div class="hero-tagline">
+    <h1>Cloud Administrator in Azure World</h1>
+    <p>Begin Your Azure Management Journey with the Cloud Administrator</p>
+  </div>
+
+  <!-- Hero Carousel -->
+  <HeroCarousel posts={featuredPosts} />
+
+  <!-- Latest Posts -->
+  <section>
+    <div class="section-label">
+      <h2>Latest Posts</h2>
+      <span class="divider"></span>
+      <a href={withBase("archive/")}>View All</a>
+    </div>
+
+    <!-- Tag filter bar -->
+    <div class="tag-filter" role="tablist" aria-label="Filter by tag">
+      <button class="tag-filter__btn tag-filter__btn--active" data-filter="all">All</button>
+      {topTags.map((tag) => (
+        <button class="tag-filter__btn" data-filter={tag}>{tag}</button>
+      ))}
+    </div>
+
+    <!-- Server-rendered latest posts (shown when "All" is active) -->
+    <div class="post-grid" id="static-grid" style="display: none;"></div>
+
+    <!-- JS-rendered grid for all modes -->
+    <div class="post-grid" id="dynamic-grid"></div>
+
+    <!-- Pagination -->
+    <div id="pager" class="pager"></div>
+  </section>
+
+</BaseLayout>
+
+<script is:inline define:vars={{ allPostsData }}>
+  (function () {
+    var TAG_COLORS = ["blue","green","purple","orange","pink","teal","red","yellow","indigo","cyan"];
+    function getTagColor(tag) {
+      var hash = 0;
+      for (var i = 0; i < tag.length; i++) hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+      return TAG_COLORS[Math.abs(hash) % TAG_COLORS.length];
+    }
+
+    function escHtml(s) { return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+
+    function buildCard(post) {
+      var cats = (post.tags || []).slice(0, 3);
+      var catHtml = cats.length > 0
+        ? '<div class="card__tags">' + cats.map(function (c) {
+            return '<span class="tag-pill tag-pill--' + getTagColor(c) + '">' + escHtml(c) + '</span>';
+          }).join("") + '</div>'
+        : "";
+
+      return '<a href="' + escHtml(post.slug) + '" class="card-link">' +
+        '<article class="card">' +
+          '<div class="card__image">' +
+            '<img src="' + escHtml(post.image) + '" alt="' + escHtml(post.title) + '" loading="lazy" />' +
+            '<span class="card__badge">Blog</span>' +
+          '</div>' +
+          '<div class="card__body">' +
+            '<h3 class="card__title">' + escHtml(post.title) + '</h3>' +
+            (post.excerpt ? '<p class="card__excerpt">' + escHtml(post.excerpt) + '</p>' : '') +
+            catHtml +
+            '<div class="card__meta">' +
+              '<time>' + escHtml(post.pubDate) + '</time>' +
+              '<span>&middot;</span>' +
+              '<span>' + post.readTime + ' min read</span>' +
+            '</div>' +
+          '</div>' +
+        '</article>' +
+      '</a>';
+    }
+
+    var buttons = document.querySelectorAll(".tag-filter__btn");
+    var grid = document.getElementById("dynamic-grid");
+    var pager = document.getElementById("pager");
+    if (!buttons.length || !grid || !pager) return;
+
+    var PAGE_SIZE = 12;
+    var currentPosts = allPostsData;
+    var currentPage = 1;
+
+    function totalPages() { return Math.max(1, Math.ceil(currentPosts.length / PAGE_SIZE)); }
+
+    function renderGrid() {
+      var start = (currentPage - 1) * PAGE_SIZE;
+      var page = currentPosts.slice(start, start + PAGE_SIZE);
+      grid.innerHTML = page.map(buildCard).join("");
+      renderPager();
+    }
+
+    function renderPager() {
+      var total = totalPages();
+      if (total <= 1) { pager.innerHTML = ""; return; }
+
+      var html = '';
+
+      // Previous
+      html += '<button class="pager__btn' + (currentPage <= 1 ? ' pager__btn--disabled' : '') + '"'
+            + ' data-page="' + (currentPage - 1) + '"' + (currentPage <= 1 ? ' disabled' : '')
+            + '>&laquo; Prev</button>';
+
+      // Page numbers with ellipsis
+      var pages = buildPageNumbers(currentPage, total);
+      for (var i = 0; i < pages.length; i++) {
+        var p = pages[i];
+        if (p === '...') {
+          html += '<span class="pager__ellipsis">&hellip;</span>';
+        } else {
+          var num = parseInt(p);
+          html += '<button class="pager__btn' + (num === currentPage ? ' pager__btn--active' : '') + '"'
+                + ' data-page="' + num + '">' + num + '</button>';
+        }
+      }
+
+      // Next
+      html += '<button class="pager__btn' + (currentPage >= total ? ' pager__btn--disabled' : '') + '"'
+            + ' data-page="' + (currentPage + 1) + '"' + (currentPage >= total ? ' disabled' : '')
+            + '>Next &raquo;</button>';
+
+      // Post count
+      var start = (currentPage - 1) * PAGE_SIZE + 1;
+      var end = Math.min(currentPage * PAGE_SIZE, currentPosts.length);
+      html += '<span class="pager__info">' + start + '–' + end + ' of ' + currentPosts.length + '</span>';
+
+      pager.innerHTML = html;
+
+      pager.querySelectorAll("[data-page]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var p = parseInt(btn.getAttribute("data-page"));
+          if (p >= 1 && p <= totalPages()) {
+            currentPage = p;
+            renderGrid();
+            grid.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    }
+
+    function buildPageNumbers(current, total) {
+      if (total <= 7) {
+        var arr = [];
+        for (var i = 1; i <= total; i++) arr.push(String(i));
+        return arr;
+      }
+      var pages = [];
+      pages.push("1");
+      if (current > 3) pages.push("...");
+      var lo = Math.max(2, current - 1);
+      var hi = Math.min(total - 1, current + 1);
+      for (var j = lo; j <= hi; j++) pages.push(String(j));
+      if (current < total - 2) pages.push("...");
+      pages.push(String(total));
+      return pages;
+    }
+
+    // Initial render (All posts)
+    renderGrid();
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var filter = btn.getAttribute("data-filter");
+        buttons.forEach(function (b) { b.classList.remove("tag-filter__btn--active"); });
+        btn.classList.add("tag-filter__btn--active");
+
+        if (filter === "all") {
+          currentPosts = allPostsData;
+        } else {
+          var filterLower = filter.toLowerCase();
+          currentPosts = allPostsData.filter(function (post) {
+            var allTags = (post.tags || []);
+            return allTags.some(function (t) { return t.toLowerCase() === filterLower; });
+          });
+        }
+
+        currentPage = 1;
+        renderGrid();
+      });
+    });
+  })();
+</script>
+

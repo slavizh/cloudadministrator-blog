@@ -1,0 +1,19 @@
+---
+import { withBase } from "../../utils/paths";
+
+const target = withBase("feed/");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href={target} />
+    <title>Redirecting to RSS feed…</title>
+  </head>
+  <body>
+    <p><a href={target}>Redirecting to the RSS feed…</a></p>
+  </body>
+</html>

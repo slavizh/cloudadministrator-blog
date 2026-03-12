@@ -1,0 +1,150 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SharePost from "../components/SharePost.astro";
+import { resolveAssetUrl } from "../utils/assets";
+import { withBase } from "../utils/paths";
+import { getTaxonomyHref, sortPosts } from "../utils/blog";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const allPosts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
+const relatedPosts = allPosts
+  .filter((entry) => entry.id !== post.id)
+  .filter((entry) => entry.data.tags.some((tag) => post.data.tags.includes(tag)))
+  .slice(0, 3);
+
+const published = post.data.pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric"
+});
+
+const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+const readTime = Math.max(1, Math.round(wordCount / 200));
+
+const siteUrl = Astro.site?.toString() ?? "https://cloudadministrator.net";
+const postUrl = new URL(withBase(`${post.slug}/`), siteUrl).toString();
+const heroImageUrl = new URL(resolveAssetUrl(post.data.heroImage), siteUrl).toString();
+
+const blogPostingLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": heroImageUrl,
+  "url": postUrl,
+  "datePublished": post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate && { "dateModified": post.data.updatedDate.toISOString() }),
+  "author": {
+    "@type": "Person",
+    "name": "Stanislav Zhelyazkov",
+    "url": "https://cloudadministrator.net/about/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cloud Administrator",
+    "url": siteUrl
+  },
+  "keywords": post.data.tags.join(", "),
+  "wordCount": wordCount,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": postUrl
+  }
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Archive", "item": new URL(withBase("archive/"), siteUrl).toString() },
+    { "@type": "ListItem", "position": 3, "name": post.data.title, "item": postUrl }
+  ]
+};
+
+const combinedLd = [blogPostingLd, breadcrumbLd];
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  canonicalUrl={post.data.sourceUrl ?? Astro.url.toString()}
+  ogImage={resolveAssetUrl(post.data.heroImage)}
+  ogType="article"
+  jsonLd={combinedLd}
+  articleMeta={{
+    publishedTime: post.data.pubDate.toISOString(),
+    modifiedTime: post.data.updatedDate?.toISOString(),
+    tags: post.data.tags
+  }}
+>
+  <article class="article">
+    <p class="breadcrumbs">
+      <a href={withBase("")}>Home</a>
+      <span>/</span>
+      <a href={withBase("archive/")}>Archive</a>
+      <span>/</span>
+      <span>{post.data.title}</span>
+    </p>
+
+    <p class="eyebrow">{published} &middot; {readTime} min read</p>
+    <h1>{post.data.title}</h1>
+    <p class="article__lede">{post.data.excerpt}</p>
+
+    <img src={resolveAssetUrl(post.data.heroImage)} alt={post.data.title} />
+
+    <div class="article__taxonomies">
+      {
+        post.data.tags.length > 0 && (
+          <div>
+            <h2>Tags</h2>
+            <div class="tag-list" aria-label="Post tags">
+              {post.data.tags.map((tag) => (
+                <a class="tag" href={withBase(getTaxonomyHref("tag", tag))}>
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+
+    <Content />
+
+    <SharePost title={post.data.title} url={new URL(withBase(`${post.slug}/`), Astro.site ?? Astro.url).toString()} />
+
+    {relatedPosts.length > 0 && (
+      <footer class="article__footer">
+        <h2>Continue exploring</h2>
+        <div class="summary-list">
+          {relatedPosts.map((entry) => (
+            <article>
+              <h3>
+                <a href={withBase(`${entry.slug}/`)}>{entry.data.title}</a>
+              </h3>
+              <p class="meta" style="margin: 0;">{entry.data.excerpt}</p>
+            </article>
+          ))}
+        </div>
+      </footer>
+    )}
+  </article>
+</BaseLayout>
+

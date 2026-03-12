@@ -1,0 +1,6 @@
+/feed /rss.xml 301
+/feed/ /rss.xml 301
+/index.php/feed /rss.xml 301
+/index.php/feed/ /rss.xml 301
+/rss /rss.xml 301
+/rss/ /rss.xml 301

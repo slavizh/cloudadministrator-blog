@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/paths";
+
+const searchIndexUrl = withBase("search-index.json");
+---
+
+<BaseLayout
+  title="Search"
+  description="Search the static archive of Cloud Administrator in Azure World."
+  canonicalUrl={Astro.url.toString()}
+  noIndex={true}
+>
+  <div class="page-header">
+    <p class="eyebrow">Search</p>
+    <h1>Search the archive</h1>
+    <p>Search by title, excerpt, or tag across all posts.</p>
+  </div>
+
+  <section style="margin-bottom: 1.5rem;">
+    <form class="search-form" role="search">
+      <label for="search-input" style="font-weight: 600; font-size: 0.875rem;">Find a post</label>
+      <input
+        id="search-input"
+        class="search-input"
+        type="search"
+        name="q"
+        placeholder="Search Azure, Bicep, governance, Log Analytics..."
+        autocomplete="off"
+      />
+    </form>
+    <p class="meta" id="search-status" style="margin: 1rem 0 0;">Loading search index…</p>
+  </section>
+
+  <section id="search-results" class="search-results"></section>
+
+  <script type="module" is:inline define:vars={{ searchIndexUrl }}>
+    const input = document.querySelector("#search-input");
+    const status = document.querySelector("#search-status");
+    const results = document.querySelector("#search-results");
+    const params = new URLSearchParams(window.location.search);
+
+    const formatDate = (value) =>
+      new Date(value).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+
+    const buildResultCard = (item) => {
+      const article = document.createElement("article");
+      article.className = "search-result";
+
+      const meta = document.createElement("p");
+      meta.className = "meta";
+      meta.textContent = `${formatDate(item.pubDate)} · ${item.tags.join(", ") || "Untagged"}`;
+
+      const heading = document.createElement("h2");
+      const link = document.createElement("a");
+      link.href = item.slug;
+      link.textContent = item.title;
+      heading.append(link);
+
+      const excerpt = document.createElement("p");
+      excerpt.textContent = item.excerpt;
+      excerpt.style.color = "var(--color-muted-foreground)";
+      excerpt.style.fontSize = "0.875rem";
+
+      const metaList = document.createElement("div");
+      metaList.className = "meta-list";
+
+      if (item.tags.length > 0) {
+        const tags = document.createElement("span");
+        tags.textContent = `Tags: ${item.tags.join(", ")}`;
+        tags.style.fontSize = "0.8125rem";
+        tags.style.color = "var(--color-muted-foreground)";
+        metaList.append(tags);
+      }
+
+      article.append(meta, heading, excerpt, metaList);
+      return article;
+    };
+
+    const buildEmptyState = (message) => {
+      const empty = document.createElement("div");
+      empty.className = "empty-state";
+      empty.textContent = message;
+      return empty;
+    };
+
+    const search = (items, query) => {
+      const normalizedQuery = query.trim().toLowerCase();
+      if (!normalizedQuery) {
+        return items.slice(0, 12);
+      }
+
+      return items
+        .map((item) => {
+          const haystack = [
+            item.title,
+            item.excerpt,
+            item.description,
+            item.tags.join(" ")
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          const titleMatch = item.title.toLowerCase().includes(normalizedQuery) ? 2 : 0;
+          const contentMatch = haystack.includes(normalizedQuery) ? 1 : 0;
+
+          return { item, score: titleMatch + contentMatch };
+        })
+        .filter((entry) => entry.score > 0)
+        .sort((left, right) => right.score - left.score || right.item.pubDate.localeCompare(left.item.pubDate))
+        .map((entry) => entry.item);
+    };
+
+    const render = (items, query) => {
+      const matches = search(items, query);
+      results.replaceChildren();
+
+      if (!query.trim()) {
+        status.textContent = "Showing the latest 12 posts. Start typing to filter the archive.";
+      } else {
+        status.textContent =
+          matches.length === 0 ? `No posts matched “${query}”.` : `${matches.length} post(s) matched “${query}”.`;
+      }
+
+      if (matches.length === 0) {
+        results.append(buildEmptyState("Try a broader term or tag name."));
+        return;
+      }
+
+      for (const item of matches) {
+        results.append(buildResultCard(item));
+      }
+    };
+
+    if (!(input instanceof HTMLInputElement) || !status || !results) {
+      throw new Error("Search UI did not initialize correctly.");
+    }
+
+    input.value = params.get("q") ?? "";
+
+    const response = await fetch(searchIndexUrl);
+    if (!response.ok) {
+      status.textContent = "Search is temporarily unavailable.";
+      results.replaceChildren(buildEmptyState("The search index could not be loaded."));
+      throw new Error(`Failed to load search index: ${response.status}`);
+    }
+
+    const items = await response.json();
+    render(items, input.value);
+
+    input.addEventListener("input", () => {
+      const nextQuery = input.value.trim();
+      const nextUrl = new URL(window.location.href);
+
+      if (nextQuery) {
+        nextUrl.searchParams.set("q", nextQuery);
+      } else {
+        nextUrl.searchParams.delete("q");
+      }
+
+      window.history.replaceState({}, "", nextUrl);
+      render(items, input.value);
+    });
+  </script>
+</BaseLayout>

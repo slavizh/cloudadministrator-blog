@@ -1,0 +1,30 @@
+{
+  "name": "cloudadministrator-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "start": "astro dev --host 0.0.0.0",
+    "build": "node scripts/build.mjs",
+    "preview": "astro preview",
+    "astro": "astro",
+    "import:live": "node scripts/import-live-site.mjs",
+    "mirror:media": "node scripts/mirror-media.mjs",
+    "normalize:links": "node scripts/normalize-content-links.mjs",
+    "audit:content": "node scripts/audit-content.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.3.0",
+    "astro": "^5.5.5",
+    "cheerio": "^1.0.0",
+    "fast-xml-parser": "^5.2.2",
+    "he": "^1.2.0",
+    "typescript": "^5.9.3",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "zod": "^3.24.2"
+  }
+}

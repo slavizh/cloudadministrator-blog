@@ -1,0 +1,295 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { withBase } from "../utils/paths";
+import { resolveAssetUrl } from "../utils/assets";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+  interval?: number;
+}
+
+const { posts, interval = 6000 } = Astro.props;
+
+const slides = posts.map((post) => {
+  const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+  const readTime = Math.max(1, Math.round(wordCount / 200));
+  const pubDate = post.data.pubDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+  return {
+    title: post.data.title,
+    excerpt: post.data.excerpt ?? "",
+    slug: withBase(`${post.slug}/`),
+    image: resolveAssetUrl(post.data.heroImage),
+    tags: post.data.tags.slice(0, 3),
+    pubDate,
+    readTime: `${readTime} min read`
+  };
+});
+---
+
+<div
+  class="hero-carousel"
+  role="region"
+  aria-label="Featured posts"
+  data-interval={interval}
+>
+  {slides.map((slide, i) => (
+    <a
+      href={slide.slug}
+      class:list={["hero-slide", { "hero-slide--active": i === 0 }]}
+      data-index={i}
+    >
+      <img
+        src={slide.image}
+        alt={slide.title}
+        class="hero-slide__img"
+        loading={i === 0 ? "eager" : "lazy"}
+      />
+      <div class="hero-slide__overlay"></div>
+      <div class="hero-slide__content">
+        <div class="hero-slide__tags">
+          {slide.tags.map((tag) => (
+            <span class="hero-slide__tag">{tag}</span>
+          ))}
+        </div>
+        <h3 class="hero-slide__title">{slide.title}</h3>
+        <p class="hero-slide__excerpt">{slide.excerpt}</p>
+        <div class="hero-slide__meta">
+          <time>{slide.pubDate}</time>
+          <span>&middot;</span>
+          <span>{slide.readTime}</span>
+        </div>
+      </div>
+    </a>
+  ))}
+
+  {slides.length > 1 && (
+    <div class="hero-dots">
+      {slides.map((_, i) => (
+        <button
+          class:list={["hero-dot", { "hero-dot--active": i === 0 }]}
+          data-dot={i}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<script is:inline>
+  (function () {
+    var carousel = document.querySelector(".hero-carousel");
+    if (!carousel) return;
+
+    var slides = carousel.querySelectorAll(".hero-slide");
+    var dots = carousel.querySelectorAll(".hero-dot");
+    if (slides.length <= 1) return;
+
+    var interval = parseInt(carousel.getAttribute("data-interval") || "6000", 10);
+    var current = 0;
+    var paused = false;
+    var timer = null;
+
+    function goTo(index) {
+      slides[current].classList.remove("hero-slide--active");
+      dots[current].classList.remove("hero-dot--active");
+      current = index;
+      slides[current].classList.add("hero-slide--active");
+      dots[current].classList.add("hero-dot--active");
+    }
+
+    function next() {
+      if (!paused) goTo((current + 1) % slides.length);
+    }
+
+    function startTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, interval);
+    }
+
+    startTimer();
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        goTo(parseInt(dot.getAttribute("data-dot") || "0", 10));
+        startTimer();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", function () { paused = true; });
+    carousel.addEventListener("mouseleave", function () { paused = false; });
+  })();
+</script>
+
+<style>
+  .hero-carousel {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 7;
+    background: var(--color-secondary);
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-carousel { margin-bottom: 3rem; }
+  }
+
+  /* --- Slide --- */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .hero-slide--active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  .hero-slide__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .hero-slide:hover .hero-slide__img {
+    transform: scale(1.05);
+  }
+
+  /* Dark gradient from bottom */
+  .hero-slide__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Content overlay at bottom */
+  .hero-slide__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-slide__content { padding: 1.25rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-slide__content { padding: 1.5rem; }
+  }
+
+  .hero-slide__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .hero-slide__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-slide__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2.5vw, 1.375rem);
+    font-weight: 900;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0 0 0.375rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+  }
+
+  .hero-slide:hover .hero-slide__title {
+    color: var(--color-primary);
+  }
+
+  .hero-slide__excerpt {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 0 0.5rem;
+    max-width: 90%;
+  }
+
+  @media (max-width: 480px) {
+    .hero-slide__excerpt { display: none; }
+  }
+
+  .hero-slide__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+  }
+
+  /* --- Dot indicators --- */
+  .hero-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .hero-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s;
+  }
+
+  .hero-dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .hero-dot--active {
+    background: var(--color-primary);
+    width: 1.25rem;
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/paths";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page could not be found."
+  canonicalUrl={Astro.url.toString()}
+  noIndex={true}
+>
+  <div class="page-header" style="text-align: center; padding: 4rem 0;">
+    <p class="eyebrow">404</p>
+    <h1>Page not found</h1>
+    <p>
+      That page does not exist. Try the homepage, archive, topics page, or
+      search to find what you're looking for.
+    </p>
+    <div class="page-actions" style="justify-content: center;">
+      <a class="btn btn-primary" href={withBase("")}>Go home</a>
+      <a class="btn" href={withBase("archive/")}>Browse archive</a>
+      <a class="btn" href={withBase("search/")}>Search posts</a>
+    </div>
+  </div>
+</BaseLayout>

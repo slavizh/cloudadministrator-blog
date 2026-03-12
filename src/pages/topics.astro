@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTaxonomyEntries, sortPosts } from "../utils/blog";
+import { withBase } from "../utils/paths";
+
+const posts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
+const tags = getTaxonomyEntries(posts, "tags");
+---
+
+<BaseLayout
+  title="Topics"
+  description="Browse Cloud Administrator in Azure World by category and tag."
+  canonicalUrl={Astro.url.toString()}
+>
+  <div class="page-header">
+    <p class="eyebrow">Topics</p>
+    <h1>Browse by tag</h1>
+    <p>
+      Explore the archive by tag, or use the search page when you already know what you're looking for.
+    </p>
+    <div class="page-actions">
+      <a class="btn" href={withBase("search/")}>Search posts</a>
+      <a class="btn" href={withBase("archive/")}>Full archive</a>
+    </div>
+  </div>
+
+  <div class="taxonomy-grid">
+    <section class="taxonomy-section">
+      <h2>{tags.length} Tags</h2>
+      <div class="taxonomy-list">
+        {tags.map((tag) => (
+          <a class="taxonomy-link" href={withBase(`tag/${tag.slug}/`)}>
+            {tag.name}
+            <span class="taxonomy-link__count">{tag.count}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

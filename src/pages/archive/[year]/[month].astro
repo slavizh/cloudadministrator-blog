@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PostCard from "../../../components/PostCard.astro";
+import { groupPostsByYear, sortPosts } from "../../../utils/blog";
+import { withBase } from "../../../utils/paths";
+
+export async function getStaticPaths() {
+  const posts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
+
+  return groupPostsByYear(posts).flatMap((year) =>
+    year.months.map((month) => ({
+      params: { year: year.year.toString(), month: month.slug },
+      props: {
+        year: year.year,
+        monthLabel: month.label,
+        monthSlug: month.slug,
+        posts: month.posts
+      }
+    }))
+  );
+}
+
+const { year, monthLabel, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Archive ${monthLabel} ${year}`}
+  description={`Browse all posts published in ${monthLabel} ${year}.`}
+  canonicalUrl={Astro.url.toString()}
+>
+  <div class="page-header">
+    <p class="breadcrumbs">
+      <a href={withBase("archive/")}>Archive</a>
+      <span>/</span>
+      <a href={withBase(`archive/${year}/`)}>{year}</a>
+      <span>/</span>
+      <span>{monthLabel}</span>
+    </p>
+    <p class="eyebrow">Monthly archive</p>
+    <h1>{monthLabel} {year}</h1>
+    <p>{posts.length} posts published this month.</p>
+  </div>
+
+  <section class="post-grid">
+    {posts.map((post) => <PostCard post={post} />)}
+  </section>
+</BaseLayout>

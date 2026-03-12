@@ -1,0 +1,83 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../utils/paths";
+import { groupPostsByYear, sortPosts } from "../utils/blog";
+
+const posts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
+const years = groupPostsByYear(posts);
+---
+
+<BaseLayout
+  title="Archive"
+  description="Browse the static archive of Cloud Administrator in Azure World by year and month."
+  canonicalUrl={Astro.url.toString()}
+>
+  <div class="page-header">
+    <p class="eyebrow">Archive</p>
+    <h1>All posts</h1>
+    <p>
+      {posts.length} articles spanning {years.length} years, rebuilt into a fast static Astro site.
+    </p>
+    <div class="page-actions">
+      <a class="btn" href={withBase("search/")}>Search posts</a>
+      <a class="btn" href={withBase("topics/")}>Browse topics</a>
+      <a class="btn" href={withBase("feed/")} target="_blank" rel="noopener noreferrer">RSS Feed</a>
+    </div>
+  </div>
+
+  <section style="margin-bottom: 2rem;">
+    <div class="section-label">
+      <h2>Jump to a year</h2>
+      <span class="divider"></span>
+    </div>
+    <div class="taxonomy-list">
+      {years.map((year) => (
+        <a class="taxonomy-link" href={`#year-${year.year}`}>
+          {year.year}
+          <span class="taxonomy-link__count">{year.posts.length}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="year-groups">
+    {years.map((year) => (
+      <article class="year-panel" id={`year-${year.year}`}>
+        <div class="year-panel__header">
+          <h2>
+            <a href={withBase(`archive/${year.year}/`)}>{year.year}</a>
+          </h2>
+          <span class="meta">{year.posts.length} posts</span>
+        </div>
+
+        <div class="year-panel__months">
+          {year.months.map((month) => (
+            <a class="month-link" href={withBase(`archive/${year.year}/${month.slug}/`)}>
+              {month.label}
+              <span class="taxonomy-link__count">{month.posts.length}</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="summary-list">
+          {year.posts.map((post) => (
+            <article>
+              <h3>
+                <a href={withBase(`${post.slug}/`)}>{post.data.title}</a>
+              </h3>
+              <p class="meta" style="margin: 0;">
+                {post.data.pubDate.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric"
+                })}
+              </p>
+            </article>
+          ))}
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
+
