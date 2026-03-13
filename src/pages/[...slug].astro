@@ -73,7 +73,7 @@ const breadcrumbLd = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
-    { "@type": "ListItem", "position": 2, "name": "Archive", "item": new URL(withBase("archive/"), siteUrl).toString() },
+    { "@type": "ListItem", "position": 2, "name": "Posts" },
     { "@type": "ListItem", "position": 3, "name": post.data.title, "item": postUrl }
   ]
 };
@@ -98,33 +98,29 @@ const combinedLd = [blogPostingLd, breadcrumbLd];
     <p class="breadcrumbs">
       <a href={withBase("")}>Home</a>
       <span>/</span>
-      <a href={withBase("archive/")}>Archive</a>
+      <span>Posts</span>
       <span>/</span>
       <span>{post.data.title}</span>
     </p>
 
-    <p class="eyebrow">{published} &middot; {readTime} min read</p>
+    <p class="eyebrow">
+      {published} &middot;
+      <svg class="icon-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM8 3a.75.75 0 0 1 .75.75v3.69l2.28 2.28a.75.75 0 1 1-1.06 1.06l-2.5-2.5A.75.75 0 0 1 7.25 8V3.75A.75.75 0 0 1 8 3Z"/></svg>
+      {readTime} min read
+    </p>
     <h1>{post.data.title}</h1>
+
+    <div class="eyebrow-tags" aria-label="Post tags">
+      {post.data.tags.map((tag) => (
+        <a class="tag" href={withBase(getTaxonomyHref("tag", tag))}>
+          {tag}
+        </a>
+      ))}
+    </div>
+
     <p class="article__lede">{post.data.excerpt}</p>
 
     <img src={resolveAssetUrl(post.data.heroImage)} alt={post.data.title} class="article__hero" />
-
-    <div class="article__taxonomies">
-      {
-        post.data.tags.length > 0 && (
-          <div>
-            <h2>Tags</h2>
-            <div class="tag-list" aria-label="Post tags">
-              {post.data.tags.map((tag) => (
-                <a class="tag" href={withBase(getTaxonomyHref("tag", tag))}>
-                  {tag}
-                </a>
-              ))}
-            </div>
-          </div>
-        )
-      }
-    </div>
 
     <Content />
 
