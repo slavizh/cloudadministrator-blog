@@ -2,7 +2,8 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://cloudadministrator.net",
+  site: process.env.SITE_URL || "https://cloudadministrator.net",
+  base: process.env.PUBLIC_SITE_BASE || "/",
   integrations: [sitemap()],
   markdown: {
     shikiConfig: {
