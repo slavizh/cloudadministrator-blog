@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-
+import { withBase } from "../utils/paths";
 import { sortPosts } from "../utils/blog";
 
 export async function GET() {
@@ -11,7 +11,7 @@ export async function GET() {
         title: post.data.title,
         excerpt: post.data.excerpt,
         description: post.data.description,
-        slug: `/${post.slug}/`,
+        slug: withBase(`${post.slug}/`),
         pubDate: post.data.pubDate.toISOString(),
         tags: post.data.tags
       }))
