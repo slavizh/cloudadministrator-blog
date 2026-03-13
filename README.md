@@ -105,4 +105,6 @@ The site uses `cloudadministrator.net` via Cloudflare proxy. Configuration:
 
 ## License
 
+MIT License — see [LICENSE](LICENSE) for details.
+
 Blog content © Stanislav Zhelyazkov. All rights reserved.
