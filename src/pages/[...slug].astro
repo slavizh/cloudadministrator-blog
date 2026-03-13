@@ -107,7 +107,7 @@ const combinedLd = [blogPostingLd, breadcrumbLd];
     <h1>{post.data.title}</h1>
     <p class="article__lede">{post.data.excerpt}</p>
 
-    <img src={resolveAssetUrl(post.data.heroImage)} alt={post.data.title} />
+    <img src={resolveAssetUrl(post.data.heroImage)} alt={post.data.title} class="article__hero" />
 
     <div class="article__taxonomies">
       {
