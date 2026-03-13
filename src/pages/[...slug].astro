@@ -4,38 +4,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SharePost from "../components/SharePost.astro";
 import { resolveAssetUrl } from "../utils/assets";
 import { withBase } from "../utils/paths";
-import { getTaxonomyHref, sortPosts } from "../utils/blog";
+import { getTaxonomyHref, sortPosts, calculateReadTime, formatDate } from "../utils/blog";
 
 type Props = {
   post: CollectionEntry<"blog">;
+  allPosts: CollectionEntry<"blog">[];
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const allPosts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
 
-  return posts.map((post) => ({
+  return allPosts.map((post) => ({
     params: { slug: post.slug },
-    props: { post }
+    props: { post, allPosts }
   }));
 }
 
-const { post } = Astro.props;
+const { post, allPosts } = Astro.props;
 const { Content } = await render(post);
 
-const allPosts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
 const relatedPosts = allPosts
   .filter((entry) => entry.id !== post.id)
   .filter((entry) => entry.data.tags.some((tag) => post.data.tags.includes(tag)))
   .slice(0, 3);
 
-const published = post.data.pubDate.toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric"
-});
-
-const wordCount = post.body ? post.body.split(/\s+/).length : 0;
-const readTime = Math.max(1, Math.round(wordCount / 200));
+const published = formatDate(post.data.pubDate, "long");
+const readTime = calculateReadTime(post.body);
 
 const siteUrl = Astro.site?.toString() ?? "https://cloudadministrator.net";
 const postUrl = new URL(withBase(`${post.slug}/`), siteUrl).toString();
@@ -61,7 +55,7 @@ const blogPostingLd = {
     "url": siteUrl
   },
   "keywords": post.data.tags.join(", "),
-  "wordCount": wordCount,
+  "wordCount": post.body ? post.body.split(/\s+/).length : 0,
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": postUrl

@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { withBase } from "../utils/paths";
 import { resolveAssetUrl } from "../utils/assets";
+import { calculateReadTime, formatDate } from "../utils/blog";
 
 interface Props {
   posts: CollectionEntry<"blog">[];
@@ -10,25 +11,15 @@ interface Props {
 
 const { posts, interval = 6000 } = Astro.props;
 
-const slides = posts.map((post) => {
-  const wordCount = post.body ? post.body.split(/\s+/).length : 0;
-  const readTime = Math.max(1, Math.round(wordCount / 200));
-  const pubDate = post.data.pubDate.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
-
-  return {
-    title: post.data.title,
-    excerpt: post.data.excerpt ?? "",
-    slug: withBase(`${post.slug}/`),
-    image: resolveAssetUrl(post.data.heroImage),
-    tags: post.data.tags.slice(0, 3),
-    pubDate,
-    readTime: `${readTime} min read`
-  };
-});
+const slides = posts.map((post) => ({
+  title: post.data.title,
+  excerpt: post.data.excerpt ?? "",
+  slug: withBase(`${post.slug}/`),
+  image: resolveAssetUrl(post.data.heroImage),
+  tags: post.data.tags.slice(0, 3),
+  pubDate: formatDate(post.data.pubDate, "long"),
+  readTime: `${calculateReadTime(post.body)} min read`
+}));
 ---
 
 <div
@@ -111,7 +102,9 @@ const slides = posts.map((post) => {
       timer = setInterval(next, interval);
     }
 
-    startTimer();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      startTimer();
+    }
 
     dots.forEach(function (dot) {
       dot.addEventListener("click", function (e) {

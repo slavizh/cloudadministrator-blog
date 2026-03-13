@@ -22,6 +22,25 @@ export interface ArchiveYearGroup {
   months: ArchiveMonthGroup[];
 }
 
+const TAG_COLORS = ["blue", "green", "purple", "orange", "pink", "teal", "red", "yellow", "indigo", "cyan"] as const;
+
+export function getTagColor(tag: string) {
+  let hash = 0;
+  for (let i = 0; i < tag.length; i++) {
+    hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return TAG_COLORS[Math.abs(hash) % TAG_COLORS.length];
+}
+
+export function calculateReadTime(body: string | undefined) {
+  const wordCount = body ? body.split(/\s+/).length : 0;
+  return Math.max(1, Math.round(wordCount / 200));
+}
+
+export function formatDate(date: Date, month: "short" | "long" = "short") {
+  return date.toLocaleDateString("en-US", { year: "numeric", month, day: "numeric" });
+}
+
 export function sortPosts(posts: BlogPost[]) {
   return [...posts].sort((left, right) => right.data.pubDate.valueOf() - left.data.pubDate.valueOf());
 }
