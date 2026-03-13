@@ -76,6 +76,7 @@ const resolvedOgImage = ogImage
     {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <!-- RSS -->
+    <link rel="icon" type="image/svg+xml" href={withBase("favicon.svg")} />
     <link rel="alternate" type="application/rss+xml" title="Cloud Administrator feed" href={withBase("feed/")} />
 
     <!-- Fonts: Outfit (headings) + Inter (body) -->
