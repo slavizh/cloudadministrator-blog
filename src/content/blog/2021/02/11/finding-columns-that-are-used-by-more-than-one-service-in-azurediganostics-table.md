@@ -4,7 +4,7 @@ excerpt: "AzureDiagnstics table is used by many Azure Services when you send dia
 description: "AzureDiagnstics table is used by many Azure Services when you send diagnostic logs thus the [500 column limit that Microsoft is trying to fix for that table]..."
 pubDate: 2021-02-11
 updatedDate: 2021-02-11
-heroImage: "/media/wordpress/2021/02/eventname_s-results.png"
+heroImage: "/media/2021/02/eventname_s-results.png"
 sourceUrl: "https://cloudadministrator.net/2021/02/11/finding-columns-that-are-used-by-more-than-one-service-in-azurediganostics-table/"
 tags: 
   - "Azure Backup"
@@ -38,7 +38,7 @@ AzureDiagnostics
 
 The result of that query in my test environment looks like this:
 
-![](/media/wordpress/2021/02/eventname_s-results.png)
+![](/media/2021/02/eventname_s-results.png)
 
 *EventName_s results*
 
@@ -53,7 +53,7 @@ AzureDiagnostics
 | distinct ResourceProvider
 ```
 
-![](/media/wordpress/2021/02/alerttype_s-results.png)
+![](/media/2021/02/alerttype_s-results.png)
 
 *AlertType_s results*
 

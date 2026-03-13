@@ -4,7 +4,7 @@ excerpt: "At Ignite the Azure Monitor team has announced that you can now send s
 description: "At Ignite the Azure Monitor team has announced that you can now send subscription activity logs to Log Analytics. Wait? What? Isn’t that already available? A..."
 pubDate: 2019-12-03
 updatedDate: 2019-12-03
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/12/03/send-subscription-activity-logs-via-arm-template/"
 tags: 
   - "Activity Logs"

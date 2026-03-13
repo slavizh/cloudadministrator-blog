@@ -4,7 +4,7 @@ excerpt: "As you know both OMS Linux and Windows agent send heartbeat events and
 description: "As you know both OMS Linux and Windows agent send heartbeat events and they are free of charge. The problem is that the interval of these heartbeat events is..."
 pubDate: 2018-02-23
 updatedDate: 2018-02-23
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/02/23/configure-oms-linux-agent-heartbeat-interval/"
 tags: 
   - "Agent"

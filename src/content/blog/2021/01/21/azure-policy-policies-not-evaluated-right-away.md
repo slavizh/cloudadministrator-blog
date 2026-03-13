@@ -4,7 +4,7 @@ excerpt: "[Azure Policy]( has a unique feature compared to other competitors whe
 description: "[Azure Policy]( has a unique feature compared to other competitors when it comes to evaluating Azure Resources. As Azure Policy is built along Azure Resource..."
 pubDate: 2021-01-21
 updatedDate: 2021-01-21
-heroImage: "/media/wordpress/2021/01/security-center-scans.png"
+heroImage: "/media/2021/01/security-center-scans.png"
 sourceUrl: "https://cloudadministrator.net/2021/01/21/azure-policy-policies-not-evaluated-right-away/"
 tags: 
   - "ASC"
@@ -18,13 +18,13 @@ tags:
 
 You might have noticed that in the first sentence I have tied this behavior to only Azure Resources. As Azure Policy does not evaluate only Azure resource the above behavior differs a little bit when evaluation is done on non-Azure resources. Most notably you will notice inconsistencies with some Azure Security Center policies. To understand why is that I will start with some history on the Security Center policies feature. The next information is based on my assumption of how things happened without having any internal information. Security center had recommendations for quite some time even before Azure Policy was a service. These recommendations were based on scans that Security center has performed on resources and surfaced the information in Security Center UI. Once Azure Policy came into the picture many of these recommendations could be done via native Azure Policy policies and that is what the Security Center did. Other recommendations couldn’t be done via Azure Policy because the scans that Security Center was doing were not on Azure resources thus not available trough ARM API. What the Security Center did was to keep their own scans and publish the results of those scans trough ARM API. With that they have created Azure Policy policies that were checking the results in that API and thus all Security Center recommendations are available as policies but some are just a little bit different when it comes to evaluation. The diagram below represents high overview of the workflow:
 
-![](/media/wordpress/2021/01/security-center-scans.png)
+![](/media/2021/01/security-center-scans.png)
 
 *Security Center Policy Flow*
 
 As you can see you basically have two scans/evaluations that have schedules on their own. Also you cannot trigger on-demand scan on the Security Center recommendations as far as I am aware. So if you come across such policy and let’s say you have made a change that changes the results of compliant and non-compliant results if you trigger Azure Policy policy evaluation you probably will not see results of the policy changing. You will have to wait for the Security Center scan to kick in again and publish new results to the ARM API. We can take a close look at one such policy called ‘External accounts with owner permissions should be removed from your subscription’
 
-![](/media/wordpress/2021/01/external-accounts-policy.png)
+![](/media/2021/01/external-accounts-policy.png)
 
 *Security Center policy – external accounts*
 

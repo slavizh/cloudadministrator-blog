@@ -4,7 +4,7 @@ excerpt: "Azure API Management (APIM) facilitates AI applications through Model 
 description: "Azure API Management (APIM) facilitates AI applications through Model Context Protocol (MCP) servers. This functionality allows existing APIs to be exposed a..."
 pubDate: 2025-09-23
 updatedDate: 2025-09-23
-heroImage: "/media/wordpress/2025/09/generate-a-featured-image-for-a-blog-post-about-deploying.png"
+heroImage: "/media/2025/09/generate-a-featured-image-for-a-blog-post-about-deploying.png"
 sourceUrl: "https://cloudadministrator.net/2025/09/23/deploying-azure-apim-mcp-servers-with-bicep/"
 tags: 
   - "AI"

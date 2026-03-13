@@ -4,7 +4,7 @@ excerpt: "Alerts are important part of our monitoring and probably the most impo
 description: "Alerts are important part of our monitoring and probably the most important one. Getting data and visualizing it is the foundation for alerts but in order to..."
 pubDate: 2019-08-15
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/08/activity-log-categories.png"
+heroImage: "/media/2019/08/activity-log-categories.png"
 sourceUrl: "https://cloudadministrator.net/2019/08/15/azure-monitor-alerts-series-part-1/"
 tags: 
   - "Application Insights"
@@ -30,7 +30,7 @@ Although we have unified alerting capabilities there are different type of alert
 
 As the name suggest these alerts are based on Azure Activity Log. You can find more information on [Activity log alerts](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/activity-log-alerts). Azure Activity Log is something you get for free. The activity logs are stored for free for 90 days and any write operations (POST, PUT, DELETE) will be visible there. The operations are scoped per subscription and recently per management group as now you have some actions happening on management group level. The activity log can be send to other stores including Log Analytics. When you create activity log alerts you are directly tapping into the activity log store so there is no need to send them to Log Analytics if you do not want to. As the activity log has different type of operations it is actually divided into 7 event categories that can be seen in the Azure Portal UI as shown below.
 
-![Activity Log Categories](/media/wordpress/2019/08/activity-log-categories.png)
+![Activity Log Categories](/media/2019/08/activity-log-categories.png)
 
 So when you create activity log alert it is always best practice to first scope it to specific category. Based on the category scope you are basically creating different sub-type alert. The reason for that is because also the information or data that you get into e-mail or other system via webhook will differ between those. It is important to know that each alert instance that will be created is per log record. So even if you have some log records that are registered at the same time you will have separate alert created for each record. Let’s deep dive into each sub-type now.
 

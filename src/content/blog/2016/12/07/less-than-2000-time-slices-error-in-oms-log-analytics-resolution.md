@@ -4,7 +4,7 @@ excerpt: "I’ve seen a lot of people having the following error appear when the
 description: "I’ve seen a lot of people having the following error appear when they do measurement functions in OMS Log Analytics Search: Intervals for aggregate functions..."
 pubDate: 2016-12-07
 updatedDate: 2016-12-07
-heroImage: "/media/wordpress/2016/12/image.png"
+heroImage: "/media/2016/12/image.png"
 sourceUrl: "https://cloudadministrator.net/2016/12/07/less-than-2000-time-slices-error-in-oms-log-analytics-resolution/"
 tags: 
   - "Error"
@@ -23,7 +23,7 @@ I’ve seen a lot of people having the following error appear when they do measu
 
 Intervals for aggregate functions must result in less than 2000 time slices Unexpected ‘measure’ at position XX.
 
-[![image](/media/wordpress/2016/12/image.png "image")](/media/wordpress/2016/12/image.png)
+[![image](/media/2016/12/image.png "image")](/media/2016/12/image.png)
 
 The reason for this error is that we are running measurement query for the past 1 day but we are slicing the intervals into 30 seconds results which results in more than 2000 time slices (results per computer).
 
@@ -33,13 +33,13 @@ The solution for this is simple like increasing the 30 seconds interval in the q
 
 _Type=Perf ObjectName=Processor CounterName=”% Processor Time” InstanceName=\_Total | measure avg(CounterValue) by Computer Interval 60seconds_
 
-[![image](/media/wordpress/2016/12/image1.png "image")](/media/wordpress/2016/12/image1.png)
+[![image](/media/2016/12/image1.png "image")](/media/2016/12/image1.png)
 
 6 Hours time frame (Option B)
 
 Type=Perf ObjectName=Processor CounterName=”% Processor Time” InstanceName=\_Total | measure avg(CounterValue) by Computer Interval 30seconds
 
-[![image](/media/wordpress/2016/12/image2.png "image")](/media/wordpress/2016/12/image2.png)
+[![image](/media/2016/12/image2.png "image")](/media/2016/12/image2.png)
 
 As you can see both options work although they are not very pretty. That is why there is option C and I think it might be the best option for most of folks out there using OMS Log Analytics.
 
@@ -49,15 +49,15 @@ _Type=Perf ObjectName=Processor CounterName=”% Processor Time” InstanceName=
 
 6 hours time frame
 
-[![image](/media/wordpress/2016/12/image3.png "image")](/media/wordpress/2016/12/image3.png)
+[![image](/media/2016/12/image3.png "image")](/media/2016/12/image3.png)
 
 7 days time frame
 
-[![image](/media/wordpress/2016/12/image4.png "image")](/media/wordpress/2016/12/image4.png)
+[![image](/media/2016/12/image4.png "image")](/media/2016/12/image4.png)
 
 30 days time frame
 
-[![image](/media/wordpress/2016/12/image5.png "image")](/media/wordpress/2016/12/image5.png)
+[![image](/media/2016/12/image5.png "image")](/media/2016/12/image5.png)
 
 Of course if you need more granular slicer you always can go in advanced mode and use the interval.
 

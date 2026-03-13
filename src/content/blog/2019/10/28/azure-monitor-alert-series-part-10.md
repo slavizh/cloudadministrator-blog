@@ -4,7 +4,7 @@ excerpt: "Note that the first command will give you the current rule configurati
 description: "Note that the first command will give you the current rule configuration. From it you can find what is the value of etag property. After that you enter it in..."
 pubDate: 2019-10-28
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/28/azure-monitor-alert-series-part-10/"
 tags: 
   - "Azure"

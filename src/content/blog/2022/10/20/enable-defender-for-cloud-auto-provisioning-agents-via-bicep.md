@@ -4,7 +4,7 @@ excerpt: "I hope this was useful information for you."
 description: "I hope this was useful information for you."
 pubDate: 2022-10-20
 updatedDate: 2022-10-25
-heroImage: "/media/wordpress/2022/10/auto-provisioning-agents.png"
+heroImage: "/media/2022/10/auto-provisioning-agents.png"
 sourceUrl: "https://cloudadministrator.net/2022/10/20/enable-defender-for-cloud-auto-provisioning-agents-via-bicep/"
 tags: 
   - "AKS"
@@ -20,7 +20,7 @@ tags:
 ---
 Often I see questions around how I can the auto provisioning agents capabilities (now renamed to Settings & monitoring) in Defender for Cloud via API.
 
-![](/media/wordpress/2022/10/auto-provisioning-agents.png)
+![](/media/2022/10/auto-provisioning-agents.png)
 
 *Defender for Cloud Settings and Monitoring*
 

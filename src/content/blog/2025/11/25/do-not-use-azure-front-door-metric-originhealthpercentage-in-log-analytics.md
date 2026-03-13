@@ -4,7 +4,7 @@ excerpt: "Azure Front Door is a global service for enhancing application perform
 description: "Azure Front Door is a global service for enhancing application performance and availability through a CDN and load balancing. It utilizes health probes to mo..."
 pubDate: 2025-11-25
 updatedDate: 2025-11-25
-heroImage: "/media/wordpress/2025/11/azure-front-door-monitoring-health-1.png"
+heroImage: "/media/2025/11/azure-front-door-monitoring-health-1.png"
 sourceUrl: "https://cloudadministrator.net/2025/11/25/do-not-use-azure-front-door-metric-originhealthpercentage-in-log-analytics/"
 tags: 
   - "Azure"
@@ -19,19 +19,19 @@ Azure Front Door is a global, scalable service that acts as a content delivery n
 
 First let’s look at my Front Door Origins configuration. I have single origin group and with single origin and health probes that runs every 60 seconds.
 
-![](/media/wordpress/2025/11/front-door-origin-configuration.png)
+![](/media/2025/11/front-door-origin-configuration.png)
 
 *Front Door Origin Configuration*
 
 Let’s see the results of the metric:
 
-![](/media/wordpress/2025/11/front-door-origin-health-metric-view.png)
+![](/media/2025/11/front-door-origin-health-metric-view.png)
 
 *Front Door Metric View – Origin Health Percentage*
 
 Note that I have configured the view to show results per origin group and origin. If you have more origin groups or origin you will see results for them as well. In my case all the origin is healthy. The percentage of health is with average aggregation as you can see. Let’s also look the same metric but with Count aggregation. I have also selected shorter period of time and time granularity of 1 minute which is my interval for the health probe:
 
-![](/media/wordpress/2025/11/front-door-origin-health-metric-view-count.png)
+![](/media/2025/11/front-door-origin-health-metric-view-count.png)
 
 *Front Door Metric View – Origin Health Percentage Count*
 
@@ -45,7 +45,7 @@ In short Azure Front Door is global service and sends multiple health probes fro
 
 Something that I cannot explain are the results For Sum aggregation:
 
-![](/media/wordpress/2025/11/front-door-origin-health-metric-view-sum.png)
+![](/media/2025/11/front-door-origin-health-metric-view-sum.png)
 
 *Front Door Metric View – Origin Health Percentage Sum*
 
@@ -62,7 +62,7 @@ AzureMetrics
 
 I only have one FD so I do not need to see all other data:
 
-![](/media/wordpress/2025/11/front-door-origin-health-metric-log-analytics.png)
+![](/media/2025/11/front-door-origin-health-metric-log-analytics.png)
 
 *Front Door Logs view – Origin Health Percentage metric*
 

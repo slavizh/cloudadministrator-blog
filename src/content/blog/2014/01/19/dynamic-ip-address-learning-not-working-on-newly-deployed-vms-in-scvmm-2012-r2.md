@@ -4,7 +4,7 @@ excerpt: "With Windows Server 2012 R2 and System Center 2012 R2 we have the opti
 description: "With Windows Server 2012 R2 and System Center 2012 R2 we have the option to assign IP address inside a VM that is using Network Virtualization. This opens ot..."
 pubDate: 2014-01-19
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/19/dynamic-ip-address-learning-not-working-on-newly-deployed-vms-in-scvmm-2012-r2/"
 tags: 
   - "Dynamic IP Address Learning"

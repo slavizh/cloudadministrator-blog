@@ -4,7 +4,7 @@ excerpt: "Unfortunately due to personal reasons I haven’t been able to blog fo
 description: "Unfortunately due to personal reasons I haven’t been able to blog for a while. I am hoping I can change that and this will be one of those small blog posts...."
 pubDate: 2024-02-15
 updatedDate: 2024-02-15
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2024/02/15/tip-kql-query-for-azure-vms-with-periodic-assessment-enabled/"
 tags: 
   - "Azure"

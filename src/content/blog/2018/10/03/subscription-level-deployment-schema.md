@@ -4,7 +4,7 @@ excerpt: "Not so long ago in Azure we only had resource group level deployment b
 description: "Not so long ago in Azure we only had resource group level deployment but a couple of months ago [subscription level deployments]( were implemented. On resour..."
 pubDate: 2018-10-03
 updatedDate: 2018-10-03
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/10/03/subscription-level-deployment-schema/"
 tags: 
   - "ARM"

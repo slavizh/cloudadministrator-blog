@@ -4,7 +4,7 @@ excerpt: "It took us some time but we’ve managed to update the one and only fr
 description: "It took us some time but we’ve managed to update the one and only free OMS book. We had plans to release it earlier but unforeseen things has happened which..."
 pubDate: 2017-08-29
 updatedDate: 2017-08-29
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2017/08/29/free-e-book-inside-msoms-v2-now-available/"
 tags: 
   - "Azure"

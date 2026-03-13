@@ -4,7 +4,7 @@ excerpt: "In IT naming of resources has been around for quite some time. In some
 description: "In IT naming of resources has been around for quite some time. In some of the early days IT personal was using super hero names, constellation names, etc. to..."
 pubDate: 2020-03-09
 updatedDate: 2020-03-09
-heroImage: "/media/wordpress/2020/03/all-resources.png"
+heroImage: "/media/2020/03/all-resources.png"
 sourceUrl: "https://cloudadministrator.net/2020/03/09/my-thoughts-on-azure-naming-conventions-and-tags-usage/"
 tags: 
   - "ARM Templates"
@@ -24,7 +24,7 @@ Often in my work I am asked different questions around Azure naming conventions 
 -   Don’t use prefix or suffix values that indicate the resource type in the name of resource. Microsoft actually recommends to use [prefixes and suffixes](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) but I think they very wrong on this. The usage of some prefix or suffix for the resource type comes from legacy naming convention where we had mostly servers and network devices as resource. Because the server could be SQL or front end for some web application people were putting these prefixes or suffixes to know what is the role of the server. For example: sqlappb001. I do not know why this was brought to the cloud but with some of the recent innovations in Azure this is useless for the following reasons:
     -   Azure has this service called [Resource Graph](https://docs.microsoft.com/en-us/azure/governance/resource-graph/overview). It can give you instant information for almost any resource. I say any as there are still some resources that are not supported but at least those that are related to some usage data are. By using resource graph you can get the type of the resource, location and basically any property of the configuration for that resource. On top of that Azure Resource Graph now powers almost any view in Azure Portal that lists resource. Just go to All resource view and see how you can filter and group by type, location, resource group, etc. And if that is not enough just open Resource Graph blade and make your own query. Those queries you can use in Azure Dashboards and workbooks.
 
-![](/media/wordpress/2020/03/all-resources.png)
+![](/media/2020/03/all-resources.png)
 
 *All resources grouped and filtered*
 

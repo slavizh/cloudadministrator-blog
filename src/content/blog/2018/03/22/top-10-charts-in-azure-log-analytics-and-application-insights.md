@@ -4,7 +4,7 @@ excerpt: "I’ve recently stumbled on forum question asking for chart that list 
 description: "I’ve recently stumbled on forum question asking for chart that list only the top 10 resources or computers. Such chart is of course used a lot in performance..."
 pubDate: 2018-03-22
 updatedDate: 2018-03-22
-heroImage: "/media/wordpress/2018/03/top10chart.png"
+heroImage: "/media/2018/03/top10chart.png"
 sourceUrl: "https://cloudadministrator.net/2018/03/22/top-10-charts-in-azure-log-analytics-and-application-insights/"
 tags: 
   - "Application Insights"
@@ -40,7 +40,7 @@ Perf
 
 As you can see by using let I can output only the names of the computers that are in top 10 of CPU usage. After that the next query that displays the chart is scoped only to those computers. The result of the query will look similar to this:
 
-![top10chart](/media/wordpress/2018/03/top10chart.png)
+![top10chart](/media/2018/03/top10chart.png)
 
 Additionally you can set different times for both queries depending on your scenario. For example you can only get top 10 computers based on the last hour but display the results for the last 24 hours.
 

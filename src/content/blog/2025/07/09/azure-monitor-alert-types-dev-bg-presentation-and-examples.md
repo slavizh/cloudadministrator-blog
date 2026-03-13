@@ -4,7 +4,7 @@ excerpt: "On July 2nd, I presented a session on Azure Monitor Alert Types at dev
 description: "On July 2nd, I presented a session on Azure Monitor Alert Types at dev.bg. The event was conducted in Bulgarian, and I have shared the examples online. You c..."
 pubDate: 2025-07-09
 updatedDate: 2025-07-09
-heroImage: "/media/wordpress/2025/07/image.png"
+heroImage: "/media/2025/07/image.png"
 sourceUrl: "https://cloudadministrator.net/2025/07/09/azure-monitor-alert-types-dev-bg-presentation-and-examples/"
 tags: 
   - "Azure"

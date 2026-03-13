@@ -4,7 +4,7 @@ excerpt: "As you may have noticed in OMS Log Analytics for performance data you 
 description: "As you may have noticed in OMS Log Analytics for performance data you can now choose between linear or logarithmic view."
 pubDate: 2016-07-13
 updatedDate: 2016-07-13
-heroImage: "/media/wordpress/2016/07/image4.png"
+heroImage: "/media/2016/07/image4.png"
 sourceUrl: "https://cloudadministrator.net/2016/07/13/linear-or-logarithmic-view-for-performance-data-in-oms-log-analytics/"
 tags: 
   - "Analysis"
@@ -26,7 +26,7 @@ tags:
 ---
 As you may have noticed in OMS Log Analytics for performance data you can now choose between linear or logarithmic view.
 
-[![image](/media/wordpress/2016/07/image4.png "image")](/media/wordpress/2016/07/image4.png)
+[![image](/media/2016/07/image4.png "image")](/media/2016/07/image4.png)
 
 Don’t worry this is not [tabs vs. spaces discussion](https://www.youtube.com/watch?v=SsoOG6ZeyUI). It is more of which scale is right for specific performance data or specific case. You can search over Internet for different definitions of those scales and even a lot of examples. The quote below provides simple explanation for those two scales:
 
@@ -39,19 +39,19 @@ Let’s look at some examples in OMS to see where looking at the different scale
 
 In the chart below shown as Linear scale (this is the default one) I am tracking with a query the connection attempts to a number of web sites. From the graphic  below we can see that a lot of web sites have close to 0 connection attempts and only one has some serious activity.
 
-[![image](/media/wordpress/2016/07/image5.png "image")](/media/wordpress/2016/07/image5.png)
+[![image](/media/2016/07/image5.png "image")](/media/2016/07/image5.png)
 
 But if we switch to Logarithmic view that is not exactly true. We have some activity on another site as well. It is not big the blue one but still it has similar curve and the same growth.
 
-[![image](/media/wordpress/2016/07/image6.png "image")](/media/wordpress/2016/07/image6.png)
+[![image](/media/2016/07/image6.png "image")](/media/2016/07/image6.png)
 
 The reason why these sites have similarities in Logarithmic view is because these sites are communicating with each other.
 
 If we query the requests count for these sites you will again see some differences between Linear and Logarithmic views:
 
-[![image](/media/wordpress/2016/07/image7.png "image")](/media/wordpress/2016/07/image7.png)
+[![image](/media/2016/07/image7.png "image")](/media/2016/07/image7.png)
 
-[![image](/media/wordpress/2016/07/image8.png "image")](/media/wordpress/2016/07/image8.png)
+[![image](/media/2016/07/image8.png "image")](/media/2016/07/image8.png)
 
 Taking a look at these small examples we could make two conclusions when we should use Logarithmic view instead of Linear one:
 

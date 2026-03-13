@@ -4,7 +4,7 @@ excerpt: "I’ve decided to make you a Christmas present and developed a S2D sol
 description: "I’ve decided to make you a Christmas present and developed a S2D solution for OMS."
 pubDate: 2016-12-20
 updatedDate: 2016-12-20
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/12/20/storage-spaces-direct-s2d-management-solution-for-oms/"
 tags: 
   - "Cluster"

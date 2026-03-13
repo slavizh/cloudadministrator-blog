@@ -4,7 +4,7 @@ excerpt: "As we know Service Provider Foundation is the API of VMM. SPF is a web
 description: "As we know Service Provider Foundation is the API of VMM. SPF is a web service that can execute tasks against VMM server and WAP just connects to SPF to comm..."
 pubDate: 2013-12-02
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2013/12/image11.png"
+heroImage: "/media/2013/12/image11.png"
 sourceUrl: "https://cloudadministrator.net/2013/12/02/working-in-vmm-like-service-provider-foundation-and-windows-azure-pack/"
 tags: 
   - "Owner"
@@ -35,13 +35,13 @@ By having this mind let’s imagine that we have a VM for which we want to chang
 
 The issue is if we use the VMM cmdlet like this one to change the owner:
 
-[![image](/media/wordpress/2013/12/image11.png "image")](/media/wordpress/2013/12/image11.png)
+[![image](/media/2013/12/image11.png "image")](/media/2013/12/image11.png)
 
 _Get-SCVirtualMachine –Name VM1 | Set-SCVirtualMachine –Owner_ _stan.zhelyazkov@outlook.com_
 
 We will get similar error:
 
-[![image](/media/wordpress/2013/12/image12.png "image")](/media/wordpress/2013/12/image12.png)
+[![image](/media/2013/12/image12.png "image")](/media/2013/12/image12.png)
 
 _Set-SCVirtualMachine: The specified owner is not a valid Active Directory Domain Services account._
 
@@ -57,31 +57,31 @@ So let’s take the example with the owner above and see hot to change it with t
 
 First we need to start VMM PowerShell and connect to the VMM server like this:
 
-[![image](/media/wordpress/2013/12/image13.png "image")](/media/wordpress/2013/12/image13.png)
+[![image](/media/2013/12/image13.png "image")](/media/2013/12/image13.png)
 
 _Get-SCVMMServer –ComputerName vmmserver.contoso.com – ForOnBehalfOf_
 
 Than as when you want to change the Owner you will probably also want to change the User Role of that VM you need to get the new User Role and put in variable like this:
 
-[![image](/media/wordpress/2013/12/image14.png "image")](/media/wordpress/2013/12/image14.png)
+[![image](/media/2013/12/image14.png "image")](/media/2013/12/image14.png)
 
 _$role = Get-SCUserRole –Name Tenant256_
 
 After that trough regular SCVMM cmdlet you can assign new User Role to the VM in question:
 
-[![image](/media/wordpress/2013/12/image15.png "image")](/media/wordpress/2013/12/image15.png)
+[![image](/media/2013/12/image15.png "image")](/media/2013/12/image15.png)
 
 _Get-SCVirtualMachine –Name VM1 | Set-SCVirtualMachine –UserRole $role_
 
 Now that you have the new User Role assigned you will want to assign Owner to that VM on behalf of that User Role:
 
-[![image](/media/wordpress/2013/12/image16.png "image")](/media/wordpress/2013/12/image16.png)
+[![image](/media/2013/12/image16.png "image")](/media/2013/12/image16.png)
 
 _Get-SCVirtualMachine –Name VM1 | Set-SCVirtualMachine –Owner stan.zhelyazkov@outlook.com –OnBehalfOfUserRole $role –OnBehalfOfUser $role_
 
 And VIOLAA the new owner is assigned successfully:
 
-[![image](/media/wordpress/2013/12/image17.png "image")](/media/wordpress/2013/12/image17.png)
+[![image](/media/2013/12/image17.png "image")](/media/2013/12/image17.png)
 
 If you using WAP and you are moving virtual machine from one Tenant to another Tenant you may also want to check this [link](http://msdn.microsoft.com/en-us/library/dn306085.aspx).
 

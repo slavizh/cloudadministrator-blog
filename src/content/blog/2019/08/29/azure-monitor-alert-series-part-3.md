@@ -4,7 +4,7 @@ excerpt: "It is time for the third part of this blog series. This time we will c
 description: "It is time for the third part of this blog series. This time we will cover two type of alerts to speed up the pace. Also as I have mentioned before these typ..."
 pubDate: 2019-08-29
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/08/security-log.png"
+heroImage: "/media/2019/08/security-log.png"
 sourceUrl: "https://cloudadministrator.net/2019/08/29/azure-monitor-alert-series-part-3/"
 tags: 
   - "Activity Logs"
@@ -93,7 +93,7 @@ As you can see here the condition is very simple. We basically have condition fo
 
 Let’s have a look a simple Security log record:
 
-![](/media/wordpress/2019/08/security-log.png)
+![](/media/2019/08/security-log.png)
 
 *Security Activity log record*
 
@@ -182,7 +182,7 @@ Service Health alerts have its own experience of creating them in Service Health
 
 As you can see we have condition for the Category. We have also the condition for the stage. The stage designates if the service issue is Active or Resolved. There is possibility also for RCA. In case you want to get alerted on all stages you should remove the stage condition. In this case we only get alerted when the service health issue is active. In this condition we also have anyOf condition. By the [official documentation for Activity log alerts](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-activity-log) Microsoft does not allow or support this (it is not very clear) so if you want to use such kind of logic use it in your own risk. Although if you create Service Health alert from Portal it will use such conditions. As far as I have tested it works. Basically we want to receive alert of incident type is Incident or Maintenance. Incident is when there is actual service outage or degradation and Maintenance is when Azure notifies you that for example a host where your VM is located will be restarted in the coming future. They will provide additional details on the time frame. Incident type can also with value Informational or ActionRequired. Those are used to notify you on things like deprecation of service, changes in service, etc. If you want to be alerted only on Incident you can remove the anyOf and Maintenance conditions. Below you can see a sample of the additional fields that are available in properties.
 
-![](/media/wordpress/2019/08/service-health-log.png)
+![](/media/2019/08/service-health-log.png)
 
 *Service Health Activity log record*
 

@@ -4,7 +4,7 @@ excerpt: "Lately I’ve been exploring and challenging my self with some DevOps.
 description: "Lately I’ve been exploring and challenging my self with some DevOps. Got to follow the trend. It is not something deep but you have to start from somewhere...."
 pubDate: 2014-07-03
 updatedDate: 2018-06-18
-heroImage: "/media/wordpress/2014/07/image1.png"
+heroImage: "/media/2014/07/image1.png"
 sourceUrl: "https://cloudadministrator.net/2014/07/03/how-spf-and-wap-make-tenant-separation-for-vm-clouds-resource-provider/"
 tags: 
   - "OData"
@@ -34,13 +34,13 @@ We all know that we can query the SPF web service even with Internet Explorer:
 https://SPFserver.contoso.com:8090/SC2012R2/VMM/Microsoft.Management.Odata.svc/
 ```
 
-[![image](/media/wordpress/2014/07/image1.png "image")](/media/wordpress/2014/07/image1.png)
+[![image](/media/2014/07/image1.png "image")](/media/2014/07/image1.png)
 
 ```powershell
 https://SPFServer.contoso.com:8090/SC2012R2/VMM/Microsoft.Management.Odata.svc/VirtualMachines()
 ```
 
-[![image](/media/wordpress/2014/07/image2.png "image")](/media/wordpress/2014/07/image2.png)
+[![image](/media/2014/07/image2.png "image")](/media/2014/07/image2.png)
 
 But these queries result in returning all instances for specific object type. This neither gives us optimized queries nor provides multi-tenancy. So how than to get objects on behalf of the Tenant and more importantly how to create objects on behalf of the Tenant?
 
@@ -59,7 +59,7 @@ import-module spfadmin
 Get-SCSpfTenant | Where Name -like stas*
 ```
 
-[![image](/media/wordpress/2014/07/image3.png "image")](/media/wordpress/2014/07/image3.png)
+[![image](/media/2014/07/image3.png "image")](/media/2014/07/image3.png)
 
 Now we have that subscription ID so let’s try this:
 
@@ -69,7 +69,7 @@ https://SPFserver.contoso.com:8090/SC2012R2/vmm/aa764fbe-824d-4ad0-ab5b-a47b5954
 
 Unfortunately we get this:
 
-[![image](/media/wordpress/2014/07/image4.png "image")](/media/wordpress/2014/07/image4.png)
+[![image](/media/2014/07/image4.png "image")](/media/2014/07/image4.png)
 
 That does not mean necessary we are in the wrong direction just the credentials we use are not the right one.
 
@@ -151,7 +151,7 @@ $request =Invoke-WebRequest -Uri "https://SPFserver.contoso.com:8090/SC2012R2/vm
 $request.content
 ```
 
-[![image](/media/wordpress/2014/07/image5.png "image")](/media/wordpress/2014/07/image5.png)
+[![image](/media/2014/07/image5.png "image")](/media/2014/07/image5.png)
 
 This will get us the same results we see in IE but this time scoped to the Tenant we are using. Note that you will still have to provide credentials that have access to the SPF VMM Endpoint. The x-ms-principal-id property just needs to be provided and actually you can put any value you want and it will still works. I will explain later how security is provided trough SPF and WAP.
 
@@ -172,15 +172,15 @@ $request =Invoke-WebRequest -Uri "https://SPFserver.contoso.com:8090/SC2012R2/vm
 
 After executing the command you will see the following job in VMM:
 
-[![image](/media/wordpress/2014/07/image6.png "image")](/media/wordpress/2014/07/image6.png)
+[![image](/media/2014/07/image6.png "image")](/media/2014/07/image6.png)
 
 You will see that the VM Network was created in the name of the Owner we’ve provided but is the User role that correspond to Tenant’s subscription owner of the VM Network?
 
-[![image](/media/wordpress/2014/07/image7.png "image")](/media/wordpress/2014/07/image7.png)
+[![image](/media/2014/07/image7.png "image")](/media/2014/07/image7.png)
 
 As you can see everything is as it should be. Looking at WAP Tenant portal that network is shown for the Tenant:
 
-[![image](/media/wordpress/2014/07/image8.png "image")](/media/wordpress/2014/07/image8.png)
+[![image](/media/2014/07/image8.png "image")](/media/2014/07/image8.png)
 
 In all commands I’ve modified my e-mail in order to not be exposed.
 

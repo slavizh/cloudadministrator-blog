@@ -4,7 +4,7 @@ excerpt: "As I still see people confused and not informed about OMS I’ve decid
 description: "As I still see people confused and not informed about OMS I’ve decided to write this blog post and lay my thoughts around the end of OMS. If you are not sure..."
 pubDate: 2018-10-10
 updatedDate: 2018-10-23
-heroImage: "/media/wordpress/2018/10/azure_management.png"
+heroImage: "/media/2018/10/azure_management.png"
 sourceUrl: "https://cloudadministrator.net/2018/10/10/it-is-time-to-erase-oms-acronym-from-your-dictionary/"
 tags: 
   - "Azure Automation"
@@ -41,7 +41,7 @@ If you are not sure what is OMS that is ok and you do not necessary need to know
 
 There are a lot more announcement but these are some of the most notable ones. You will notice that there aren’t Backup and Site Recovery announcements. This is just because those services were part of the OMS bundle (E1 and E2 SKUs only) but never integrated in OMS portal or part of OMS per node license. Most of these changes were announced in advance and offered dual experience without immediately cutting the legacy path. For example you can still use OMS per node, E1 and E2 SKUs, OMS Portal will still be available for several months, many of the features present in the old Log Analytics search experience are present in the new one (though there are still some left to tackle before full deprecation), etc. Essentially services like Azure Automation and Log Analytics became like a platform for other services or they can be a platform for your own custom services. Over time we saw a few more services appear like Azure Policy, Azure Cost Management, Azure Resource Graph, etc. that basically complete the picture of Management not only in Azure but on-premises and other clouds.
 
-![Azure Management](/media/wordpress/2018/10/azure_management.png)
+![Azure Management](/media/2018/10/azure_management.png)
 
 *Azure Management*
 

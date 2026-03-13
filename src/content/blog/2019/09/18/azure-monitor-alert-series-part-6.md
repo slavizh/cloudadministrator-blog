@@ -4,7 +4,7 @@ excerpt: "In Part 6 of the series we will cover Metric Alerts. These are very po
 description: "In Part 6 of the series we will cover Metric Alerts. These are very powerful alerts but they also have some limitations. The good thing is that the Azure Mon..."
 pubDate: 2019-09-18
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/09/18/azure-monitor-alert-series-part-6/"
 tags: 
   - "Azure"

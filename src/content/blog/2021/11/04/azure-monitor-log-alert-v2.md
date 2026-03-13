@@ -4,7 +4,7 @@ excerpt: "Log Alerts have been available in Log Analytics for quite some time. I
 description: "Log Alerts have been available in Log Analytics for quite some time. Initially they were available via [legacy Log Alert API]( that was specific for Log Anal..."
 pubDate: 2021-11-04
 updatedDate: 2021-11-05
-heroImage: "/media/wordpress/2021/11/log-alert-v1-condtion.png"
+heroImage: "/media/2021/11/log-alert-v1-condtion.png"
 sourceUrl: "https://cloudadministrator.net/2021/11/04/azure-monitor-log-alert-v2/"
 tags: 
   - "Azure"
@@ -51,7 +51,7 @@ If you got to Log Analytics workspace and execute some query you will see the op
 
 For Log Alert v1 on configure logic (condition) page you will see the properties that you have seen before:
 
-![](/media/wordpress/2021/11/log-alert-v1-condtion.png)
+![](/media/2021/11/log-alert-v1-condtion.png)
 
 *Log Alert v1 Condition*
 
@@ -59,13 +59,13 @@ You will notice that the ability to configure columns for alert instances is not
 
 If we go to a resource group where we have resources sending logs to Log Analytics and we type some query in the Logs blade for the whole resource group we will see different experience that is tied to create Log Alert v2.
 
-![](/media/wordpress/2021/11/log-alert-v2-condtion.png)
+![](/media/2021/11/log-alert-v2-condtion.png)
 
 *Log Alert v2 Condition*
 
 Note that we have defined a query without aggregation and instead of choosing metric measurement or number of results we choose Table rows measure. You can also notice that aggregation is now something we define in the alert rule rather the query. Dimensions are now visible to choose and if you click you can see all the column names you can add as dimensions
 
-![](/media/wordpress/2021/11/log-alert-v2-dimensions.png)
+![](/media/2021/11/log-alert-v2-dimensions.png)
 
 *Log Alert v2 Dimensions*
 
@@ -73,7 +73,7 @@ Resource ID column option is usually something we choose if the alert is scoped 
 
 With this new UI experience you also have an option to see how the final query will look. This is the query that will be executed based on how the alert rule is defined.
 
-![](/media/wordpress/2021/11/log-alert-v2-final-query.png)
+![](/media/2021/11/log-alert-v2-final-query.png)
 
 *Log Alert v2 Final query*
 
@@ -81,7 +81,7 @@ At the end of the condition you have the advanced options.
 
 For Log Alert v2 when you got to Details tab you will see some of the other new options like Automatically resolve alerts and Check workspace linked storage:
 
-![](/media/wordpress/2021/11/log-alert-v2-details.png)
+![](/media/2021/11/log-alert-v2-details.png)
 
 *Log Alert v2 Details*
 

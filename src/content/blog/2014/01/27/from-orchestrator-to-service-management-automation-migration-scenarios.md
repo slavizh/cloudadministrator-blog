@@ -4,7 +4,7 @@ excerpt: "Service Management Automation (SMA) is the next gen IT Automation tool
 description: "Service Management Automation (SMA) is the next gen IT Automation tool. SMA has some certain advantage over Orchestrator but also some limitations and vise v..."
 pubDate: 2014-01-27
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/27/from-orchestrator-to-service-management-automation-migration-scenarios/"
 tags: 
   - "Migration"

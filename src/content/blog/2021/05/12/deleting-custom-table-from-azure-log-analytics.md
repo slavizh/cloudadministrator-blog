@@ -4,13 +4,13 @@ excerpt: "If you are familiar with Log Analytics you will know that you can dele
 description: "If you are familiar with Log Analytics you will know that you can delete custom field/column directly from the UI as you can see below: For example I can del..."
 pubDate: 2021-05-12
 updatedDate: 2021-05-12
-heroImage: "/media/wordpress/2021/05/custom-field-delete.png"
+heroImage: "/media/2021/05/custom-field-delete.png"
 sourceUrl: "https://cloudadministrator.net/2021/05/12/deleting-custom-table-from-azure-log-analytics/"
 tags: []
 ---
 If you are familiar with Log Analytics you will know that you can delete custom field/column directly from the UI as you can see below:
 
-![](/media/wordpress/2021/05/custom-field-delete.png)
+![](/media/2021/05/custom-field-delete.png)
 
 *Custom Field Delete*
 
@@ -18,25 +18,25 @@ For example I can delete custom field \_ResourceId\_s for MyLog0001\_CL table. T
 
 A few months ago a [new API](https://docs.microsoft.com/en-us/rest/api/loganalytics/data%20collector%20logs%20\(preview\)/delete?WT.mc_id=AZ-MVP-5000120) was released that allows you to delete a whole table. If you look at the picture above I have MyLog00001\_CL table. When I search that table I do not have any recent data:
 
-![](/media/wordpress/2021/05/my-table.png)
+![](/media/2021/05/my-table.png)
 
 *My Table*
 
 By using [armclient tool](https://github.com/projectkudu/ARMClient) I can easily execute that API to delete that specific table:
 
-![](/media/wordpress/2021/05/delete-table.png)
+![](/media/2021/05/delete-table.png)
 
 *Delete Table*
 
 When executing the request there is no any output but if I check custom fields UI you can see that I no longer have \_ResourceId field for MyLog0001\_CL table:
 
-![](/media/wordpress/2021/05/custom-field-deleted-table.png)
+![](/media/2021/05/custom-field-deleted-table.png)
 
 *Custom Field Delete table*
 
 If I try to search MyLog0001\_CL table I will get an error:
 
-![](/media/wordpress/2021/05/search-failed.png)
+![](/media/2021/05/search-failed.png)
 
 *Search failed*
 
@@ -44,7 +44,7 @@ The above shows how you can delete a custom table from Log Analytics workspace. 
 
 Any of these actions will also be logged in Azure Activity log in case someone has done this without authorization or by mistake:
 
-![](/media/wordpress/2021/05/delete-table-log.png)
+![](/media/2021/05/delete-table-log.png)
 
 *Activity Log*
 

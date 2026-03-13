@@ -4,7 +4,7 @@ excerpt: "This will be a short blog post but I hope still interesting one as I w
 description: "This will be a short blog post but I hope still interesting one as I will provide example how to set per table retention in Log Analytics. Several weeks ago..."
 pubDate: 2019-10-16
 updatedDate: 2019-10-17
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/16/set-per-table-retention-in-log-analytics-via-arm-template/"
 tags: 
   - "ARM Templates"

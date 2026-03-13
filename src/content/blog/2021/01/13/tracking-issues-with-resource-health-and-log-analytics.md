@@ -4,7 +4,7 @@ excerpt: "Today’s topic we will focus on two Azure Monitor features – Resour
 description: "Today’s topic we will focus on two Azure Monitor features – Resource Health and Log Analytics. [Resource Health]( is may be not so known feature of Azure Mon..."
 pubDate: 2021-01-13
 updatedDate: 2021-01-13
-heroImage: "/media/wordpress/2021/01/resource-health-query-1.png"
+heroImage: "/media/2021/01/resource-health-query-1.png"
 sourceUrl: "https://cloudadministrator.net/2021/01/13/tracking-issues-with-resource-health-and-log-analytics/"
 tags: 
   - "Azure"
@@ -44,7 +44,7 @@ AzureActivity
 | distinct EventProperties_cause
 ```
 
-![](/media/wordpress/2021/01/resource-health-query-1.png)
+![](/media/2021/01/resource-health-query-1.png)
 
 *Resource Health causes*
 
@@ -62,7 +62,7 @@ AzureActivity
 | evaluate bag_unpack(ep, 'EventProperties_' )
 ```
 
-![](/media/wordpress/2021/01/resource-health-query-2.png)
+![](/media/2021/01/resource-health-query-2.png)
 
 *Resource Health record*
 
@@ -79,7 +79,7 @@ AzureActivity
 | distinct EventProperties_title
 ```
 
-![](/media/wordpress/2021/01/resource-health-query-3.png)
+![](/media/2021/01/resource-health-query-3.png)
 
 *Resource Health cause titles*
 
@@ -96,7 +96,7 @@ AzureActivity
 | distinct _ResourceId, EventProperties_title, EventProperties_cause
 ```
 
-![](/media/wordpress/2021/01/resource-health-query-4.png)
+![](/media/2021/01/resource-health-query-4.png)
 
 *Resource Health – Resource Id, title and cause*
 

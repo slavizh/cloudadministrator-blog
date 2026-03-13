@@ -4,7 +4,7 @@ excerpt: "MP University is free 1 day online training event that focuses on SCOM
 description: "MP University is free 1 day online training event that focuses on SCOM and Azure. As you know for the past several weeks I have been blogging about Azure Mon..."
 pubDate: 2019-10-30
 updatedDate: 2019-10-30
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/30/azure-monitor-alerting-session-at-mp-university/"
 tags: 
   - "Azure"

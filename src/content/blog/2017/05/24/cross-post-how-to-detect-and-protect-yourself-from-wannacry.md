@@ -4,7 +4,7 @@ excerpt: "Make sure to check out this blog post that I’ve wrote on my company�
 description: "Make sure to check out this blog post that I’ve wrote on my company’s web site. How To Detect And Protect Yourself From WannaCry"
 pubDate: 2017-05-24
 updatedDate: 2017-05-24
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2017/05/24/cross-post-how-to-detect-and-protect-yourself-from-wannacry/"
 tags: 
   - "Azure Automation"

@@ -4,7 +4,7 @@ excerpt: "These are challenging times for the whole world but to stay true to ou
 description: "These are challenging times for the whole world but to stay true to ourselves we are preparing for the release of the 4th edition of Inside Azure Management..."
 pubDate: 2020-03-25
 updatedDate: 2020-03-25
-heroImage: "/media/wordpress/2020/03/inside-azure-managemnet-v4-chapter-2.png"
+heroImage: "/media/2020/03/inside-azure-managemnet-v4-chapter-2.png"
 sourceUrl: "https://cloudadministrator.net/2020/03/25/inside-azure-management-v4-chapter-2-implementing-governance-in-azure/"
 tags: 
   - "Azure"
@@ -32,4 +32,4 @@ In order to give you something to read while waiting for the full release we wil
 
 [Pre-order on Amazon](https://www.amazon.com/dp/B086CC2YGX/ref=cm_sw_r_tw_dp_U_x_Mx4EEb20QMRQW)
 
-![](/media/wordpress/2020/03/inside-azure-managemnet-v4-chapter-2.png)
+![](/media/2020/03/inside-azure-managemnet-v4-chapter-2.png)

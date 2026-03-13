@@ -4,7 +4,7 @@ excerpt: "Last week I have done a webinar about Azure Monitor Alerting at MP Uni
 description: "Last week I have done a webinar about Azure Monitor Alerting at MP University. In case you have missed the live presentations you can check the recordings no..."
 pubDate: 2019-11-19
 updatedDate: 2019-11-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/11/19/mp-university-azure-monitor-alerting-recording/"
 tags: 
   - "Azure"

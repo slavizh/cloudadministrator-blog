@@ -4,7 +4,7 @@ excerpt: "Microsoft has a service that allows you to create Windows 10 apps call
 description: "Microsoft has a service that allows you to create Windows 10 apps called Windows App Studio. Recently that service enabled easier creation of Windows 10 app..."
 pubDate: 2015-12-28
 updatedDate: 2015-12-28
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2015/12/28/windows-10-universal-app-for-cloudadministrator-wordpress-com/"
 tags: 
   - "Azure"

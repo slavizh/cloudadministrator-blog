@@ -4,7 +4,7 @@ excerpt: "Bicep modules provide this awesome feature to be able to create schema
 description: "Bicep modules provide this awesome feature to be able to create schema for your Bicep modules via User-defined data types. When you reference Bicep module in..."
 pubDate: 2025-09-04
 updatedDate: 2025-09-04
-heroImage: "/media/wordpress/2025/09/image.png"
+heroImage: "/media/2025/09/image.png"
 sourceUrl: "https://cloudadministrator.net/2025/09/04/generate-documentation-for-azure-bicep-modules-with-github-copilot/"
 tags: 
   - "Azure"
@@ -34,7 +34,7 @@ Execute the following tasks:
 
 The results that I’ve got were the following:
 
-![](/media/wordpress/2025/09/readme-generated.png)
+![](/media/2025/09/readme-generated.png)
 
 *GitHub Copilot Generated Markdown*
 

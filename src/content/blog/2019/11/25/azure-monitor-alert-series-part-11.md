@@ -4,7 +4,7 @@ excerpt: "So far we have covered all the alert types that are available not only
 description: "So far we have covered all the alert types that are available not only in Azure Monitor but other services like Sentinel and Cost Management as well. That do..."
 pubDate: 2019-11-25
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/11/25/azure-monitor-alert-series-part-11/"
 tags: 
   - "Action Groups"

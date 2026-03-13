@@ -4,7 +4,7 @@ excerpt: "Recently Azure Monitor team has introduced Azure Monitor workspace. Th
 description: "Recently Azure Monitor team has introduced Azure Monitor workspace. This is a new resource that is described as “Azure Monitor workspaces will eventually con..."
 pubDate: 2022-11-08
 updatedDate: 2022-11-08
-heroImage: "/media/wordpress/2022/11/monitor-resources.png"
+heroImage: "/media/2022/11/monitor-resources.png"
 sourceUrl: "https://cloudadministrator.net/2022/11/08/azure-monitor-workspace-managed-prometheus-and-prometheus-via-bicep/"
 tags: 
   - "AKS"
@@ -41,43 +41,43 @@ You can find the Bicep templates for the [deployment here](https://github.com/sl
 
 I would suggest to check all the available documentation for all prerequisites. Once everything is setup you will end up with the following Azure Monitor resources:
 
-![](/media/wordpress/2022/11/monitor-resources.png)
+![](/media/2022/11/monitor-resources.png)
 
 *Azure Monitor resources*
 
 When you check the Azure Monitor workspace resource metrics you can see events/metrics being processed by the service:
 
-![](/media/wordpress/2022/11/monitor-workspace-metrics.png)
+![](/media/2022/11/monitor-workspace-metrics.png)
 
 *Azure Monitor Workspace metrics*
 
 When you login with user who has permissions on the Managed Grafana the Data source to the managed Prometheus is automatically setup:
 
-![](/media/wordpress/2022/11/grafana-prometheus-data-source.png)
+![](/media/2022/11/grafana-prometheus-data-source.png)
 
 *Grafana Prometheus data source*
 
 There are built-in dashboards available in Grafana as well:
 
-![](/media/wordpress/2022/11/prometheus-dashboard.png)
+![](/media/2022/11/prometheus-dashboard.png)
 
 *Prometheus Dashboard*
 
 By modifying the thresholds on one of the alerts I have managed to generate such alert and those alert instances appear in Azure Monitor blade:
 
-![](/media/wordpress/2022/11/prometheus-alert-instnaces.png)
+![](/media/2022/11/prometheus-alert-instnaces.png)
 
 *Prometheus Alert instances*
 
 You are able to see the details for each alert as well:
 
-![](/media/wordpress/2022/11/alert-details.png)
+![](/media/2022/11/alert-details.png)
 
 *Alert Details*
 
 These alerts also support e-mail notification:
 
-![](/media/wordpress/2022/11/alert-e-mail-notification.png)
+![](/media/2022/11/alert-e-mail-notification.png)
 
 *Alert e-mail notification*
 

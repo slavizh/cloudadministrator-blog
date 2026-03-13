@@ -4,7 +4,7 @@ excerpt: "On 31st of March I will be bringing session for Azure Virtual Day. The
 description: "On 31st of March I will be bringing session for Azure Virtual Day. The title of the session is Tips and Tricks on Azure Monitor Alerts. I will go through the..."
 pubDate: 2020-03-27
 updatedDate: 2020-03-29
-heroImage: "/media/wordpress/2020/03/stanislav-zhelyazkov.jpg"
+heroImage: "/media/2020/03/stanislav-zhelyazkov.jpg"
 sourceUrl: "https://cloudadministrator.net/2020/03/27/speaking-at-azure-virtual-day/"
 tags: 
   - "Azure"
@@ -17,6 +17,6 @@ On 31st of March I will be bringing session for Azure Virtual Day. The title of 
 
 [Azure Virtual Day Schedule](https://azureday.community/#schedule)
 
-![](/media/wordpress/2020/03/stanislav-zhelyazkov.jpg)
+![](/media/2020/03/stanislav-zhelyazkov.jpg)
 
 *Azure Virtual Day*

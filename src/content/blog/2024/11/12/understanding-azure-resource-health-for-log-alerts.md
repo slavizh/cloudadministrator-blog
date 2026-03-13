@@ -4,7 +4,7 @@ excerpt: "Azure Resource Health is Azure Monitor feature to track the overall he
 description: "Azure Resource Health is Azure Monitor feature to track the overall health of different Azure services. It is particularly handy for PaaS and SaaS type of se..."
 pubDate: 2024-11-12
 updatedDate: 2024-11-12
-heroImage: "/media/wordpress/2024/11/image.png"
+heroImage: "/media/2024/11/image.png"
 sourceUrl: "https://cloudadministrator.net/2024/11/12/understanding-azure-resource-health-for-log-alerts/"
 tags: 
   - "Activity Logs"
@@ -21,7 +21,7 @@ Before creating the actual Log Alert I encourage you to look at document [Monito
 
 To test the Log Alert resource health I have created Log Alert that uses query to Azure Resource Graph and as those queries require managed Identity I am assigning such with appropriate permissions. The query runs every 5 minutes. Everything should be healthy as it is shown:
 
-![](/media/wordpress/2024/11/log-alert-resource-health-initial.png)
+![](/media/2024/11/log-alert-resource-health-initial.png)
 
 *Log Alert Resource Health initial state*
 
@@ -29,13 +29,13 @@ There is one health event which always appear when you create alert rule. There 
 
 Next I will remove the permissions of the identity and wait until the health changes. This could be typical change that could have been done and affect your monitoring. I have waited more than 25 minutes until Resource Health changed its state. I am assuming that the check runs at the frequency of the alert rule and it triggers status change when it fails a few times.
 
-![](/media/wordpress/2024/11/log-alert-resource-health-after-removal-permissions-1.png)
+![](/media/2024/11/log-alert-resource-health-after-removal-permissions-1.png)
 
 *Log Alert Resource health state after permissions removal*
 
 Not sure why unavailable is shown with blue icon instead of read as this is critical issue to me but that is only UI issue. Before looking at the activity logs I will re-assigned the permissions back to the managed identity in order to see if the alert rule will go back in healthy status. Returning to healthy too less than 20 minutes:
 
-![](/media/wordpress/2024/11/log-alert-resource-health-after-adding-permissions.png)
+![](/media/2024/11/log-alert-resource-health-after-adding-permissions.png)
 
 *Log Alert Resource Health state after adding permissions*
 
@@ -43,19 +43,19 @@ Looking at the activity log we have the following resource health events in chro
 
 First we have the Active status with the health status going from Available to Unavailable.
 
-![](/media/wordpress/2024/11/log-alert-activity-log-1.png)
+![](/media/2024/11/log-alert-activity-log-1.png)
 
 *Log Alert resource health log – Active*
 
 After that we have Updated status containing details about the issue:
 
-![](/media/wordpress/2024/11/log-alert-activity-log-2.png)
+![](/media/2024/11/log-alert-activity-log-2.png)
 
 *Log alert resource health log – Updated*
 
 And at last after the permissions were added back to the identity the resource health resolves the issue and health status is back at Available:
 
-![](/media/wordpress/2024/11/log-alert-activity-log-3.png)
+![](/media/2024/11/log-alert-activity-log-3.png)
 
 *Log Alert Resource health log – Resolved*
 
@@ -63,15 +63,15 @@ As you can see there is clear path from Available -> Unavailable -> Available. A
 
 Another issue that can be simulated easily by modifying the query in a way that is not valid:
 
-![](/media/wordpress/2024/11/log-alert-activity-log-4.png)
+![](/media/2024/11/log-alert-activity-log-4.png)
 
 *Log Alert resource health log – Active*
 
-![](/media/wordpress/2024/11/log-alert-activity-log-5.png)
+![](/media/2024/11/log-alert-activity-log-5.png)
 
 *Log Alert Resource health log – Updated*
 
-![](/media/wordpress/2024/11/log-alert-activity-log-6.png)
+![](/media/2024/11/log-alert-activity-log-6.png)
 
 *Log Alert resource health log – Resolved*
 

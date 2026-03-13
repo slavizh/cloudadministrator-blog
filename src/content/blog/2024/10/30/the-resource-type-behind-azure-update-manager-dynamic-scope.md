@@ -4,7 +4,7 @@ excerpt: "When helping folks at Microsoft Q&A I saw a question regarding creatin
 description: "When helping folks at Microsoft Q&A I saw a question regarding creating Dynamic scope with Bicep or Terraform. That led to creating this blog post where we w..."
 pubDate: 2024-10-30
 updatedDate: 2024-10-30
-heroImage: "/media/wordpress/2024/10/create-dynamic-scope.png"
+heroImage: "/media/2024/10/create-dynamic-scope.png"
 sourceUrl: "https://cloudadministrator.net/2024/10/30/the-resource-type-behind-azure-update-manager-dynamic-scope/"
 tags: 
   - "Azure"
@@ -23,13 +23,13 @@ When helping folks at Microsoft Q&A I saw a question regarding creating Dynamic 
 
 Let’s start by first looking at the Portal experience for better understanding. The Azure Update Manager portal experience does not offer standalone view to see all your Dynamic scopes. Instead you can see dynamic scopes by editing maintenance configuration or by creating a new one and creating dynamic scopes for it.
 
-![](/media/wordpress/2024/10/add-dynamic-scopes.png)
+![](/media/2024/10/add-dynamic-scopes.png)
 
 *Add Dynamic Scope*
 
 When you click add dynamic scope you are presented with one or more subscriptions to choose.
 
-![](/media/wordpress/2024/10/create-dynamic-scope.png)
+![](/media/2024/10/create-dynamic-scope.png)
 
 *Create Dynamic Scope*
 

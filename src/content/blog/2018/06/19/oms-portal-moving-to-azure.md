@@ -4,7 +4,7 @@ excerpt: "For quite some time it was clear that the OMS Portal will move complet
 description: "For quite some time it was clear that the OMS Portal will move completely to Azure and that is good news. We have seen services like Update Management, Azure..."
 pubDate: 2018-06-19
 updatedDate: 2018-06-19
-heroImage: "/media/wordpress/2018/06/update-management.png"
+heroImage: "/media/2018/06/update-management.png"
 sourceUrl: "https://cloudadministrator.net/2018/06/19/oms-portal-moving-to-azure/"
 tags: 
   - "ASC"
@@ -35,7 +35,7 @@ For quite some time it was clear that the OMS Portal will move completely to Azu
 
 -   Update Management solution have been moved to Azure Automation. You will find the new experience in a tab under that service. All the new features released for that solution you will see only there.
 
-![Azure Update Management](/media/wordpress/2018/06/update-management.png)
+![Azure Update Management](/media/2018/06/update-management.png)
 
 *Azure Update Management*
 
@@ -55,11 +55,11 @@ With that said I would still like to see some UI changes in Azure Portal in orde
 -   It is time to put OMS naming to rest. OMS is a suite and single service from that suite should not be associated with OMS. We see that confusion even in Azure Portal where the first blade is named OMS Workspace.
 -   We still have to portals for search operations. I would like to see those merged but of course their functionalities needs to be merged as well. For example the classic search experience can show proper time chart when you summarize on more than one column. From the screenshot below you can see that in classic search we have separate lines for each pair of computer and drive where in the advanced portal we just have one line for each computer.
 
-![OMS Classic Search](/media/wordpress/2018/06/classic_search.png)
+![OMS Classic Search](/media/2018/06/classic_search.png)
 
 *OMS Classic Search*
 
-![Advanced Analytics Search](/media/wordpress/2018/06/advnaced-search.png)
+![Advanced Analytics Search](/media/2018/06/advnaced-search.png)
 
 *Advanced Analytics Search*
 

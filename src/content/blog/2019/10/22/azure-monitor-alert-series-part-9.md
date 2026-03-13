@@ -4,7 +4,7 @@ excerpt: "We continue our journey in Azure Monitor Alerts. This time we will cov
 description: "We continue our journey in Azure Monitor Alerts. This time we will cover alert type that is not part of Azure Monitor specifically but my opinion is that eve..."
 pubDate: 2019-10-22
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/22/azure-monitor-alert-series-part-9/"
 tags: 
   - "ARM Templates"

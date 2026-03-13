@@ -4,7 +4,7 @@ excerpt: "Recently I’ve published blog post [Subscription Level Deployment Sch
 description: "Recently I’ve published blog post [Subscription Level Deployment Schema]( When I published it I was not aware that not so many people know what the schemas a..."
 pubDate: 2018-10-25
 updatedDate: 2018-10-25
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/10/25/what-is-azure-schema/"
 tags: 
   - "ARM"

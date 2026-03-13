@@ -4,7 +4,7 @@ excerpt: "Since Ignite 2017 Security & Compliance offering is now part of Azure 
 description: "Since Ignite 2017 Security & Compliance offering is now part of Azure Service Center service. Because of that some of the controls of that offering are moved..."
 pubDate: 2018-01-16
 updatedDate: 2018-01-16
-heroImage: "/media/wordpress/2018/01/image.png"
+heroImage: "/media/2018/01/image.png"
 sourceUrl: "https://cloudadministrator.net/2018/01/16/tips-and-tricks-of-setting-up-azure-security-center/"
 tags: 
   - "Azure"
@@ -30,11 +30,11 @@ Since Ignite 2017 Security & Compliance offering is now part of Azure Service Ce
 
 By default Azure Security Center creates Log Analytics workspace on its own. In many cases that is not customers want especially in enterprises. You can easily change that by going into Azure Security Center –> Security Policy –> <the name of the subscription> –> Data Collection.
 
-[![image](/media/wordpress/2018/01/image.png "image")](/media/wordpress/2018/01/image.png)
+[![image](/media/2018/01/image.png "image")](/media/2018/01/image.png)
 
 Remember to pre-create the workspace so it can be visible. At the time of this writing the workspace needs to be in the same subscription for which you configure the policy. Keep in mind that when you click save you will be asked if the agents that may already be deployed to VMs in your subscription should re-connect to the new workspace. Click Yes when you are asked about this. The actual re-connection of agents actually takes some unknown time and also no data is being transferred from the default ASC workspace to the new one. Because of those two things you should not delete the default workspace right away. My recommendations is to wait 30 days so the data in the default workspace expires before proceeding with deletion. The Actual reconnection of agents depends on the number of your VM resources but it is safe to say that for around 2 days all agents should be connected to the new workspace. There are few more things to consider when you configure Data collection policy. In order to switch from Free to Standard pricing tier you will have to go to Azure Security Center –> Security Policy –> <the name of the Log Analytics Workspace> –> Pricing Tier. Notice that we configure this on Log Analytics workspace level rather subscription level. I believe that if you configure them on subscription policy level it works only if default workspace is selected instead of another.
 
-[![image](/media/wordpress/2018/01/image1.png "image")](/media/wordpress/2018/01/image1.png)
+[![image](/media/2018/01/image1.png "image")](/media/2018/01/image1.png)
 
 Whether you are configuring with another workspace or the default one keep in mind that when you change to Standard tier you will have to go to the Log Analytics workspace and deploy both Security & Audit and Antimalware solutions when you have non-Azure machines. These two solutions are not deployed by default.
 
@@ -48,7 +48,7 @@ _Scenario 1: When you have selected another workspace_
 
 For this scenario just go to Azure Security Center –> Security Policy –> <the name of the Log Analytics Workspace> –> Data collection. From there you can select the level and click Save.
 
-[![image](/media/wordpress/2018/01/image2.png "image")](/media/wordpress/2018/01/image2.png)
+[![image](/media/2018/01/image2.png "image")](/media/2018/01/image2.png)
 
 Notice that we configure this on workspace level and not subscription level. Previously this option was also available on subscription level but lately it has disappeared at least in all of my subscriptions. I suspect because it was working only for the default workspace. When it was available if you have configured another workspace and you have selected Security Events level it would apply that setting on the default workspace rather on the selected one.
 
@@ -66,7 +66,7 @@ As I’ve mentioned you previously could configure that option from subscription
 
 5\. From the UI configure the security events level and click Save.
 
-[![image](/media/wordpress/2018/01/image3.png "image")](/media/wordpress/2018/01/image3.png)
+[![image](/media/2018/01/image3.png "image")](/media/2018/01/image3.png)
 
 I would guess over time this experience will be improved and it will be easier to setup Azure Security Center.
 

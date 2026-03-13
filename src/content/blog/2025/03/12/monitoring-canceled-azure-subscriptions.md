@@ -4,7 +4,7 @@ excerpt: "The text explains the process of managing Azure subscriptions, particu
 description: "The text explains the process of managing Azure subscriptions, particularly how to cancel a subscription and track its status using Azure Monitor and Log Ana..."
 pubDate: 2025-03-12
 updatedDate: 2025-03-12
-heroImage: "/media/wordpress/2025/03/an-image-illustrating-monitoring-azure-subscriptions-canceled.png"
+heroImage: "/media/2025/03/an-image-illustrating-monitoring-azure-subscriptions-canceled.png"
 sourceUrl: "https://cloudadministrator.net/2025/03/12/monitoring-canceled-azure-subscriptions/"
 tags: 
   - "Azure"
@@ -97,7 +97,7 @@ AzureActivity
 | extend subscriptionId = tostring(todynamic(Properties).subscriptionId)
 ```
 
-![](/media/wordpress/2025/03/query-results.png)
+![](/media/2025/03/query-results.png)
 
 *Query results*
 

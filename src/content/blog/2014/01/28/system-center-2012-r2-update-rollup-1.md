@@ -4,7 +4,7 @@ excerpt: "The first update rollup for System Center 2012 R2 is here."
 description: "The first update rollup for System Center 2012 R2 is here."
 pubDate: 2014-01-28
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/28/system-center-2012-r2-update-rollup-1/"
 tags: 
   - "SCDPM"

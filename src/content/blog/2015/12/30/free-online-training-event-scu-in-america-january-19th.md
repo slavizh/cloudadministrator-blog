@@ -4,7 +4,7 @@ excerpt: "Are you or your colleagues and clients interested in a free day of tra
 description: "Are you or your colleagues and clients interested in a free day of training on System Center and other Microsoft technologies? If so, I highly recommend that..."
 pubDate: 2015-12-30
 updatedDate: 2015-12-30
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2015/12/30/free-online-training-event-scu-in-america-january-19th/"
 tags: 
   - "MSOMS"

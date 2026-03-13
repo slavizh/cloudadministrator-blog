@@ -4,7 +4,7 @@ excerpt: "There is a new version of the OMSSearch module which mainly includes t
 description: "There is a new version of the OMSSearch module which mainly includes two new cmdlets."
 pubDate: 2016-01-24
 updatedDate: 2016-01-24
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/01/24/omssearch-powershell-module-6-1-0-release/"
 tags: 
   - "API"

@@ -4,7 +4,7 @@ excerpt: "I have been away for a while but now I am back again. As always this b
 description: "I have been away for a while but now I am back again. As always this blog post will cover Azure services, particularly Azure subscriptions, tags, Azure Polic..."
 pubDate: 2020-09-02
 updatedDate: 2020-09-02
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2020/09/02/audit-tags-on-azure-subscriptions/"
 tags: []
 ---

@@ -4,7 +4,7 @@ excerpt: "There is a new release on HPE Storage Integrations with Microsoft Syst
 description: "There is a new release on HPE Storage Integrations with Microsoft System Center. This new release is called OneView for System Center (OV4SC). It was formerl..."
 pubDate: 2015-11-25
 updatedDate: 2015-11-25
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2015/11/25/oneview-for-system-center-ov4sc-8-0/"
 tags: 
   - "HP"

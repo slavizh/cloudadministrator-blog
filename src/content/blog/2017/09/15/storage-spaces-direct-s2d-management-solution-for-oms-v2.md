@@ -4,7 +4,7 @@ excerpt: "As you may have heard Log Analytics has a new query language. When you
 description: "As you may have heard Log Analytics has a new query language. When you upgrade solutions are automatically converted to this new query language but I wanted..."
 pubDate: 2017-09-15
 updatedDate: 2017-09-15
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2017/09/15/storage-spaces-direct-s2d-management-solution-for-oms-v2/"
 tags: 
   - "Azure"

@@ -4,7 +4,7 @@ excerpt: "Subscription Level Template deployments is relatively new feature. Sup
 description: "Subscription Level Template deployments is relatively new feature. Support for Azure CLI was added in version and for AzureRM PowerShell module is yet to com..."
 pubDate: 2018-08-07
 updatedDate: 2018-10-03
-heroImage: "/media/wordpress/2018/08/sub-level-templates1.png"
+heroImage: "/media/2018/08/sub-level-templates1.png"
 sourceUrl: "https://cloudadministrator.net/2018/08/07/azure-linked-subscription-level-template-deployment-requires-location/"
 tags: 
   - "ARM"
@@ -137,7 +137,7 @@ You will notice that we are deploying 3 resources with this template:
 
 You will notice also that the links to the linked templates are constructed as variables. Notice how the subscription level template deployment and the resource group deployment have additional property location.
 
-![Azure Subscription Level Deployment](/media/wordpress/2018/08/sub-level-templates1.png)
+![Azure Subscription Level Deployment](/media/2018/08/sub-level-templates1.png)
 
 *Azure Subscription Level Deployment*
 

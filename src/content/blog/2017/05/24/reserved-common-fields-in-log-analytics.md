@@ -4,7 +4,7 @@ excerpt: "I’ve recently been playing with some solution development and I’ve
 description: "I’ve recently been playing with some solution development and I’ve noticed something interesting. When we are using the OMS Data Collector API we send data b..."
 pubDate: 2017-05-24
 updatedDate: 2017-05-31
-heroImage: "/media/wordpress/2017/05/image6.png"
+heroImage: "/media/2017/05/image6.png"
 sourceUrl: "https://cloudadministrator.net/2017/05/24/reserved-common-fields-in-log-analytics/"
 tags: 
   - "Azure"
@@ -51,7 +51,7 @@ I’ve found these by uploading some custom logs via the OMS Data Collector API.
 
 After finding this I’ve started digging some more. All the Reserved Common Fields can be seen by going to the OMS Portal –> Search –> Click Add on the left filter bar.
 
-[![image](/media/wordpress/2017/05/image7.png "image")](/media/wordpress/2017/05/image7.png)
+[![image](/media/2017/05/image7.png "image")](/media/2017/05/image7.png)
 
 As you can see there are 15 such fields. If we count Computer and TimeGenerated that is 17 in total.
 

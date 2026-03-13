@@ -4,7 +4,7 @@ excerpt: "Log Analytics alerts aka Azure Log Search Alerts allows you to create 
 description: "Log Analytics alerts aka Azure Log Search Alerts allows you to create a single alert and trigger alert instances per a column. This is possible by creating m..."
 pubDate: 2018-06-08
 updatedDate: 2018-11-12
-heroImage: "/media/wordpress/2018/06/alert.png"
+heroImage: "/media/2018/06/alert.png"
 sourceUrl: "https://cloudadministrator.net/2018/06/08/aggregate-on-more-than-one-column-for-azure-log-search-alerts/"
 tags: 
   - "Alerts"
@@ -47,16 +47,16 @@ Perf
 
 After that we can proceed with creating the alert with that query:
 
-![alert](/media/wordpress/2018/06/alert.png)
+![alert](/media/2018/06/alert.png)
 
 Note the alert is configured intentionally with such threshold to generate alerts just for demo purposes.
 
 Once the alerts are triggered as you can see via the e-mails below that separate e-mails are generated for each computer and drive:
 
-![alert1](/media/wordpress/2018/06/alert1.png)
+![alert1](/media/2018/06/alert1.png)
 
-![alert2](/media/wordpress/2018/06/alert2.png)
+![alert2](/media/2018/06/alert2.png)
 
-![alert3](/media/wordpress/2018/06/alert3.png)
+![alert3](/media/2018/06/alert3.png)
 
 I hope this Azure Management trick was useful for you!

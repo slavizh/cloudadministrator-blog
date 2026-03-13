@@ -4,7 +4,7 @@ excerpt: "Before Ignite 2018 Azure Resource Manager (ARM) and specifically ARM t
 description: "Before Ignite 2018 Azure Resource Manager (ARM) and specifically ARM templates are the only deployment option available. I am excluding Azure CLI, AzureRM Po..."
 pubDate: 2018-12-10
 updatedDate: 2018-12-10
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/12/10/azure-deployment-options/"
 tags: 
   - "ADM"

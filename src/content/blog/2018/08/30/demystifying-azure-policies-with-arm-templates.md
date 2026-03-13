@@ -4,7 +4,7 @@ excerpt: "In my blog post [Defining Input Parameters For Policy Definitions in A
 description: "In my blog post [Defining Input Parameters For Policy Definitions in ARM Template]( I’ve showed you how to use deploy policy definitions with parameters via..."
 pubDate: 2018-08-30
 updatedDate: 2018-11-12
-heroImage: "/media/wordpress/2018/08/policy_definition.png"
+heroImage: "/media/2018/08/policy_definition.png"
 sourceUrl: "https://cloudadministrator.net/2018/08/30/demystifying-azure-policies-with-arm-templates/"
 tags: 
   - "ARM"
@@ -166,11 +166,11 @@ As you can see the policy definition will be hard-coded with values and you will
 
 After the deployment is done notice how my definition looks from the portal:
 
-![Azure Policy Definition](/media/wordpress/2018/08/policy_definition.png)
+![Azure Policy Definition](/media/2018/08/policy_definition.png)
 
 My functions are retained and not interpreted by the ARM template deployment. You can also see how the value from vNetId template parameter is passed to the virtualNetworkId parameter of the assignment.
 
-![Azure Policy Assignment](/media/wordpress/2018/08/policy_assignment.png)
+![Azure Policy Assignment](/media/2018/08/policy_assignment.png)
 
 In the ARM template you will notice a few more things:
 

@@ -4,7 +4,7 @@ excerpt: "At Azure Bootcamp Bulgaria 2021 I have presented “Azure Deployments 
 description: "At Azure Bootcamp Bulgaria 2021 I have presented “Azure Deployments – Past, Present and Future”. In the demos I had two examples: * Advanced ARM template tem..."
 pubDate: 2021-06-10
 updatedDate: 2021-06-10
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2021/06/10/examples-from-my-azure-bootcamp-2021-session/"
 tags: 
   - "ARM Templates"

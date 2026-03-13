@@ -4,7 +4,7 @@ excerpt: "With the recent capability of [setting retention period for Log Analyt
 description: "With the recent capability of [setting retention period for Log Analytics data per table]( a lot of new possibilities of managing and retaining your data pop..."
 pubDate: 2019-12-11
 updatedDate: 2019-12-12
-heroImage: "/media/wordpress/2019/12/managed-identity.png"
+heroImage: "/media/2019/12/managed-identity.png"
 sourceUrl: "https://cloudadministrator.net/2019/12/11/lower-log-analytics-cost-with-serverless/"
 tags: 
   - "Azure"
@@ -130,13 +130,13 @@ Perf
 
 As you can see from the code the function is using managed identity to get access to Azure. In my case I am using system managed identity which I have configured on the function and [gave contributor access to the resource group](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/howto-assign-access-powershell) of the Log Analytics workspace:
 
-![](/media/wordpress/2019/12/managed-identity.png)
+![](/media/2019/12/managed-identity.png)
 
 *Managed Identity on Function*
 
 Once the data is Log Analytics and the table is created it is good to [set higher retention to it](/2019/10/16/set-per-table-retention-in-log-analytics-via-arm-template/). When you query the data you will notice some things like:
 
-![](/media/wordpress/2019/12/performance-history.png)
+![](/media/2019/12/performance-history.png)
 
 *Performance History Log*
 

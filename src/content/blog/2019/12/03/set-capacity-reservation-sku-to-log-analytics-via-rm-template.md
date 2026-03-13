@@ -4,7 +4,7 @@ excerpt: "Right before Ignite Microsoft has released a new SKU for Log Analytics
 description: "Right before Ignite Microsoft has released a new SKU for Log Analytics. With that SKU the model of usage does not change but it is rather discount you get fo..."
 pubDate: 2019-12-03
 updatedDate: 2019-12-09
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/12/03/set-capacity-reservation-sku-to-log-analytics-via-rm-template/"
 tags: 
   - "Azure"

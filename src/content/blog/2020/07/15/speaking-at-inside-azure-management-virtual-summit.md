@@ -4,7 +4,7 @@ excerpt: "As you know we recently have released the fourth edition of [Inside Az
 description: "As you know we recently have released the fourth edition of [Inside Azure Management book]( What is better then free book? – A free book and free virtual sum..."
 pubDate: 2020-07-15
 updatedDate: 2020-07-15
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2020/07/15/speaking-at-inside-azure-management-virtual-summit/"
 tags: 
   - "Azure"

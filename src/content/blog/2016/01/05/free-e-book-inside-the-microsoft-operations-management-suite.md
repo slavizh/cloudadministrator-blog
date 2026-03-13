@@ -4,7 +4,7 @@ excerpt: "For the past couple of months I’ve been a little bit quiet on my blo
 description: "For the past couple of months I’ve been a little bit quiet on my blog. The reason for this is that I was participating in something special for you."
 pubDate: 2016-01-05
 updatedDate: 2016-01-05
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/01/05/free-e-book-inside-the-microsoft-operations-management-suite/"
 tags: 
   - "Automation"

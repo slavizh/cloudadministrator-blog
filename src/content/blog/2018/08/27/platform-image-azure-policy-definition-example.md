@@ -4,7 +4,7 @@ excerpt: "Azure Policy team has a GitHub repository of [Policy definitions examp
 description: "Azure Policy team has a GitHub repository of [Policy definitions examples]( Recently I’ve been looking at some of the examples there and I’ve noticed that on..."
 pubDate: 2018-08-27
 updatedDate: 2018-10-03
-heroImage: "/media/wordpress/2018/08/image-sku.png"
+heroImage: "/media/2018/08/image-sku.png"
 sourceUrl: "https://cloudadministrator.net/2018/08/27/platform-image-azure-policy-definition-example/"
 tags: 
   - "ARM"
@@ -19,11 +19,11 @@ Azure Policy team has a GitHub repository of [Policy definitions examples](https
 
 Let’s first start by explaining what is not working and after that I will comment what other changes I’ve made. In the policy definition rule you will notice that we want only the latest image version to be allowed for deployment.
 
-![Image SKU rule](/media/wordpress/2018/08/image-sku.png)
+![Image SKU rule](/media/2018/08/image-sku.png)
 
 If you try to deploy a machine the deployment will start and you will not get error that a policy is blocking it. That may signal to you that the policy is working but you are wrong. As soon as you start deployment and reach the actual VM deployment you will get an error like this:
 
-![Platform Image Policy Error](/media/wordpress/2018/08/platform-image-policy-error.png)
+![Platform Image Policy Error](/media/2018/08/platform-image-policy-error.png)
 
 ```json
 {
@@ -158,6 +158,6 @@ Note that I am using the same approach for parameterizing as in my blog post [De
 
 After that when the policy definition is deployed it is easy to assign and change values depending on your scenario.
 
-![Platform Image Policy Assignment](/media/wordpress/2018/08/final-platform-image-policy.png)
+![Platform Image Policy Assignment](/media/2018/08/final-platform-image-policy.png)
 
 I hope this helps! Happy policing!

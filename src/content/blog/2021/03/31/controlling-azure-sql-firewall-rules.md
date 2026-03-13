@@ -4,7 +4,7 @@ excerpt: "Recently on Microsoft Q&A there was question on how you can control Az
 description: "Recently on Microsoft Q&A there was question on how you can control Azure SQL Firewall rule in a way that only certain IP addresses are allowed to be configu..."
 pubDate: 2021-03-31
 updatedDate: 2021-03-31
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2021/03/31/controlling-azure-sql-firewall-rules/"
 tags: 
   - "Audit"

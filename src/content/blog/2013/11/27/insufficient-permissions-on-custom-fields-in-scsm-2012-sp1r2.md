@@ -4,7 +4,7 @@ excerpt: "I’ve recently stumbled on the following error in SCSM 2012 R2:"
 description: "I’ve recently stumbled on the following error in SCSM 2012 R2:"
 pubDate: 2013-11-27
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2013/11/image11.png"
+heroImage: "/media/2013/11/image11.png"
 sourceUrl: "https://cloudadministrator.net/2013/11/27/insufficient-permissions-on-custom-fields-in-scsm-2012-sp1r2/"
 tags: 
   - "Bug"
@@ -24,7 +24,7 @@ tags:
 ---
 I’ve recently stumbled on the following error in SCSM 2012 R2:
 
-[![image](/media/wordpress/2013/11/image11.png "image")](/media/wordpress/2013/11/image11.png)
+[![image](/media/2013/11/image11.png "image")](/media/2013/11/image11.png)
 
 _Microsoft.EnterpriseManagement.Common.UnauthorizedAccessEnterpriseManagementException: The user CONTOSO\\User1 does not have sufficient permission to perform the operation._
 

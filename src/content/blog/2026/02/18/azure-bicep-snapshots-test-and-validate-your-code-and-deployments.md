@@ -4,7 +4,7 @@ excerpt: "Azure Bicep Snapshots, introduced in version 0.36.1, enables users to 
 description: "Azure Bicep Snapshots, introduced in version 0.36.1, enables users to generate resource definitions as JSON files, reflecting their configurations in the Azu..."
 pubDate: 2026-02-18
 updatedDate: 2026-02-18
-heroImage: "/media/wordpress/2026/02/create-a-featured-image-for-a-blog-post-about-azure.png"
+heroImage: "/media/2026/02/create-a-featured-image-for-a-blog-post-about-azure.png"
 sourceUrl: "https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/"
 tags: 
   - "Azure"
@@ -683,7 +683,7 @@ You can see the resources the way they will appear if deployed as Azure resource
 
 You will get a result like this:
 
-![](/media/wordpress/2026/02/validate-results.png)
+![](/media/2026/02/validate-results.png)
 
 *Validate results*
 
@@ -705,7 +705,7 @@ minRecurrenceCount: logAlert.type == 'SimpleLogSearchAlert'
 
 Basically reverting the logic on the property. It is not an actual change that I am going to make but let’s say I have made a mistake and I will use the validate mode to test how that change will reflect:
 
-![](/media/wordpress/2026/02/validate-results-after-change.png)
+![](/media/2026/02/validate-results-after-change.png)
 
 *Validate results after code change*
 

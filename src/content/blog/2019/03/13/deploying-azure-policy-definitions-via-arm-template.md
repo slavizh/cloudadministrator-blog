@@ -4,7 +4,7 @@ excerpt: "Lately you haven’t seen new blog posts by me due to diverting my com
 description: "Lately you haven’t seen new blog posts by me due to diverting my community time and efforts towards Inside Azure Management book. As now I have finished most..."
 pubDate: 2019-03-13
 updatedDate: 2019-03-13
-heroImage: "/media/wordpress/2019/03/deployed-policy-native.png"
+heroImage: "/media/2019/03/deployed-policy-native.png"
 sourceUrl: "https://cloudadministrator.net/2019/03/13/deploying-azure-policy-definitions-via-arm-template/"
 tags: 
   - "ARM"
@@ -193,13 +193,13 @@ With the native support the above template will become:
 
 Specifically you should focus on these parts of the template:
 
-![](/media/wordpress/2019/03/policy-arm-native.png)
+![](/media/2019/03/policy-arm-native.png)
 
 *Azure Policy Nateively in ARM template*
 
 As you can see we are using "\[" to escape the ARM template function. That way when deployed this will not be interpreted by ARM but when the deployed policy definition is used it will be:
 
-![](/media/wordpress/2019/03/deployed-policy-native.png)
+![](/media/2019/03/deployed-policy-native.png)
 
 *Deployed policy definition*
 

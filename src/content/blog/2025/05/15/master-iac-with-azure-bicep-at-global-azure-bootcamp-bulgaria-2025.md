@@ -4,7 +4,7 @@ excerpt: "On May 10th, I presented a Master IaC with Azure Bicep session at the 
 description: "On May 10th, I presented a Master IaC with Azure Bicep session at the Global Azure Bootcamp Bulgaria 2025. The event was local, but I have made the examples..."
 pubDate: 2025-05-15
 updatedDate: 2025-05-15
-heroImage: "/media/wordpress/2025/05/image.png"
+heroImage: "/media/2025/05/image.png"
 sourceUrl: "https://cloudadministrator.net/2025/05/15/master-iac-with-azure-bicep-at-global-azure-bootcamp-bulgaria-2025/"
 tags: 
   - "Azure"

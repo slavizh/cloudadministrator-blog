@@ -4,7 +4,7 @@ excerpt: "I spend a lot of time on Microsoft Q&A trying to help people by not ju
 description: "I spend a lot of time on Microsoft Q&A trying to help people by not just providing with answers but also educating them and pushing them to learn more. Recen..."
 pubDate: 2023-03-09
 updatedDate: 2023-03-09
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2023/03/09/do-not-use-tags-for-filtering-security-related-azure-policies/"
 tags: 
   - "Azure"

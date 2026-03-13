@@ -4,7 +4,7 @@ excerpt: "I’ve been meaning to write this blog post for a long time. The reaso
 description: "I’ve been meaning to write this blog post for a long time. The reason for that is because since the first preview of OMS (Operational Insights back in the da..."
 pubDate: 2016-08-12
 updatedDate: 2016-08-12
-heroImage: "/media/wordpress/2016/08/wlemoticon-smile.png"
+heroImage: "/media/2016/08/wlemoticon-smile.png"
 sourceUrl: "https://cloudadministrator.net/2016/08/12/msoms-is-not-scom/"
 tags: 
   - "Agent"
@@ -26,7 +26,7 @@ tags:
   - "System Center Operations Manager"
   - "System Center Operations Manager"
 ---
-I’ve been meaning to write this blog post for a long time. The reason for that is because since the first preview of OMS (Operational Insights back in the day) I’ve received question like “I’ve removed the Microsoft Monitoring Agent from my server but why I still see the server in OMS?” trough various channels. And btw if you wonder how long I’ve been using OMS today is exactly 2 years and 3 months since it was announced at TechEd North America 2014. I probably should be getting some honorable badge for this achievement ![Smile](/media/wordpress/2016/08/wlemoticon-smile.png) . Back to the topic. While there are scenarios in which you can think of OMS like it is SCOM in many ways you should not and there is reason for that. I will try with this blog post to explain why and answer the above question. We can summarize the differences between Operations Management Suite and SCOM in the following statements:
+I’ve been meaning to write this blog post for a long time. The reason for that is because since the first preview of OMS (Operational Insights back in the day) I’ve received question like “I’ve removed the Microsoft Monitoring Agent from my server but why I still see the server in OMS?” trough various channels. And btw if you wonder how long I’ve been using OMS today is exactly 2 years and 3 months since it was announced at TechEd North America 2014. I probably should be getting some honorable badge for this achievement ![Smile](/media/2016/08/wlemoticon-smile.png) . Back to the topic. While there are scenarios in which you can think of OMS like it is SCOM in many ways you should not and there is reason for that. I will try with this blog post to explain why and answer the above question. We can summarize the differences between Operations Management Suite and SCOM in the following statements:
 
 -   SCOM is storing data into two databases – Operational database and data warehouse.
 -   OMS is storing the data on azure storage (Azure File share last time I’ve heard about it).
@@ -46,13 +46,13 @@ And I can continue on and on with this but you get the idea. The comparison is o
 
 Your first thought would be that the data for that agent has been removed at least from the Operational database but that is actually not true. What happens is that the data related to that server is marked with IsDeleted value thus disappearing every where from the console. The actual data is still in both databases and can be found with SQL queries. Over time of course the data will be gone depending on your retention periods for both databases. This brings us closer to our answer. OMS does not have console it has portal. You can remove agent by either uninstalling the agent or changing your workspace keys. Both will result in agent no longer able to report to OMS thus no data for that server will be available in OMS from the time it was removed. Remember OMS is all about data and time period. As you are free to search for any data in OMS no data is hidden from you in the portal. When you remove agent in the Settings dashboard you will still see those agent as reporting. The reason behind that is because behind those numbers
 
-[![image](/media/wordpress/2016/08/image.png "image")](/media/wordpress/2016/08/image.png)
+[![image](/media/2016/08/image.png "image")](/media/2016/08/image.png)
 
 there is simple query that that is scoped to specific time frame and for that time frame there is still data for those removed agents. As data in OMS can be accessed freely you can easily create your own query that is not something general and tied to your needs. Example
 
 _MG:”00000000-0000-0000-0000-000000000001″ or MG:”00000000-0000-0000-0000-000000000002″ TimeGenerated>NOW-5MINUTES | Measure Max(TimeGenerated) as LastData by Computer | top 500000 | Sort Computer_
 
-[![image](/media/wordpress/2016/08/image1.png "image")](/media/wordpress/2016/08/image1.png)
+[![image](/media/2016/08/image1.png "image")](/media/2016/08/image1.png)
 
 So remember that OMS is all about data and you are in control of the data. You do not have to maintain the data by purging or not. All data is there  according to your plan and it is up to you to make the query to show the data that will give you the desired results. With the recently released view designer you can now be even more creative with visualizing your data with queries.
 

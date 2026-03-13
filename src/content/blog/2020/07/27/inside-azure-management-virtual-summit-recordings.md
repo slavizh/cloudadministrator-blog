@@ -4,7 +4,7 @@ excerpt: "In case you couldn’t catch the Inside Azure Management Virtual Summi
 description: "In case you couldn’t catch the Inside Azure Management Virtual Summit live we have now uploaded the recordings. You can check them out at Inside Azure Manage..."
 pubDate: 2020-07-27
 updatedDate: 2020-07-27
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2020/07/27/inside-azure-management-virtual-summit-recordings/"
 tags: 
   - "Azure"

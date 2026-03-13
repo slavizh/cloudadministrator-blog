@@ -4,7 +4,7 @@ excerpt: "This blog post discusses methods for passing resource information, pri
 description: "This blog post discusses methods for passing resource information, primarily focusing on Azure Bicep modules. It outlines two approaches: passing full resour..."
 pubDate: 2025-03-06
 updatedDate: 2025-03-06
-heroImage: "/media/wordpress/2025/03/monitor-with-azure-bicep-code-showing-resource.png"
+heroImage: "/media/2025/03/monitor-with-azure-bicep-code-showing-resource.png"
 sourceUrl: "https://cloudadministrator.net/2025/03/06/passing-resources-between-azure-bicep-modules/"
 tags: 
   - "Azure"

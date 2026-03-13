@@ -4,7 +4,7 @@ excerpt: "Azure SQL Databases is quite a big service and it is also one of the o
 description: "Azure SQL Databases is quite a big service and it is also one of the oldest. Because of these two there are a few architectural designs that you should be aw..."
 pubDate: 2021-04-07
 updatedDate: 2021-04-07
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2021/04/07/tips-on-creating-azure-policies-for-azure-sql-databases/"
 tags: 
   - "ARM"

@@ -4,7 +4,7 @@ excerpt: "So what is guest cluster? A guest cluster is when you create cluster i
 description: "So what is guest cluster? A guest cluster is when you create cluster inside of virtual machines. In the past we’ve done that trough ISCSI or FC and lately wi..."
 pubDate: 2014-01-16
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/16/notes-from-system-center-battlefield-monitoring-guest-clusters-with-scom/"
 tags: 
   - "Alerts"

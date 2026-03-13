@@ -4,7 +4,7 @@ excerpt: "Recently I’ve stumbled on the following error when trying to update 
 description: "Recently I’ve stumbled on the following error when trying to update VMM agent on hosts:"
 pubDate: 2015-08-04
 updatedDate: 2018-06-11
-heroImage: "/media/wordpress/2015/08/image14.png"
+heroImage: "/media/2015/08/image14.png"
 sourceUrl: "https://cloudadministrator.net/2015/08/04/error-2912-when-you-try-to-update-vmm-agent-on-hosts/"
 tags: 
   - "3317976"
@@ -43,7 +43,7 @@ Recommended Action
 Check that WS-Management service is installed and running on server hv01.contoso.com. For more information use the command "winrm helpmsg hresult". If hv01.contoso.com is a host/library/update server or a PXE server role then ensure that VMM agent is installed and running. Refer to <a href="http://support.microsoft.com/kb/2742275">http://support.microsoft.com/kb/2742275</a> for more details.
 ```
 
-[![image](/media/wordpress/2015/08/image14.png "image")](/media/wordpress/2015/08/image14.png)
+[![image](/media/2015/08/image14.png "image")](/media/2015/08/image14.png)
 
 At some point I’ve found workaround for this issue. Here it is:
 

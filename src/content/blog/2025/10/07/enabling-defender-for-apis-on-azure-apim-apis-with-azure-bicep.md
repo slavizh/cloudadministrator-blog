@@ -4,7 +4,7 @@ excerpt: "Azure APIM is vital for securing AI applications, and Defender for API
 description: "Azure APIM is vital for securing AI applications, and Defender for APIs plays a key role in this. To enable it, users need to configure the Defender for APIs..."
 pubDate: 2025-10-07
 updatedDate: 2025-10-07
-heroImage: "/media/wordpress/2025/10/secure-api.png"
+heroImage: "/media/2025/10/secure-api.png"
 sourceUrl: "https://cloudadministrator.net/2025/10/07/enabling-defender-for-apis-on-azure-apim-apis-with-azure-bicep/"
 tags: 
   - "Azure"
@@ -24,7 +24,7 @@ tags:
 
 When you try to enable Defender for APIs plan via Azure Portal you will see that is only the first step and there is Acton Required warning.
 
-![](/media/wordpress/2025/10/defender-for-api.png)
+![](/media/2025/10/defender-for-api.png)
 
 *Enabling Defender for APIs plan*
 

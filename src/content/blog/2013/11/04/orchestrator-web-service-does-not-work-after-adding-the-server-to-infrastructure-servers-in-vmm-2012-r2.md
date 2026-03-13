@@ -4,7 +4,7 @@ excerpt: "I have a couple of Orchestrator servers with Web Features role install
 description: "I have a couple of Orchestrator servers with Web Features role installed on them. I’ve recently added those servers as Infrastructure Servers in VMM 2012 R2..."
 pubDate: 2013-11-04
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2013/11/image7.png"
+heroImage: "/media/2013/11/image7.png"
 sourceUrl: "https://cloudadministrator.net/2013/11/04/orchestrator-web-service-does-not-work-after-adding-the-server-to-infrastructure-servers-in-vmm-2012-r2/"
 tags: 
   - "Certificate"
@@ -28,6 +28,6 @@ How to fix it
 
 Just open the bindings for the Orchestrator Web Service and select the right certificate again. In my case the field for certificate was blank.
 
-[![image](/media/wordpress/2013/11/image7.png "image")](/media/wordpress/2013/11/image7.png)
+[![image](/media/2013/11/image7.png "image")](/media/2013/11/image7.png)
 
 After that your Orchestrator Web service should work again.

@@ -4,7 +4,7 @@ excerpt: "As you are familiar currently OMS has two search portals – the legac
 description: "As you are familiar currently OMS has two search portals – the legacy one located in OMS classic Portal and the Analytics one. The Analytics Portal is slowly..."
 pubDate: 2017-09-12
 updatedDate: 2017-09-12
-heroImage: "/media/wordpress/2017/09/image.png"
+heroImage: "/media/2017/09/image.png"
 sourceUrl: "https://cloudadministrator.net/2017/09/12/oms-analytics-portal-can-now-display-results-in-your-local-time-zone/"
 tags: 
   - "Analytics Portal"
@@ -28,7 +28,7 @@ As you are familiar currently OMS has two search portals – the legacy one loca
 
 To setup your time zone you will need to go to the Settings of the Analytics Portal. In general you can set Display Time Zone:
 
-[![image](/media/wordpress/2017/09/image.png "image")](/media/wordpress/2017/09/image.png)
+[![image](/media/2017/09/image.png "image")](/media/2017/09/image.png)
 
 By default this will be set to UTC reflecting how TimeGenerated was shown so far. You can change that to your time zone and exit the settings.
 
@@ -36,10 +36,10 @@ After this you will need to refresh the tab where you’ve opened the Analytics 
 
 Now when you execute a query TimeGenerated will de displayed in the time zone configured.
 
-[![image](/media/wordpress/2017/09/image1.png "image")](/media/wordpress/2017/09/image1.png)
+[![image](/media/2017/09/image1.png "image")](/media/2017/09/image1.png)
 
 But wait that is not all. At any time you can change how TimeGenerated is displayed by clicking in the right corner where the Time Zone is displayed and change it to something else.
 
-[![image](/media/wordpress/2017/09/image2.png "image")](/media/wordpress/2017/09/image2.png)
+[![image](/media/2017/09/image2.png "image")](/media/2017/09/image2.png)
 
 This is very handy and I am glad that the product group listened to our feedback and implemented it.

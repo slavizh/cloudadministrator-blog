@@ -4,7 +4,7 @@ excerpt: "I was deploying SMA recently and bumped in into the following error wh
 description: "I was deploying SMA recently and bumped in into the following error while installing the Worker Role:"
 pubDate: 2014-01-27
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2014/01/image16.png"
+heroImage: "/media/2014/01/image16.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/27/installing-system-center-service-management-automation-worker-role-fails-with-msi-error-1603/"
 tags: 
   - "Error"
@@ -49,6 +49,6 @@ CustomAction EnableCredSSP returned actual error code 1603 (note this may not be
 
 This error reminded me to a similar error I had before while install Service Provider Foundation (SPF). Basically there is an issue if you have some custom PowerShell group policy applied like this one to the server:
 
-[![image](/media/wordpress/2014/01/image16.png "image")](/media/wordpress/2014/01/image16.png)
+[![image](/media/2014/01/image16.png "image")](/media/2014/01/image16.png)
 
 So I’ve disabled the group policy for the server that I wanted to install the SMA worker role, update the group policy on the server and the installation completed successfully this time.

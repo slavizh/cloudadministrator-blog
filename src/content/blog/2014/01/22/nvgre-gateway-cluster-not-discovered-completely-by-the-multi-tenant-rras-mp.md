@@ -4,7 +4,7 @@ excerpt: "In the past I’ve tried Multi-Tenant RRAS Management Pack with NVGRE 
 description: "In the past I’ve tried Multi-Tenant RRAS Management Pack with NVGRE Gateway that was not in the cluster. Recently I was able to try the MP with NVGRE Gateway..."
 pubDate: 2014-01-22
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2014/01/image1.png"
+heroImage: "/media/2014/01/image1.png"
 sourceUrl: "https://cloudadministrator.net/2014/01/22/nvgre-gateway-cluster-not-discovered-completely-by-the-multi-tenant-rras-mp/"
 tags: 
   - "Cluster"
@@ -34,7 +34,7 @@ tags:
 ---
 In the past I’ve tried [Multi-Tenant RRAS Management Pack with NVGRE Gateway that was not in the cluster](https://cloudadministrator.wordpress.com/2013/12/02/quick-look-at-multi-tenant-rras-management-pack/). Recently I was able to try the MP with NVGRE Gateway cluster but I’ve met some challenges. Even though I’ve configured the override for _Network name dependency discovered as instance of Virtual Server_ the cluster couldn’t be discovered properly and because of that almost all monitors were not working. After I was able to contact some folks from Microsoft we were able to resolve the issue. When you add your NVGRE Gateway cluster to VMM a new role (HyperV Network Virtualization Gateway) is created in the cluster:
 
-[![image](/media/wordpress/2014/01/image1.png "image")](/media/wordpress/2014/01/image1.png)
+[![image](/media/2014/01/image1.png "image")](/media/2014/01/image1.png)
 
 In that Role there is an Public IP address as resource.
 
@@ -44,6 +44,6 @@ The workaround is simple:
 
 -   Add Client Access Point resource to the HyperV Network Virtualization Gateway role assigned to the Public IP address resource
 
-[![image](/media/wordpress/2014/01/image2.png "image")](/media/wordpress/2014/01/image2.png)
+[![image](/media/2014/01/image2.png "image")](/media/2014/01/image2.png)
 
 This information will be added soon the Multi-Tenant MP guide. Thanks to all engineers from Microsoft who helped me on this issue.

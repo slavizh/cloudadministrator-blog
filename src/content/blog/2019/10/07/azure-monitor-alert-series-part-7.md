@@ -4,7 +4,7 @@ excerpt: "On this blog post we will cover Azure Monitor Log Alerts. You might kn
 description: "On this blog post we will cover Azure Monitor Log Alerts. You might know them as Log Analytics alerts but a long time has passed when Log Analytics was stand..."
 pubDate: 2019-10-07
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/07/azure-monitor-alert-series-part-7/"
 tags: 
   - "Alerts"

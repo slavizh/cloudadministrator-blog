@@ -4,7 +4,7 @@ excerpt: "When you configure [diagnostic settings]( you have the option to confi
 description: "When you configure [diagnostic settings]( you have the option to configure more than one thus send the logs and metrics to multiple Log Analytics workspaces...."
 pubDate: 2023-03-02
 updatedDate: 2023-03-02
-heroImage: "/media/wordpress/2023/03/diagnstic-settings.png"
+heroImage: "/media/2023/03/diagnstic-settings.png"
 sourceUrl: "https://cloudadministrator.net/2023/03/02/azure-log-alert-scoped-to-resource-that-sends-logs-to-more-than-one-log-analytics-workspace/"
 tags: 
   - "Azure"
@@ -18,13 +18,13 @@ When you configure [diagnostic settings](https://learn.microsoft.com/en-us/azure
 
 The answer is quite simple when the query for the alert rule is executed it will pull data from all workspaces that are configured these logs to be send. Let’s dig into the details with example. We have storage account that sends logs to two different Log Analytics workspaces:
 
-![](/media/wordpress/2023/03/diagnstic-settings.png)
+![](/media/2023/03/diagnstic-settings.png)
 
 *Diagnostic Settings*
 
 If you query the logs for that resource what you will see that the records are repeating. Basically each recorded twice – once for workspace1 and second for workspace2.
 
-![](/media/wordpress/2023/03/storage-logs.png)
+![](/media/2023/03/storage-logs.png)
 
 *Azure Storage Logs*
 
@@ -32,7 +32,7 @@ You will see that basically the value for every column is the same including the
 
 With that information when the create Log Alert scoped to the resource or resource group we can configure TenantId as dimension. The configuration allows us to filter to receiving alerts on data only from specific workspace by picking one of the values or get separate alert for data of each workspace by selecting all values.
 
-![](/media/wordpress/2023/03/alert-dimensions.png)
+![](/media/2023/03/alert-dimensions.png)
 
 *Alert Dimensions*
 

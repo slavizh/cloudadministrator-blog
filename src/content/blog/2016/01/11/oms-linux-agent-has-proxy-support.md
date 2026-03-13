@@ -4,7 +4,7 @@ excerpt: "I was browsing trough GitHub and I’ve noticed that OMS Linux Agent d
 description: "I was browsing trough GitHub and I’ve noticed that OMS Linux Agent documentation has been updated. In the change log we can see the following changes:"
 pubDate: 2016-01-11
 updatedDate: 2016-01-13
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/01/11/oms-linux-agent-has-proxy-support/"
 tags: 
   - "Agent"

@@ -4,7 +4,7 @@ excerpt: "In this blog post we will have a look at Administrative Log Activity a
 description: "In this blog post we will have a look at Administrative Log Activity alerts. Keep in mind that because many of the other alerts like Security, Service Health..."
 pubDate: 2019-08-23
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/08/acitity-log-alert-scoped-1.png"
+heroImage: "/media/2019/08/acitity-log-alert-scoped-1.png"
 sourceUrl: "https://cloudadministrator.net/2019/08/23/azure-monitor-alert-series-part-2/"
 tags: 
   - "Activity Logs"
@@ -32,7 +32,7 @@ In case you opt to creating alerts via the portal you have two options:
 -   The first option is to go to Azure Monitor -> Alerts blade (this blade is also present on each resource) -> New Alert rule. First you will select the resource and than you will select Condition. In condition blade if you select signal Activity log that will show you only some pre-defined conditions only for Activity log alert type. In Monitor Service you can select Administrative to scope only to that sub type. Keep in mind that once you select pre-defined condition there isn’t much you can select more. From the 3 options like Event level, Status and Event Initiated by it is always good idea to scope the Status at least. Activity records are generated when operation is started, accepted, started and Succeeded or Failed at the management plane.
 -   Second option is to select a record in Activity Log blade. Once selected you have option to create new alert. That option is not very good as in most cases I do not like how the condition is build. On top of that keep in mind that in all cases the action will always be scoped to the user who has done that activity.
 
-![](/media/wordpress/2019/08/acitity-log-alert-scoped-1.png)
+![](/media/2019/08/acitity-log-alert-scoped-1.png)
 
 *Activity Log Alert Scoped*
 
@@ -114,7 +114,7 @@ Now let’s start to explain the condition which is the most important part of t
 
 Now what you got the explanation of the condition where did I get all these values from? The answer is simple all this comes from activity log. I have created a resource group and looked at what data is there as you can see below.
 
-![](/media/wordpress/2019/08/new-resource-group-log.png)
+![](/media/2019/08/new-resource-group-log.png)
 
 *New Resource Group log*
 

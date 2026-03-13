@@ -4,7 +4,7 @@ excerpt: "For the last a couple of years many Azure services has started to prod
 description: "For the last a couple of years many Azure services has started to produce diagnostic logs and metrics. These two allows you to monitor and troubleshoot the A..."
 pubDate: 2018-12-17
 updatedDate: 2018-12-17
-heroImage: "/media/wordpress/2018/12/diagnostic-logs.png"
+heroImage: "/media/2018/12/diagnostic-logs.png"
 sourceUrl: "https://cloudadministrator.net/2018/12/17/finding-diagnostic-logs-for-azure-services/"
 tags: 
   - "ARM"
@@ -127,7 +127,7 @@ PS C:\WINDOWS\system32> ARMClient.exe get "/subscriptions/3c1c78a4-4064-4522-94c
 }
 ```
 
-![](/media/wordpress/2018/12/diagnostic-logs.png)
+![](/media/2018/12/diagnostic-logs.png)
 
 *Azure Diagnostic Logs*
 

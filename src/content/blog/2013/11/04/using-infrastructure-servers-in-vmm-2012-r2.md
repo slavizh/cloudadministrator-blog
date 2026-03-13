@@ -4,7 +4,7 @@ excerpt: "Infrastructure Servers is a new feature in System Center 2012 R2 Virtu
 description: "Infrastructure Servers is a new feature in System Center 2012 R2 Virtual Machine Manager. You can read about this feature here but besides what you can read..."
 pubDate: 2013-11-04
 updatedDate: 2015-09-20
-heroImage: "/media/wordpress/2013/11/image.png"
+heroImage: "/media/2013/11/image.png"
 sourceUrl: "https://cloudadministrator.net/2013/11/04/using-infrastructure-servers-in-vmm-2012-r2/"
 tags: 
   - "Infrastructure"
@@ -20,31 +20,31 @@ Infrastructure Servers is a new feature in System Center 2012 R2 Virtual Machine
 
 First thing you need to do is to run as account in VMM.
 
-[![image](/media/wordpress/2013/11/image.png "image")](/media/wordpress/2013/11/image.png)
+[![image](/media/2013/11/image.png "image")](/media/2013/11/image.png)
 
 The account needs to be local administrator on the servers that will be added in VMM as Infrastructure Servers.
 
 Next you go to Fabric Pane and right clicking on Infrastructure will give you the option to add server.
 
-[![image](/media/wordpress/2013/11/image1.png "image")](/media/wordpress/2013/11/image1.png)
+[![image](/media/2013/11/image1.png "image")](/media/2013/11/image1.png)
 
 In the example I am adding SCOM Management Server, As you can see you can give some description.
 
 The first time when you try to add a server you may need to restart it first before actually you will be able to add the server.
 
-[![image](/media/wordpress/2013/11/image2.png "image")](/media/wordpress/2013/11/image2.png)
+[![image](/media/2013/11/image2.png "image")](/media/2013/11/image2.png)
 
 After adding it successfully you need to assign baselines to the server that is add it. Than you can scan the server.
 
-[![image](/media/wordpress/2013/11/image3.png "image")](/media/wordpress/2013/11/image3.png)
+[![image](/media/2013/11/image3.png "image")](/media/2013/11/image3.png)
 
 When scan is complete and the server is not compliant you can start remediation. You can choose to automatically restart the server after updates are applied or to restart it manually.
 
-[![image](/media/wordpress/2013/11/image4.png "image")](/media/wordpress/2013/11/image4.png)
+[![image](/media/2013/11/image4.png "image")](/media/2013/11/image4.png)
 
-[![image](/media/wordpress/2013/11/image5.png "image")](/media/wordpress/2013/11/image5.png)
+[![image](/media/2013/11/image5.png "image")](/media/2013/11/image5.png)
 
-[![image](/media/wordpress/2013/11/image6.png "image")](/media/wordpress/2013/11/image6.png)
+[![image](/media/2013/11/image6.png "image")](/media/2013/11/image6.png)
 
 Definitely very useful feature. Even if you do not update your servers trough VMM you can use it to check compliance.
 

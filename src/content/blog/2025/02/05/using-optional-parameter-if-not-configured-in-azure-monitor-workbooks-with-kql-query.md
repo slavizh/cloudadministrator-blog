@@ -4,7 +4,7 @@ excerpt: "Azure Monitor workbooks facilitate Azure data visualization for monito
 description: "Azure Monitor workbooks facilitate Azure data visualization for monitoring and analysis. While documentation exists for creating them, advanced scenario exam..."
 pubDate: 2025-02-05
 updatedDate: 2025-02-05
-heroImage: "/media/wordpress/2025/02/generate-image-that-looks-at-computer-screen-with-azure-monitor.png"
+heroImage: "/media/2025/02/generate-image-that-looks-at-computer-screen-with-azure-monitor.png"
 sourceUrl: "https://cloudadministrator.net/2025/02/05/using-optional-parameter-if-not-configured-in-azure-monitor-workbooks-with-kql-query/"
 tags: 
   - "Azure"
@@ -21,19 +21,19 @@ tags:
 
 To illustrate how this is possible let’s start by creating brand new workbook.
 
-![](/media/wordpress/2025/02/new-workbook.png)
+![](/media/2025/02/new-workbook.png)
 
 *New workbook*
 
 Next let’s add an optional (not required) parameter of type text.
 
-![](/media/wordpress/2025/02/optional-parameter.png)
+![](/media/2025/02/optional-parameter.png)
 
 *Optional parameter*
 
 Now that we have the parameter we can click Done editing for that part and add new one by clicking on Add query:
 
-![](/media/wordpress/2025/02/add-query.png)
+![](/media/2025/02/add-query.png)
 
 *Add query*
 
@@ -46,13 +46,13 @@ AzureActivity
 
 and run the query:
 
-![](/media/wordpress/2025/02/static-query.png)
+![](/media/2025/02/static-query.png)
 
 *Static query*
 
 As you can see we get results but the condition is static value not such coming from the parameter. If we replace the static value from the value of the parameter and run the query we get error:
 
-![](/media/wordpress/2025/02/error.png)
+![](/media/2025/02/error.png)
 
 *KQL error*
 
@@ -65,13 +65,13 @@ AzureActivity
 
 After running the query we get results for all activity logs regarding of the ActivityStatusValue value and as you can see our parameter is not configured:
 
-![](/media/wordpress/2025/02/results-without-parameter.png)
+![](/media/2025/02/results-without-parameter.png)
 
 *Results without parameter*
 
 As soon as I provide value for the parameter the filtering works:
 
-![](/media/wordpress/2025/02/results-with-parameter.png)
+![](/media/2025/02/results-with-parameter.png)
 
 *Results with parameter*
 

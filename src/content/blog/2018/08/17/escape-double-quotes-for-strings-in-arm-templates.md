@@ -4,7 +4,7 @@ excerpt: "Recently I’ve came into the following situation. I needed to store a
 description: "Recently I’ve came into the following situation. I needed to store a json as Azure Automation string variable. To do that is easy as you just need to pass th..."
 pubDate: 2018-08-17
 updatedDate: 2018-08-17
-heroImage: "/media/wordpress/2018/08/azure_automation_variable.png"
+heroImage: "/media/2018/08/azure_automation_variable.png"
 sourceUrl: "https://cloudadministrator.net/2018/08/17/escape-double-quotes-for-strings-in-arm-templates/"
 tags: 
   - "ARM"
@@ -45,7 +45,7 @@ Below you can see the parameters file I have created as example:
 
 The parameter I will be escaping is “textToEscape”. The value of that parameter will become string value in Azure Automation variable. The end result is this:
 
-![Azure Automation Variable](/media/wordpress/2018/08/azure_automation_variable.png)
+![Azure Automation Variable](/media/2018/08/azure_automation_variable.png)
 
 *Azure Automation Variable*
 
@@ -136,6 +136,6 @@ From the template you will notice a few things:
 
 In the output I’ve also used the same function just to show you what is being passed to the value property of Azure Automation variable resource:
 
-![ARM Template Output](/media/wordpress/2018/08/template-output.png)
+![ARM Template Output](/media/2018/08/template-output.png)
 
 I hope this cool Azure Resource Manager template trick will be useful for you.

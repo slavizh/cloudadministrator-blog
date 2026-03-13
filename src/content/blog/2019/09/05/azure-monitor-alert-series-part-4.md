@@ -4,7 +4,7 @@ excerpt: "The ARM template shows that we are filtering to Policy category. I am 
 description: "The ARM template shows that we are filtering to Policy category. I am also filtering to specific operation – Audit. You can filter also on ‘Microsoft.Authori..."
 pubDate: 2019-09-05
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/recommendation-record.png"
+heroImage: "/media/2019/09/recommendation-record.png"
 sourceUrl: "https://cloudadministrator.net/2019/09/05/azure-monitor-alert-series-part-4/"
 tags: 
   - "ARM Templates"
@@ -99,7 +99,7 @@ The first thing you will notice is that category is Recommendation. We also filt
 
 We can look also at the activity log record to see on what kind of properties we can filter more if we want to create more scoped alert:
 
-![](/media/wordpress/2019/09/recommendation-record.png)
+![](/media/2019/09/recommendation-record.png)
 
 *Recommendation Activity Log*
 
@@ -177,7 +177,7 @@ The ARM template shows that we are filtering to Policy category. I am also filte
 
 Let’s have a look at policy record in activity log as well:
 
-![](/media/wordpress/2019/09/policy-recrod.png)
+![](/media/2019/09/policy-recrod.png)
 
 *Policy Activity Log*
 

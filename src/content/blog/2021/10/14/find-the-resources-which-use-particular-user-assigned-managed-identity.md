@@ -4,7 +4,7 @@ excerpt: "I have been busy lately (answering on Q&A, Bicep testing, working, etc
 description: "I have been busy lately (answering on Q&A, Bicep testing, working, etc.) which prevented me from writing new blog posts but I hope to do more blogging again...."
 pubDate: 2021-10-14
 updatedDate: 2021-10-14
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2021/10/14/find-the-resources-which-use-particular-user-assigned-managed-identity/"
 tags: 
   - "Azure"

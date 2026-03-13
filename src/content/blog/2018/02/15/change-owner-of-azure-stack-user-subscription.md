@@ -4,7 +4,7 @@ excerpt: "Azure Stack is extension of Azure and as such I am dealing with it as 
 description: "Azure Stack is extension of Azure and as such I am dealing with it as well. You may end up in a situation where you’ve created User Subscriptions in Azure St..."
 pubDate: 2018-02-15
 updatedDate: 2018-02-15
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/02/15/change-owner-of-azure-stack-user-subscription/"
 tags: 
   - "Azure"

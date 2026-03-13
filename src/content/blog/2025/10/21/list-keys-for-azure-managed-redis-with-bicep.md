@@ -4,7 +4,7 @@ excerpt: "Azure has announced the retirement of Azure Cache for Redis and Azure 
 description: "Azure has announced the retirement of Azure Cache for Redis and Azure Cache for Redis Enterprise, prompting users to consider Azure Managed Redis. While both..."
 pubDate: 2025-10-21
 updatedDate: 2025-10-21
-heroImage: "/media/wordpress/2025/10/image-1.png"
+heroImage: "/media/2025/10/image-1.png"
 sourceUrl: "https://cloudadministrator.net/2025/10/21/list-keys-for-azure-managed-redis-with-bicep/"
 tags: 
   - "AI"

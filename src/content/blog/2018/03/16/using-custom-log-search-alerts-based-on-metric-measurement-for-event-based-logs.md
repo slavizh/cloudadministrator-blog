@@ -4,7 +4,7 @@ excerpt: "In a typical scenario you will use Number of results for logs and even
 description: "In a typical scenario you will use Number of results for logs and events and metric measurement for performance/metric logs. That wouldn’t be a problem if th..."
 pubDate: 2018-03-16
 updatedDate: 2018-03-16
-heroImage: "/media/wordpress/2018/03/alert_criteria.png"
+heroImage: "/media/2018/03/alert_criteria.png"
 sourceUrl: "https://cloudadministrator.net/2018/03/16/using-custom-log-search-alerts-based-on-metric-measurement-for-event-based-logs/"
 tags: 
   - "Alerts"
@@ -48,12 +48,12 @@ Event
 
 In the first part of the query we have the typical filtering EventLog, EventID and Source. This hasn’t changed from my blog post. Next we are using parse to get the Service Name and state. This also hasn’t changed. On the third line we have filtering to specific service and specific state. This is new compared to the blog post. On the fourth line we are extending every record with column named AggregatedValue and fixed value of 1. Custom Log search alerts use the AggregatedValue column to compare the threshold defined. We can basically artificially create that value and in the alert provide threshold that will always be reached. On the fifth line we are using arg\_max() function to summarize. With that approach we are getting all the columns in the records and are making sure that if we have the record for the same computer and same service being stopped in 5 minutes time frame we get notified only once. With that we can proceed to creating the Alert. I am using Azure Monitor to create the alert and I’ve already selected my workspace as target. With below screenshot I am creating the criteria.
 
-![alert_criteria](/media/wordpress/2018/03/alert_criteria.png)
+![alert_criteria](/media/2018/03/alert_criteria.png)
 
 I’ve pasted the query from above. I’ve chosen metric measurement with Aggregated value greater than 0. My aggregated value will always be 1 so this condition will always be true if the service is reporting stopped state. I am also selecting Total breaches greater than 0 and making sure that my period is 5 minutes as well as my frequency. After that I can click done. Additionally define the alert details and the Action Group. For my case I’ve defined e-mail action. Do not configure suppress alert as that suppresses the whole alert and not an instance. After that notice that the alerts I get are for every computer:
 
-![s2d_alert](/media/wordpress/2018/03/s2d_alert.png)
+![s2d_alert](/media/2018/03/s2d_alert.png)
 
-![ad_alert](/media/wordpress/2018/03/ad_alert.png)
+![ad_alert](/media/2018/03/ad_alert.png)
 
 Hope this will be useful to you!

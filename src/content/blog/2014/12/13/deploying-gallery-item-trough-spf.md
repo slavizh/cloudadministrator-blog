@@ -4,7 +4,7 @@ excerpt: "This blog post aims at exploring Service Provider Foundation. Charles 
 description: "This blog post aims at exploring Service Provider Foundation. Charles Joy already covered how to deploy Gallery item trough WAP API and VMM PowerShell in ser..."
 pubDate: 2014-12-13
 updatedDate: 2018-06-11
-heroImage: "/media/wordpress/2014/12/image35.png"
+heroImage: "/media/2014/12/image35.png"
 sourceUrl: "https://cloudadministrator.net/2014/12/13/deploying-gallery-item-trough-spf/"
 tags: 
   - "Azure Pack"
@@ -62,7 +62,7 @@ With Method Post we make Web request to SPF API.
 
 The web request will return status code 201 that he object is created:
 
-[![image](/media/wordpress/2014/12/image35.png "image")](/media/wordpress/2014/12/image35.png)
+[![image](/media/2014/12/image35.png "image")](/media/2014/12/image35.png)
 
 Now that we have the Tenant in SPF the next step is to create the same tenant in VMM. Basically creating User Role in VMM with the same name and ID as the SPF tenant links them. That easily happens trough SPF by assigning they created SPF Tenant to Stamp:
 
@@ -88,11 +88,11 @@ We convert the hash table again to json.
 
 And we invoke again the SPF Admin API.
 
-[![image](/media/wordpress/2014/12/image36.png "image")](/media/wordpress/2014/12/image36.png)
+[![image](/media/2014/12/image36.png "image")](/media/2014/12/image36.png)
 
 This will return status content 204 (no Content) and you will see the user role created in VMM:
 
-[![image](/media/wordpress/2014/12/image37.png "image")](/media/wordpress/2014/12/image37.png)
+[![image](/media/2014/12/image37.png "image")](/media/2014/12/image37.png)
 
 Now to that User Role you can assign cloud, library and other resources trough the GUI as I do not currently web requests how to do that.
 
@@ -111,7 +111,7 @@ and you will need to add the gallery item for the SPF tenant also.
 
 You can do that by adding record in SPF database. Specifically in TenantGalleryItems table. You need to add the Gallery item name, the version, the published and the Tenant ID. Tenant ID is the same guid that was generated during creation.
 
-[![image](/media/wordpress/2014/12/image38.png "image")](/media/wordpress/2014/12/image38.png)
+[![image](/media/2014/12/image38.png "image")](/media/2014/12/image38.png)
 
 Ok now that we have these things done is time for the actual deployment of Gallery Item trough SPF. Most of the code below is taken from Charles Joy’s articles plus additional changes needed that to happen trough SPF.
 
@@ -327,8 +327,8 @@ Get-SCJob -ID $VMMJobID
 
 As you can see the jobs is running and progress is 99%. and later
 
-[![image](/media/wordpress/2014/12/image39.png "image")](/media/wordpress/2014/12/image39.png)
+[![image](/media/2014/12/image39.png "image")](/media/2014/12/image39.png)
 
-[![image](/media/wordpress/2014/12/image40.png "image")](/media/wordpress/2014/12/image40.png)
+[![image](/media/2014/12/image40.png "image")](/media/2014/12/image40.png)
 
 So that is folks. If you need more explanation about the PowerShell code check the blogs by Charles as most of it comes from there and he explains very good what he is doing.

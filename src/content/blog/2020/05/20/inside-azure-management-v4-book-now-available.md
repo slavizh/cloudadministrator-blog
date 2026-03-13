@@ -4,7 +4,7 @@ excerpt: "The time has come to publish the Inside Azure Management v4 book. This
 description: "The time has come to publish the Inside Azure Management v4 book. This is the only free book that focuses on Azure Management. If you want you can also suppo..."
 pubDate: 2020-05-20
 updatedDate: 2020-05-21
-heroImage: "/media/wordpress/2020/03/inside-azure-managemnet-v4-chapter-2.png"
+heroImage: "/media/2020/03/inside-azure-managemnet-v4-chapter-2.png"
 sourceUrl: "https://cloudadministrator.net/2020/05/20/inside-azure-management-v4-book-now-available/"
 tags: 
   - "Application Insights"
@@ -37,4 +37,4 @@ The time has come to publish the Inside Azure Management v4 book. This is the on
 
 [Code repository](https://github.com/insidemscloud/InsideAzureMgmt)
 
-![](/media/wordpress/2020/03/inside-azure-managemnet-v4-chapter-2.png)
+![](/media/2020/03/inside-azure-managemnet-v4-chapter-2.png)

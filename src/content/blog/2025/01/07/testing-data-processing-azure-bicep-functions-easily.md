@@ -4,7 +4,7 @@ excerpt: "These days Azure Bicep has a lot of more functions that can be used fo
 description: "These days Azure Bicep has a lot of more functions that can be used for processing data. Most notably I am referring to the [lambda Azure Bicep functions]( O..."
 pubDate: 2025-01-07
 updatedDate: 2025-01-07
-heroImage: "/media/wordpress/2025/01/image-1.png"
+heroImage: "/media/2025/01/image-1.png"
 sourceUrl: "https://cloudadministrator.net/2025/01/07/testing-data-processing-azure-bicep-functions-easily/"
 tags: 
   - "Azure"
@@ -50,7 +50,7 @@ param endResult = toObject(dataInput, entry => entry.name, entry => {
 
 As you can see I am having variable which will server as our data input for the Bicep functions that I will use. The functions itself are used inside Bicep parameter. To see what the end result will be once the data from variable dataInput is processed I can right click on the file in VSC and select Build Parameters file:
 
-![](/media/wordpress/2025/01/build-parameters-file.png)
+![](/media/2025/01/build-parameters-file.png)
 
 *Build Parameters file*
 

@@ -4,7 +4,7 @@ excerpt: "We are now on part 9 of these series. This blog post will be shorter c
 description: "We are now on part 9 of these series. This blog post will be shorter compared to the others due to the nature of the alert we will cover in it. This time we..."
 pubDate: 2019-10-15
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2019/10/15/azure-monitor-alert-series-part-8/"
 tags: 
   - "Azure"

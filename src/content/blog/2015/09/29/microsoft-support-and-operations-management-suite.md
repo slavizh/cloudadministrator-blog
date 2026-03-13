@@ -4,7 +4,7 @@ excerpt: "You probably have been in situation where you cannot resolve issue on 
 description: "You probably have been in situation where you cannot resolve issue on your own. In that case you will usually contact the support team of the software vendor..."
 pubDate: 2015-09-29
 updatedDate: 2015-09-29
-heroImage: "/media/wordpress/2015/09/image26.png"
+heroImage: "/media/2015/09/image26.png"
 sourceUrl: "https://cloudadministrator.net/2015/09/29/microsoft-support-and-operations-management-suite/"
 tags: 
   - "Hybrid Security"
@@ -28,6 +28,6 @@ tags:
 ---
 You probably have been in situation where you cannot resolve issue on your own. In that case you will usually contact the support team of the software vendor. When that contact is initiated usually results in uploading some kind of logs to the support engineer. It is slow and cumbersome process. Operations Management Suite has the capability to ingest a large amount of logs from any server no matter where is located. With that in mind OMS now has small but helpful feature. Now you can add access to users from Microsoft.com domain to your OMS workspace:
 
-[![image](/media/wordpress/2015/09/image26.png "image")](/media/wordpress/2015/09/image26.png)
+[![image](/media/2015/09/image26.png "image")](/media/2015/09/image26.png)
 
 So now imagine a situation you are using Operations Management Suite and you have issues that you are troubleshooting. May be this time you will not have to upload so many logs to Microsoft Support.

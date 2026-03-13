@@ -4,7 +4,7 @@ excerpt: "I’ve just updated the OMSSearch PowerShell module. New version is 6.
 description: "I’ve just updated the OMSSearch PowerShell module. New version is 6.0.0. Here are the changes:"
 pubDate: 2016-01-17
 updatedDate: 2016-01-17
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/01/17/omssearch-powershell-module-6-0-0-release/"
 tags: 
   - "API"

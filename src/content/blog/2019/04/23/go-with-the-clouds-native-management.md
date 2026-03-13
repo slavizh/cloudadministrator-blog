@@ -4,7 +4,7 @@ excerpt: "Lately I have seen some questions and discussions that I have also bee
 description: "Lately I have seen some questions and discussions that I have also been involved around which management services/tools should be used when you are doing mul..."
 pubDate: 2019-04-23
 updatedDate: 2019-04-23
-heroImage: "/media/wordpress/2019/04/management-capabilities.png"
+heroImage: "/media/2019/04/management-capabilities.png"
 sourceUrl: "https://cloudadministrator.net/2019/04/23/go-with-the-clouds-native-management/"
 tags: 
   - "AWS"
@@ -26,7 +26,7 @@ tags:
   - "Update Management"
   - "Multi Cloud"
 ---
-![Credits to docs.microsoft.com](/media/wordpress/2019/04/management-capabilities.png)
+![Credits to docs.microsoft.com](/media/2019/04/management-capabilities.png)
 
 *Azure Management*
 

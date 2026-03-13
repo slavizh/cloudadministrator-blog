@@ -4,7 +4,7 @@ excerpt: "I have promised that I will write the last part of this series and I a
 description: "I have promised that I will write the last part of this series and I am doing it later than never. After the December holidays I have been occupied with some..."
 pubDate: 2020-02-19
 updatedDate: 2020-02-19
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2020/02/19/azure-monitor-alert-series-part-12/"
 tags: 
   - "Application Insights"

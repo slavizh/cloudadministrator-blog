@@ -4,7 +4,7 @@ excerpt: "While discussing Azure/OMS topics in the community I often see incorre
 description: "While discussing Azure/OMS topics in the community I often see incorrect usage of OMS (Operations Management Suite). That is understandable of course as Micr..."
 pubDate: 2018-06-21
 updatedDate: 2018-06-21
-heroImage: "/media/wordpress/2018/06/classic-oms-portal.png"
+heroImage: "/media/2018/06/classic-oms-portal.png"
 sourceUrl: "https://cloudadministrator.net/2018/06/21/what-is-oms-and-a-brief-history-of-it/"
 tags: 
   - "Application Insights"
@@ -70,6 +70,6 @@ In this brief history we will focus mostly on the history of Azure Log Analytics
 
 Again I would like to remind that this is my personal opinion on the topic without any internal information. Some dates might not be completely accurate. I hope you will find these explanations useful on looking at the big picture.
 
-![Classic OMS Portal](/media/wordpress/2018/06/classic-oms-portal.png)
+![Classic OMS Portal](/media/2018/06/classic-oms-portal.png)
 
 *Classic OMS Portal*

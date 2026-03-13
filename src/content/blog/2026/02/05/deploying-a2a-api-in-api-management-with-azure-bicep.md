@@ -4,7 +4,7 @@ excerpt: "The introduction of A2A API support in Azure API Management enhances t
 description: "The introduction of A2A API support in Azure API Management enhances the protection and performance of AI applications. Key deployment insights reveal challe..."
 pubDate: 2026-02-05
 updatedDate: 2026-02-05
-heroImage: "/media/wordpress/2026/02/create-a-highly-detailed-high-resolution-image-featuring-an-azure-portal.png"
+heroImage: "/media/2026/02/create-a-highly-detailed-high-resolution-image-featuring-an-azure-portal.png"
 sourceUrl: "https://cloudadministrator.net/2026/02/05/deploying-a2a-api-in-api-management-with-azure-bicep/"
 tags: 
   - "Azure"
@@ -25,7 +25,7 @@ After introducing [MCP servers](https://learn.microsoft.com/en-us/azure/api-mana
 
 To do proper testing I even deployed A2A agent. I would recommend using [Semantic Kernel A2A Travel Agent](https://github.com/Azure-Samples/app-service-a2a-travel-agent) if you do not have already such and want to test it. Note that this new functionality is available only on v2 tiers so I would suggest plan migration if you are still on v1 tiers. Initially while trying to test this functionality via the Azure Portal I have started to hit error “This A2A import feature isn’t available in your region yet, but it’s coming soon.” when I was trying to create the API. From the portal when you try to create API and the A2A agent is not reachable it allows you to enter the information on your own. And there Agent ID is not required but it is required on API level of the resource. And when that property is not filled the Portal throws this weird error that has nothing to do with the issue.
 
-![Screenshot of an Azure portal interface for creating an A2A agent API, detailing sections for agent card URL, protocol options, runtime URL, agent ID, and general API settings.](/media/wordpress/2026/02/a2a-create-portal.png)
+![Screenshot of an Azure portal interface for creating an A2A agent API, detailing sections for agent card URL, protocol options, runtime URL, agent ID, and general API settings.](/media/2026/02/a2a-create-portal.png)
 
 *Create A2A API in Portal*
 

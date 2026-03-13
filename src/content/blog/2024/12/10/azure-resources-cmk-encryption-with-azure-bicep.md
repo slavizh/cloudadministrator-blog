@@ -4,7 +4,7 @@ excerpt: "Azure Customer Managed Key (CMK) Encryption enhances security across A
 description: "Azure Customer Managed Key (CMK) Encryption enhances security across Azure resources and ensures compliance. The configuration varies by resource, requiring..."
 pubDate: 2024-12-10
 updatedDate: 2024-12-10
-heroImage: "/media/wordpress/2024/12/image.png"
+heroImage: "/media/2024/12/image.png"
 sourceUrl: "https://cloudadministrator.net/2024/12/10/azure-resources-cmk-encryption-with-azure-bicep/"
 tags: 
   - "Azure"

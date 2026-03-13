@@ -4,7 +4,7 @@ excerpt: "One of my blog readers has asked me about policy for sending Azure Act
 description: "One of my blog readers has asked me about policy for sending Azure Activity logs to Log Analytics. As I have [written before]( this is now possible via diagn..."
 pubDate: 2020-09-29
 updatedDate: 2020-09-29
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2020/09/29/azure-policy-for-sending-azure-activity-logs/"
 tags: 
   - "ARM Templates"

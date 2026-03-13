@@ -4,7 +4,7 @@ excerpt: "Monitoring Windows Services States is one of the most common requests 
 description: "Monitoring Windows Services States is one of the most common requests that I’ve seen on forums, groups and blog posts. My fellow MVP and OMS expert Stefan Ro..."
 pubDate: 2018-01-24
 updatedDate: 2018-01-24
-heroImage: "/media/wordpress/2018/01/image4.png"
+heroImage: "/media/2018/01/image4.png"
 sourceUrl: "https://cloudadministrator.net/2018/01/24/monitoring-windows-services-sates-with-log-analytics/"
 tags: 
   - "Azure"
@@ -41,7 +41,7 @@ With that said let’s see how we can achieve this task very easy by using the p
 
 The first we need to do is to add System event log as data source:
 
-[![image](/media/wordpress/2018/01/image4.png "image")](/media/wordpress/2018/01/image4.png)
+[![image](/media/2018/01/image4.png "image")](/media/2018/01/image4.png)
 
 If you prefer you can only add Information channel.
 
@@ -57,7 +57,7 @@ _**| sort by TimeGenerated desc**_
 
 _**| project Computer, Windows\_Service\_Name, Windows\_Service\_State, TimeGenerated**_
 
-[![image](/media/wordpress/2018/01/image5.png "image")](/media/wordpress/2018/01/image5.png)
+[![image](/media/2018/01/image5.png "image")](/media/2018/01/image5.png)
 
 As you can see from the screenshot we have the Computer in question, the service name, the state – stopped and running when it was started and the time.
 

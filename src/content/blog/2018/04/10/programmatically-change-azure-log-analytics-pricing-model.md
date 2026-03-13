@@ -4,7 +4,7 @@ excerpt: "Microsoft recently introduced a new model for [purchasing Azure Log An
 description: "Microsoft recently introduced a new model for [purchasing Azure Log Analytics]( To use this new model you will basically have to enable it on per subscriptio..."
 pubDate: 2018-04-10
 updatedDate: 2018-04-11
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2018/04/10/programmatically-change-azure-log-analytics-pricing-model/"
 tags: 
   - "Azure"

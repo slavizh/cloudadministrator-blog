@@ -4,7 +4,7 @@ excerpt: "I’ve stumbled on a great article by Brandon Wilson named Demystifyin
 description: "I’ve stumbled on a great article by Brandon Wilson named Demystifying Schannel on which he explains how we can enable verbose logging for Schannel to found o..."
 pubDate: 2017-11-14
 updatedDate: 2022-08-17
-heroImage: "/media/wordpress/2017/11/image.png"
+heroImage: "/media/2017/11/image.png"
 sourceUrl: "https://cloudadministrator.net/2017/11/14/find-if-you-are-using-only-tls-1-2-protocol-with-log-analytics/"
 tags: 
   - "Azure"
@@ -41,7 +41,7 @@ _Event_
 
 _| where EventID == 36880_
 
-[![image](/media/wordpress/2017/11/image.png "image")](/media/wordpress/2017/11/image.png)
+[![image](/media/2017/11/image.png "image")](/media/2017/11/image.png)
 
 As we can see the data is not very well formatted. It will be a struggle if we try to make some sense out of it in its current state. But do not worry. With the new language we can easily transform the data by using parse:
 
@@ -55,7 +55,7 @@ _| sort by TimeGenerated desc_
 
 _| project Computer, TimeGenerated, Protocol, CipherSuite, ExchangeStrength, ContextHandle, TargetName, RemoteCertSubjectName, UserName_
 
-[![image](/media/wordpress/2017/11/image1.png "image")](/media/wordpress/2017/11/image1.png)
+[![image](/media/2017/11/image1.png "image")](/media/2017/11/image1.png)
 
 With this query we get completely different picture. Now that the data is transformed we can do some summarization on it:
 
@@ -69,7 +69,7 @@ _| sort by TimeGenerated desc_
 
 _| summarize count() by Protocol | render piechart_
 
-[![image](/media/wordpress/2017/11/image2.png "image")](/media/wordpress/2017/11/image2.png)
+[![image](/media/2017/11/image2.png "image")](/media/2017/11/image2.png)
 
 and
 
@@ -85,7 +85,7 @@ _| where Protocol != ‘TLS 1.2’_
 
 _| summarize count() by RemoteCertSubjectName | render piechart_
 
-### [![image](/media/wordpress/2017/11/image3.png "image")](/media/wordpress/2017/11/image3.png)
+### [![image](/media/2017/11/image3.png "image")](/media/2017/11/image3.png)
 
 This is the power the power of Log Analytics – Analyze data with ease.
 

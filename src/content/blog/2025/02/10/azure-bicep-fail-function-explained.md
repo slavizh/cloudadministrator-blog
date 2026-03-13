@@ -4,7 +4,7 @@ excerpt: "Azure Bicep fail() function was introduced in Bicep CLI v0.33.93. In s
 description: "Azure Bicep fail() function was introduced in Bicep CLI v0.33.93. In short this function allows you to fail your deployment when certain conditions are met...."
 pubDate: 2025-02-10
 updatedDate: 2025-02-10
-heroImage: "/media/wordpress/2025/02/screen-with-azure-bicep-code-with-fail-function-in-it.png"
+heroImage: "/media/2025/02/screen-with-azure-bicep-code-with-fail-function-in-it.png"
 sourceUrl: "https://cloudadministrator.net/2025/02/10/azure-bicep-fail-function-explained/"
 tags: 
   - "Azure"
@@ -27,13 +27,13 @@ The example I would like to introduce the following:
 
 To visualize better identity-based authentication let’s see how it looks in Azure Portal -> Storage Account -> Data Storage -> File Shares -> Identity-based access.
 
-![](/media/wordpress/2025/02/identity-based-access.png)
+![](/media/2025/02/identity-based-access.png)
 
 *Identity-based access*
 
 As you can see fairly easy configuration. If we try to enter only domain name and save you will notice that the portal does not allows that and we should also provided domain GUID as well.
 
-![](/media/wordpress/2025/02/identity-based-access-error.png)
+![](/media/2025/02/identity-based-access-error.png)
 
 *Identity-based access error*
 
@@ -119,13 +119,13 @@ param enableMicrosoftEntraKerberosAuthentication = true
 param domainName = 'mydomain.com'
 ```
 
-![](/media/wordpress/2025/02/deployment-domain-name-only.png)
+![](/media/2025/02/deployment-domain-name-only.png)
 
 *Deployment Domain Name only*
 
 As you can see we have provided only domainName without domainGuid but the deployment still succeeds. Wait? What? Why? Well it seems the API allows this option although it is not something you want to do in production. We can check the configuration in Portal to verify it.
 
-![](/media/wordpress/2025/02/identity-based-access-configured-without-domain-guid.png)
+![](/media/2025/02/identity-based-access-configured-without-domain-guid.png)
 
 *Identity-based access configured without domain GUID*
 
@@ -201,19 +201,19 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 
 We have changed only one line of code to check for the value of domainGUID and if it is empty to fail the deployment with specific message that will stir the end user to change its Bicep parameters file and re-deploy. Let’s redeploy with our parameters file the new template:
 
-![](/media/wordpress/2025/02/deployment-domain-only-error.png)
+![](/media/2025/02/deployment-domain-only-error.png)
 
 *Deployment domain only error*
 
 Now the deployment fails and note that our custom error message is visible. We can see the same message in Azure Portal as well:
 
-![](/media/wordpress/2025/02/deployment-domain-only-error-portal.png)
+![](/media/2025/02/deployment-domain-only-error-portal.png)
 
 *Deployment domain name only error in Portal*
 
 And if we re-deploy with providing domainGuid value everything works as expected:
 
-![](/media/wordpress/2025/02/deployment-domain-name-and-guid-1.png)
+![](/media/2025/02/deployment-domain-name-and-guid-1.png)
 
 *Deployment domain name and GUID*
 

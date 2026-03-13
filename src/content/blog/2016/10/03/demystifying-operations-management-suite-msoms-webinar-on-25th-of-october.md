@@ -4,7 +4,7 @@ excerpt: "I will be doing a webinar organized by Savision on 25th of October. Yo
 description: "I will be doing a webinar organized by Savision on 25th of October. You can register and find the details here. Hurry and join me."
 pubDate: 2016-10-03
 updatedDate: 2016-10-03
-heroImage: "/media/wordpress/2019/09/cropped-azure-3.png"
+heroImage: "/media/2019/09/cropped-azure-3.png"
 sourceUrl: "https://cloudadministrator.net/2016/10/03/demystifying-operations-management-suite-msoms-webinar-on-25th-of-october/"
 tags: 
   - "Automation Control"

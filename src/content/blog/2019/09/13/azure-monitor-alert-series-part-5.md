@@ -4,7 +4,7 @@ excerpt: "Another week another part of the Azure Monitor Alert series. This part
 description: "Another week another part of the Azure Monitor Alert series. This part put the end of alert based on Azure Activity log. Today we will have a look at: * Auto..."
 pubDate: 2019-09-13
 updatedDate: 2020-01-19
-heroImage: "/media/wordpress/2019/09/autoscale-activity-log-1-1.png"
+heroImage: "/media/2019/09/autoscale-activity-log-1-1.png"
 sourceUrl: "https://cloudadministrator.net/2019/09/13/azure-monitor-alert-series-part-5/"
 tags: 
   - "ARM Templates"
@@ -109,11 +109,11 @@ You can of course customize this rule depending on your requirements. For exampl
 
 Let’s have a look of how the autoscale record looks in Azure Activity log. One thing to note is that we actually have two such events generated and they have different fields you can reference in the alert rule.
 
-![](/media/wordpress/2019/09/autoscale-activity-log-1-1.png)
+![](/media/2019/09/autoscale-activity-log-1-1.png)
 
 *Atoscale Activity log 1*
 
-![](/media/wordpress/2019/09/autoscale-activity-log-2.png)
+![](/media/2019/09/autoscale-activity-log-2.png)
 
 *Autoscale Activity log 2*
 
@@ -224,7 +224,7 @@ Looking at our condition we can see:
 
 In order to see how else we can customize this alert let’s have a look at one record example on resource health:
 
-![](/media/wordpress/2019/09/resource-health-activity-log.png)
+![](/media/2019/09/resource-health-activity-log.png)
 
 *Resource Health activity log*
 
