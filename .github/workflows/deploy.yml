@@ -40,7 +40,7 @@ jobs:
       - name: Build site
         env:
           SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io', github.repository_owner) }}
-          PUBLIC_SITE_BASE: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}', github.event.repository.name) }}
+          PUBLIC_SITE_BASE: ${{ vars.SITE_URL && '/' || (github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}', github.event.repository.name)) }}
         run: npm run build
 
       - name: Upload Pages artifact
