@@ -103,20 +103,25 @@ const combinedLd = [blogPostingLd, breadcrumbLd];
       <span>{post.data.title}</span>
     </p>
 
-    <p class="eyebrow">
-      {published} &middot;
+    <div class="eyebrow">
+      <span>{published}</span>
+      <span>&middot;</span>
       <svg class="icon-clock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" width="14" height="14"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm0 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM8 3a.75.75 0 0 1 .75.75v3.69l2.28 2.28a.75.75 0 1 1-1.06 1.06l-2.5-2.5A.75.75 0 0 1 7.25 8V3.75A.75.75 0 0 1 8 3Z"/></svg>
-      {readTime} min read
-    </p>
-    <h1>{post.data.title}</h1>
-
-    <div class="eyebrow-tags" aria-label="Post tags">
-      {post.data.tags.map((tag) => (
-        <a class="tag" href={withBase(getTaxonomyHref("tag", tag))}>
-          {tag}
-        </a>
-      ))}
+      <span>{readTime} min read</span>
+      {post.data.tags.length > 0 && (
+        <>
+          <span class="eyebrow__sep">|</span>
+          <span class="eyebrow__tags">
+            {post.data.tags.map((tag) => (
+              <a class="tag tag--sm" href={withBase(getTaxonomyHref("tag", tag))}>
+                {tag}
+              </a>
+            ))}
+          </span>
+        </>
+      )}
     </div>
+    <h1>{post.data.title}</h1>
 
     <p class="article__lede">{post.data.excerpt}</p>
 
