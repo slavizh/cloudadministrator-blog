@@ -1,74 +1,108 @@
-# Cloud Administrator in Azure World
+# Cloud Administrator ☁️
 
-This repository contains an Astro-based static rebuild of `cloudadministrator.net`, designed to run well on GitHub Pages while preserving WordPress-style dated permalinks and the blog's Azure-focused presentation.
+Personal tech blog by **Stanislav Zhelyazkov** — sharing deep dives on Azure infrastructure, Bicep, Azure Policy, governance, and cloud administration.
 
-## What's included
+🔗 **Live site**: [cloudadministrator.net](https://cloudadministrator.net/)
 
-- Astro static site scaffold
-- Content collections for blog posts
-- Seeded post content based on the public site feed
-- RSS feed generation
-- GitHub Pages deployment workflow
+## Tech Stack
 
-## Local development
+- **Framework**: [Astro 6](https://astro.build/)
+- **Styling**: Custom CSS with dark/light mode
+- **Hosting**: [GitHub Pages](https://pages.github.com/)
+- **CDN/Proxy**: [Cloudflare](https://www.cloudflare.com/)
+- **Analytics**: Cloudflare Analytics (server-side)
+- **Language**: TypeScript
 
-1. Install dependencies:
+## Features
 
-   ```powershell
-   npm install
+- 📝 Markdown blog with syntax highlighting (Shiki dual themes)
+- 🔍 Client-side search across all posts
+- 🎠 Featured posts carousel on homepage
+- 🏷️ Tag-based filtering and categorization
+- 🌗 Dark/light mode with system preference detection
+- 📱 Fully responsive design
+- 📡 RSS feed at `/feed/`
+- 🗺️ Auto-generated sitemap
+- 🔗 SEO-optimized with JSON-LD structured data and Open Graph tags
+- 📊 Reading time estimates
+- 🔄 Related posts suggestions
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production (runs astro check + astro build)
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Project Structure
+
+```
+├── public/
+│   ├── media/               # Blog post images (YYYY/MM structure)
+│   └── favicon.svg          # Site favicon
+├── src/
+│   ├── components/          # Astro components (PostCard, HeroCarousel, etc.)
+│   ├── content/
+│   │   └── blog/            # Blog posts in Markdown (YYYY/MM/DD structure)
+│   ├── layouts/             # Base layout with global styles
+│   ├── pages/               # File-based routing (archive, tags, search, etc.)
+│   ├── plugins/             # Custom remark plugins
+│   └── utils/               # Shared utilities (paths, blog helpers, assets)
+├── scripts/
+│   └── build.mjs            # Build script (check + build)
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # GitHub Pages deployment
+├── astro.config.mjs         # Astro configuration
+├── content.config.ts        # Content collection schema
+└── tsconfig.json
+```
+
+## Deployment
+
+Pushes to `main` automatically deploy via GitHub Actions:
+
+1. Checkout and install dependencies
+2. Run `astro check` for type validation
+3. Build static site with `astro build`
+4. Deploy to GitHub Pages
+
+### Custom Domain
+
+The site uses `cloudadministrator.net` via Cloudflare proxy. Configuration:
+
+- Set repo variable `SITE_URL` to your custom domain URL
+- Configure the custom domain in GitHub Pages settings
+- Set Cloudflare DNS CNAME to `slavizh.github.io` (proxied)
+- Set Cloudflare SSL/TLS to Full
+
+## Writing a New Post
+
+1. Create a new `.md` file in `src/content/blog/YYYY/MM/DD/`
+2. Add frontmatter:
+   ```yaml
+   ---
+   title: "Your Post Title"
+   excerpt: "Short summary for cards and previews"
+   description: "SEO meta description"
+   pubDate: "2026-03-13"
+   heroImage: "/media/2026/03/your-image.png"
+   tags: ["Azure", "Bicep"]
+   draft: false
+   ---
    ```
+3. Add your image to `public/media/YYYY/MM/`
+4. Commit and push — the site deploys automatically
 
-2. Start the dev server:
+## License
 
-   ```powershell
-   npm run dev
-   ```
-
-   The dev server binds to all local interfaces so both `http://localhost:4321` and `http://127.0.0.1:4321` work reliably during image-heavy post previews.
-
-3. Build the production site:
-
-   ```powershell
-   npm run build
-   ```
-
-4. Import posts directly from the live WordPress site:
-
-   ```powershell
-   npm run import:live
-   ```
-
-   This fetches the public sitemap and post pages from `https://cloudadministrator.net/` and writes Markdown files into `src/content/blog/`.
-
-5. Mirror referenced WordPress media locally:
-
-   ```powershell
-   npm run mirror:media
-   ```
-
-   This downloads referenced `wp-content/uploads` assets into `public/media/wordpress/` and rewrites imported content to use the local copies.
-
-6. Audit imported content for leftover WordPress blocks, shortcode markers, or placeholder embeds:
-
-   ```powershell
-   npm run audit:content
-   ```
-
-   This helps spot any imported content that may still need a manual pass after the automated migration.
-
-## GitHub Pages deployment
-
-The workflow at `.github/workflows/deploy.yml` builds the site and deploys the `dist` output to GitHub Pages.
-
-If you want to publish with a custom domain such as `cloudadministrator.net`, set the repository variable `SITE_URL` to that full URL and then configure the custom domain in GitHub Pages.
-
-## Continuing the WordPress migration
-
-This project can now import directly from the live public site, so a WordPress export is optional as long as the posts remain publicly accessible.
-
-If you later want a more complete archival migration, the remaining work is still similar:
-
-1. Review any posts with complex embeds, shortcodes, or custom WordPress blocks.
-2. Add redirects or canonical metadata if you need a staged cutover.
-
-Because the site already uses dated content paths, the migration can preserve the same route structure without redesigning the front end.
+Blog content © Stanislav Zhelyazkov. All rights reserved.
