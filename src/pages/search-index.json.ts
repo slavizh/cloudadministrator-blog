@@ -11,7 +11,7 @@ export async function GET() {
         title: post.data.title,
         excerpt: post.data.excerpt,
         description: post.data.description,
-        slug: withBase(`${post.slug}/`),
+        slug: withBase(`${post.id}/`),
         pubDate: post.data.pubDate.toISOString(),
         tags: post.data.tags
       }))

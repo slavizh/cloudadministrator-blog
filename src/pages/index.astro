@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PostCard from "../components/PostCard.astro";
 import HeroCarousel from "../components/HeroCarousel.astro";
 import { withBase } from "../utils/paths";
 import { resolveAssetUrl } from "../utils/assets";
@@ -9,7 +8,6 @@ import { sortPosts, calculateReadTime, formatDate } from "../utils/blog";
 
 const posts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
 const featuredPosts = posts.slice(0, 3);
-const latestPosts = posts.slice(0, 12);
 
 // Top 20 tags from posts in the last 2 years
 const twoYearsAgo = new Date();
@@ -30,7 +28,7 @@ const topTags = [...tagCounts.entries()]
 const allPostsData = posts.map((post) => ({
   title: post.data.title,
   excerpt: post.data.excerpt ?? "",
-  slug: withBase(`${post.slug}/`),
+  slug: withBase(`${post.id}/`),
   image: resolveAssetUrl(post.data.heroImage),
   tags: post.data.tags,
   pubDate: formatDate(post.data.pubDate),

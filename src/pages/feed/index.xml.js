@@ -16,7 +16,7 @@ export async function GET(context) {
       title: post.data.title,
       description: post.data.excerpt || post.data.description,
       pubDate: post.data.pubDate,
-      link: withBase(`${post.slug}/`),
+      link: withBase(`${post.id}/`),
       categories: [...post.data.tags],
       author: "Stanislav Zhelyazkov",
     })),

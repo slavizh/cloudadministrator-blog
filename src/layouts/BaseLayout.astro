@@ -73,7 +73,7 @@ const resolvedOgImage = ogImage
     {articleMeta?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
 
     {/* JSON-LD structured data */}
-    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="Cloud Administrator feed" href={withBase("feed/")} />
@@ -159,7 +159,7 @@ const resolvedOgImage = ogImage
       }
     </script>
     <!-- Cloudflare Web Analytics -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4f1dbc80fe8d416cbb280feb971ac5eb"}'></script>
+    <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4f1dbc80fe8d416cbb280feb971ac5eb"}'></script>
     <!-- End Cloudflare Web Analytics -->
   </body>
 </html>

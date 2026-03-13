@@ -15,7 +15,7 @@ export async function getStaticPaths() {
   const allPosts = sortPosts(await getCollection("blog", ({ data }) => !data.draft));
 
   return allPosts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post, allPosts }
   }));
 }
@@ -32,7 +32,7 @@ const published = formatDate(post.data.pubDate, "long");
 const readTime = calculateReadTime(post.body);
 
 const siteUrl = Astro.site?.toString() ?? "https://cloudadministrator.net";
-const postUrl = new URL(withBase(`${post.slug}/`), siteUrl).toString();
+const postUrl = new URL(withBase(`${post.id}/`), siteUrl).toString();
 const heroImageUrl = new URL(resolveAssetUrl(post.data.heroImage), siteUrl).toString();
 
 const blogPostingLd = {
@@ -121,7 +121,7 @@ const combinedLd = [blogPostingLd, breadcrumbLd];
 
     <Content />
 
-    <SharePost title={post.data.title} url={new URL(withBase(`${post.slug}/`), Astro.site ?? Astro.url).toString()} />
+    <SharePost title={post.data.title} url={new URL(withBase(`${post.id}/`), Astro.site ?? Astro.url).toString()} />
 
     {relatedPosts.length > 0 && (
       <footer class="article__footer">
@@ -130,7 +130,7 @@ const combinedLd = [blogPostingLd, breadcrumbLd];
           {relatedPosts.map((entry) => (
             <article>
               <h3>
-                <a href={withBase(`${entry.slug}/`)}>{entry.data.title}</a>
+                <a href={withBase(`${entry.id}/`)}>{entry.data.title}</a>
               </h3>
               <p class="meta" style="margin: 0;">{entry.data.excerpt}</p>
             </article>

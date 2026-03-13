@@ -1,7 +1,7 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
 
-const astroCli = path.resolve("node_modules", "astro", "astro.js");
+const astroCli = path.resolve("node_modules", "astro", "bin", "astro.mjs");
 
 function runAstro(args) {
   return new Promise((resolve, reject) => {

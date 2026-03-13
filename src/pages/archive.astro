@@ -64,7 +64,7 @@ const years = groupPostsByYear(posts);
           {year.posts.map((post) => (
             <article>
               <h3>
-                <a href={withBase(`${post.slug}/`)}>{post.data.title}</a>
+                <a href={withBase(`${post.id}/`)}>{post.data.title}</a>
               </h3>
               <p class="meta" style="margin: 0;">
                 {post.data.pubDate.toLocaleDateString("en-US", {

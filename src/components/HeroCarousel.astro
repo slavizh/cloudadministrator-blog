@@ -14,7 +14,7 @@ const { posts, interval = 6000 } = Astro.props;
 const slides = posts.map((post) => ({
   title: post.data.title,
   excerpt: post.data.excerpt ?? "",
-  slug: withBase(`${post.slug}/`),
+  slug: withBase(`${post.id}/`),
   image: resolveAssetUrl(post.data.heroImage),
   tags: post.data.tags.slice(0, 3),
   pubDate: formatDate(post.data.pubDate, "long"),

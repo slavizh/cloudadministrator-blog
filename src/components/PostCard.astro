@@ -13,7 +13,7 @@ const published = formatDate(post.data.pubDate);
 const readTime = calculateReadTime(post.body);
 ---
 
-<a href={withBase(`${post.slug}/`)} class="card-link" data-tags={JSON.stringify(post.data.tags.map(t => t.toLowerCase()))}>
+<a href={withBase(`${post.id}/`)} class="card-link" data-tags={JSON.stringify(post.data.tags.map(t => t.toLowerCase()))}>
   <article class="card">
     <div class="card__image">
       <img src={resolveAssetUrl(post.data.heroImage)} alt={post.data.title} loading="lazy" />
