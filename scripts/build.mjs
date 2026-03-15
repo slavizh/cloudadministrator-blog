@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { copyFile } from "node:fs/promises";
 import path from "node:path";
 
 const astroCli = path.resolve("node_modules", "astro", "bin", "astro.mjs");
@@ -24,6 +25,10 @@ function runAstro(args) {
 async function main() {
   await runAstro(["check"]);
   await runAstro(["build"]);
+
+  const dist = path.resolve("dist");
+  await copyFile(path.join(dist, "sitemap-index.xml"), path.join(dist, "sitemap.xml"));
+  console.log("Copied sitemap-index.xml → sitemap.xml");
 }
 
 main().catch((error) => {
