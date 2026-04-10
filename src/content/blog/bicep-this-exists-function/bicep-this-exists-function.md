@@ -20,9 +20,9 @@ tags:
   - "What If"
   - "Troubleshoot"
 ---
-Azure Bicep functions this.exists() and this.existingResource() are continuation of the already available [@onlyIfNotExists() decorator](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/resource-declaration?tabs=azure-powershell#onlyifnotexists). At the time of writing this blog post the functions are in preview released with [v0.40.2 Bicep CLI](https://github.com/Azure/bicep/releases/tag/v0.40.2). The usage of these functions including the decorator is something that you should consider carefully and in most cases should be done in scenarios where the resource provider API is not well written. In this blog post we will take a look at such case and practical example for these two functions.
+The Azure Bicep functions this.exists() and this.existingResource() are a continuation of the already available [@onlyIfNotExists() decorator](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/resource-declaration?tabs=azure-powershell#onlyifnotexists). At the time of writing this blog post, the functions are in preview, released with [v0.40.2 Bicep CLI](https://github.com/Azure/bicep/releases/tag/v0.40.2). The usage of these functions, including the decorator, is something that you should consider carefully and in most cases should be limited to scenarios where the resource provider API is not well written. In this blog post, we will take a look at such a case and a practical example for these two functions.
 
-[Azure Database for MySQL](https://learn.microsoft.com/en-us/azure/mysql/) is commonly used resource for database. With the service you create MySQL flexible server and to achieve scale and improve performance you can create [replicas](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-read-replicas). The replicas are the same resource as flexible server but certain properties are configured differently to designate it as replica. Although it is fairly easy to specify those properties in Bicep module and deploy the replica re-deploying it will throw errors. The two properties that will throw error are createMode and sourceServerResourceId. Upon initial deployment and creation of the replica createMode requires to have 'Replica' as a value. However on any subsequent deployments you either have to omit createMode or provide value different from Replica, for example Update. If you re-deploy with Replica value the actual deployment will time out due to internal server error. When internal server error occurs usually that does not fail the deployment but instead it runs until it times out but in Azure Portal you will see the error as:
+[Azure Database for MySQL](https://learn.microsoft.com/en-us/azure/mysql/) is a commonly used resource for databases. With the service, you create a MySQL flexible server, and to achieve scale and improve performance you can create [replicas](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-read-replicas). The replicas are the same resource as the flexible server, but certain properties are configured differently to designate it as a replica. Although it is fairly easy to specify those properties in a Bicep module and deploy the replica, re-deploying it will throw errors. The two properties that will throw an error are createMode and sourceServerResourceId. Upon initial deployment and creation of the replica, createMode requires a value of 'Replica'. However, on any subsequent deployments you either have to omit createMode or provide a value different from Replica, for example Update. If you re-deploy with the Replica value, the actual deployment will time out due to an internal server error. When an internal server error occurs, it usually does not fail the deployment but instead runs until it times out. In the Azure Portal you will see the error as:
 
 ![internal server error](/media/bicep-this-exists-function/internal-server-error.png)
 
@@ -36,7 +36,7 @@ Azure Bicep functions this.exists() and this.existingResource() are continuation
 }
 ```
 
-In such cases it is best to cancel the deployment as the time out takes around 2 hours until you see a failed deployment and error. For property sourceServerResourceId on initial deployment you need to provide the source resource ID of MySQL Flexible server. If you try to re-deploy with that value the deployment fails with:
+In such cases, it is best to cancel the deployment as the timeout takes around 2 hours before you see a failed deployment and error. For the sourceServerResourceId property, on initial deployment you need to provide the source resource ID of the MySQL Flexible Server. If you try to re-deploy with that value, the deployment fails with:
 
 ```txt
 Status Message: Invalid value given for parameter Properties.SourceServerResourceId. Specify a valid parameter value. (Code:InvalidParameterValue)
@@ -44,7 +44,7 @@ Status Message: Invalid value given for parameter Properties.SourceServerResourc
 
 ![invalid value](/media/bicep-this-exists-function/invalid-value.png)
 
-For subsequent deployments you need to pass null as value for the parameter in order to succeed. Now that we have this knowledge we can use this.exists() function to provide different value depending if the replica server exists or not. When the replica does not exists we will pass the values required for initial deployment and when the replica exists we will provide the values required for subsequent deployments to avoid the errors demonstrated. Note that you can achieve the same results without using this.exists() but that requires having some boolean parameter that the end user using the module needs to provide in order to designate if the replica is deployed or not. This makes the experience not so pleasant as the end user will have to start with one bicepparam file for initial deployment and after that to change that parameter in order to do subsequent deployments if needed. After all one of the main features of Bicep is idempotency and in this case because of badly written API we do not have it fully. However with this.exists() Bicep is able to overcome such issues in APIs and provides full idempotency. Here is how our code using this.exists() looks for MySQL Flexible server replica:
+For subsequent deployments, you need to pass null as the value for the parameter in order to succeed. Now that we have this knowledge, we can use the this.exists() function to provide a different value depending on whether the replica server exists or not. When the replica does not exist, we will pass the values required for initial deployment, and when the replica exists, we will provide the values required for subsequent deployments to avoid the errors demonstrated above. Note that you can achieve the same results without using this.exists(), but that requires having a boolean parameter that the end user of the module needs to provide in order to indicate whether the replica is already deployed. This makes the experience less pleasant, as the end user will have to start with one bicepparam file for initial deployment and then change that parameter for subsequent deployments. After all, one of the main features of Bicep is idempotency, and in this case, because of a poorly written API, we do not have it fully. However, with this.exists(), Bicep is able to overcome such issues in APIs and provide full idempotency. Here is how our code using this.exists() looks for a MySQL Flexible Server replica:
 
 **types.bicep**
 
@@ -143,7 +143,7 @@ resource replicaServer 'Microsoft.DBforMySQL/flexibleServers@2025-06-01-preview'
 }
  ```
 
- Some of the properties for the replica have to be the same values as the source but others can be different. For this demo I have not exposed them as input in bicepparam file.
+ Some of the properties for the replica have to match the source, but others can be different. For this demo, I have not exposed them as input in the bicepparam file.
 
 **params.bicepparam**
 
@@ -165,7 +165,7 @@ param replicaMySqlFlexibleSever = {
 
  ```
 
-To use the feature during preview it needs to be enabled via bicepconfig.json file:
+To use the feature during preview, it needs to be enabled via the bicepconfig.json file:
 
 ```json
 {
@@ -187,14 +187,14 @@ Re-deployment + what-if results will look like this:
 
 ![re-deployment](/media/bicep-this-exists-function/re-deployment.png)
 
-From the code you can also see that I am using this.existingResource() function in version property. That property is not something you can change as the version will be the same as the source but it gives you another example how you can use that function in order to apply different value whether the resource is deployed or not. In that case when the resource is deployed I just apply the existing value to the property.
+From the code, you can also see that I am using the this.existingResource() function in the version property. That property is not something you can change, as the version will always be the same as the source, but it gives you another example of how you can use the function to apply a different value depending on whether the resource is deployed or not. In this case, when the resource is already deployed, I simply apply the existing value to the property.
 
-From the what-if results you see that you loose the functionality to see exactly what value will be applied but I hope that will change in the future. What-if should be able to understand if the resource is deployed or not and display the value depending on the case, instead of displaying the raw code.
+From the what-if results, you can see that you lose the ability to see exactly what value will be applied, but I hope that will change in the future. What-if should be able to determine whether the resource is deployed or not and display the actual value accordingly, instead of displaying the raw code.
 
-Note that in my demo I am using the same resource group for source and replica but if your replica is in different region than the source it is best to deploy it in another resource group that has the same location as your replica.
+Note that in my demo I am using the same resource group for the source and replica, but if your replica is in a different region than the source, it is best to deploy it in a separate resource group that has the same location as your replica.
 
-I was planning to release this blog post in March but I have stumbled on an issue using this.exists() which I have reported to the Bicep team and it is now fixed. I suggest any issues that you spot during the preview to report them so they can be fixed before GA.
+I was planning to release this blog post in March, but I stumbled on an issue with this.exists() which I reported to the Bicep team and it is now fixed. I suggest reporting any issues that you spot during the preview so they can be fixed before GA.
 
 The example code can be found at [GitHub](https://github.com/slavizh/BicepTemplates/tree/main/this-exists).
 
-I hope this was useful blog post for you!
+I hope this was a useful blog post for you!
