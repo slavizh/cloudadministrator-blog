@@ -14,7 +14,7 @@
     "@astrojs/check": "^0.9.7",
     "@astrojs/rss": "^4.0.17",
     "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.0.4",
+    "astro": "^6.1.6",
     "typescript": "^5.9.3",
     "zod": "^4.3.6"
   },
