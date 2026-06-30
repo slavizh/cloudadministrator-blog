@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 import remarkBasePath from "./src/plugins/remark-base-path.mjs";
 
 export default defineConfig({
@@ -7,7 +8,7 @@ export default defineConfig({
   base: process.env.PUBLIC_SITE_BASE || "/",
   integrations: [sitemap()],
   markdown: {
-    remarkPlugins: [remarkBasePath],
+    processor: unified({ remarkPlugins: [remarkBasePath] }),
     shikiConfig: {
       themes: {
         light: "github-light",
