@@ -6,6 +6,7 @@ export default defineConfig({
   site: process.env.SITE_URL || "https://cloudadministrator.net",
   base: process.env.PUBLIC_SITE_BASE || "/",
   integrations: [sitemap()],
+  compressHTML: true,
   markdown: {
     remarkPlugins: [remarkBasePath],
     shikiConfig: {
