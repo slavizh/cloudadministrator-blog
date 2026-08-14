@@ -1,9 +1,9 @@
 ---
 title: "Noise Reduction with What-If Results for Deployment Stacks"
-excerpt: ""
-description: ""
+excerpt: "Deployment stacks introduce a new What-If engine that significantly reduces noisy Azure Resource Manager change previews and makes real infrastructure changes easier to identify."
+description: "Learn how deployment stacks reduce noise in Azure What-If results, retain preview results as resources, and detect encryption changes and resource deletions."
 pubDate: 2026-08-14
-updatedDate: 2026-08-4
+updatedDate: 2026-08-04
 heroImage: "/media/noise-reduction-what-if-deployment-stacks/noise-reduction-what-if-deployment-stacks-hero.png"
 sourceUrl: "https://cloudadministrator.net/noise-reduction-what-if-deployment-stacks/"
 tags:
@@ -20,17 +20,19 @@ tags:
   - "What If"
 ---
 
-When doing Azure Deployments via ARM or Bicep it is essential to preview the changes that will happen before the deployment. Up until now we only had [What-If for regular (classic) deployments](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-cli%2CCLI). That functionality wasn't perfect as it was relaying on the teams writing the [Resource Providers](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types) (RPs) to make sure they are not introducing noise. Unfortunately having to align the different Azure Resource provider teams (which are probably over 100) to write the code so they do not produce noise is costly and challenging task. So the end result was that many of the RPs were producing a lo to noise. Some more other less but those which didn't produce any noise was minority. If you are more experience in Bicep and ARM you could understand which was noise and which was actual change but the majority of folks aren't and they shouldn't be in order to deploy and manage their resource. With that said all this noise is almost or completely gone with the new [What-If for deployment stacks](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deployment-stacks-what-if?tabs=azure-cli).
+When deploying Azure resources with ARM or Bicep, it is essential to preview the changes before deployment. Until now, we only had [What-If for regular (classic) deployments](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if?tabs=azure-cli%2CCLI). That functionality was not perfect because it relied on the teams writing the [resource providers](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types) (RPs) to ensure that they did not introduce noise.
 
-So let's start with the changes:
+Unfortunately, coordinating the many Azure resource provider teams, likely more than 100, so that their implementations do not produce noise is costly and challenging. As a result, many RPs produced a lot of noise. Some produced more than others, but only a minority produced no noise at all. If you are experienced with Bicep and ARM, you may be able to distinguish noise from actual changes. However, most people should not need that level of expertise to deploy and manage their resources. With the new [What-If for deployment stacks](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deployment-stacks-what-if?tabs=azure-cli), almost all of this noise is gone.
 
-- What-If for deployment stacks is completely new engine that is different from the What-If available for deployments.
-- What-If results are now an Azure resource which you can retain for specific period of time. This helps if you need to see what kind of changes were made before a specific deployment. Due to What-If results being a resource the PS cmdlets for getting What-If results are New-Az...
-- The new engine will most likely fix 99% of your noise. That 1% I leave for some edge scenarios. Those scenarios most likely can be overcome with changes in your bicep code.
+Here are the key changes:
 
-To demonstrate the power of the new What-If for deployment stacks I will take a simple example from my Bicep Template library - [azure-resource-encryption-examples - option2.bicep](https://github.com/slavizh/BicepTemplates/tree/main/azure-resource-encryption-examples).
+- What-If for deployment stacks uses a completely new engine that is different from the What-If engine available for regular deployments.
+- What-If results are now Azure resources that you can retain for a specific period. This is useful when you need to review the changes associated with a deployment after it has completed. Because What-If results are resources, the PowerShell cmdlets used to retrieve them are `New-Az...` cmdlets.
+- The new engine will most likely eliminate 99% of the noise. The remaining 1% is limited to edge cases that can often be addressed by changing your Bicep code.
 
-For the example I will use Bicep parameters file like this one below:
+To demonstrate the new deployment-stack What-If experience, I will use a simple example from my Bicep template library: [azure-resource-encryption-examples - option2.bicep](https://github.com/slavizh/BicepTemplates/tree/main/azure-resource-encryption-examples).
+
+For this example, I will use a Bicep parameters file like the one below:
 
 ```bicep
 using 'option2.bicep'
@@ -48,36 +50,36 @@ param userAssignedIdentitySubscriptionId = '{redacted}'
 
 ```
 
-So my first step is to create a stack at resource group scope.
+My first step is to create a stack at resource-group scope.
 
 ![Create Stack](/media/noise-reduction-what-if-deployment-stacks/created-stack.png)
 
-Once created I execute commands for regular What-If and see what is the noise:
+Once it is created, I execute the commands for a regular What-If and inspect the noise:
 
 ![Regular What-if Results](/media/noise-reduction-what-if-deployment-stacks/regular-what-if-results.png)
 
-The template is quite small and there are only a few features implemented for the resource and one of them is encryption but that is giving a noise.
+The template is quite small, and only a few features are implemented for the resource. One of those features is encryption, but it produces noise in the results.
 
-Now when I run the What-If for deployment stacks I get a different result.
+When I run What-If for deployment stacks, I get a different result:
 
 ![Deployment stacks What-if Results](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-results.png)
 
-There is no change at all as it should be. The input and the template are the same as on the initial deployment. Note that the cmdlets show you when the What-If results resource will expire and be purged. To demonstrate that it can actually detect the change for encryption functionality I will change the Key Vault key name and run the what-if results once again.
+There are no changes, as expected. The input and template are the same as they were during the initial deployment. Note that the cmdlets show when the What-If results resource will expire and be purged. To demonstrate that the engine can detect a change to the encryption configuration, I will change the Key Vault key name and run What-If again.
 
-![Deployment stacks What-if Results with changes](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-resultsw-with-changes.png)
+![Deployment stacks What-if Results with changes](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-results-with-changes.png)
 
-As you can see it picks that a new key will be used for the encryption.
+As you can see, it detects that a new key will be used for encryption.
 
-Another feature that is new because we are using deployment stacks is that will detect any deletes if there are such. To demonstrate I will just delete the resource from the template and execute what-if once again. This is the simplest way to demonstrate but if you have templates with condition on a resource and that condition changes via parameter in parameters files the experience is the same.
+Another feature enabled by deployment stacks is the ability to detect deletions. To demonstrate, I will delete a resource from the template and run What-If again. This is the simplest way to demonstrate the behavior, but the experience is the same when a template contains a condition on a resource and that condition changes through a parameter in a parameters file.
 
-![Deployment stacks What-if Results with delete](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-resultsw-with-delete.png)
+![Deployment stacks What-if Results with delete](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-results-with-delete.png)
 
-Note that the commands for What-If require stack resource ID but if you want to see the changes without the stack being created just put an Stack Resource ID for non-existing one and they will still work.
+Note that the What-If commands require a stack resource ID. However, if you want to see the changes without creating the stack, provide a stack resource ID for a non-existent stack, and the commands will still work.
 
-![Deployment stacks What-if Results without-stack](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-resultsw-with-delete.png)
+![Deployment stacks What-if Results without-stack](/media/noise-reduction-what-if-deployment-stacks/deployment-stacks-what-if-results-without-stack.png)
 
-So I would strongly suggest from moving from regular deployments to deployment stacks and new what-if functionality.
+I strongly recommend moving from regular deployments to deployment stacks and using the new What-If functionality.
 
 If you find issues or have ideas you can log them at [Deployment Stacks repo at GitHub](https://github.com/Azure/deployment-stacks/issues). I already logged some bugs and ideas about better formatting that you can support if you find them useful.
 
-I hope this was informative blog post.
+I hope you found this blog post informative.
