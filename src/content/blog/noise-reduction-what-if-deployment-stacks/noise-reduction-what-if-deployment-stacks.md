@@ -27,7 +27,7 @@ Unfortunately, coordinating the many Azure resource provider teams, likely more 
 Here are the key changes:
 
 - What-If for deployment stacks uses a completely new engine that is different from the What-If engine available for regular deployments.
-- What-If results are now Azure resources that you can retain for a specific period. This is useful when you need to review the changes associated with a deployment after it has completed. Because What-If results are resources, the PowerShell cmdlets used to retrieve them are `New-Az...` cmdlets.
+- What-If results are now Azure resources that you can retain for a specific period. This is useful when you need to review the changes associated with a deployment after it has completed. Set the retention interval to PT3H or less. Results that use a longer retention interval aren't deleted automatically, so you need to delete them yourself when you no longer need them. Because What-If results are resources, the PowerShell cmdlets used to retrieve them are `New-Az...` cmdlets.
 - The new engine will most likely eliminate 99% of the noise. The remaining 1% is limited to edge cases that can often be addressed by changing your Bicep code.
 
 To demonstrate the new deployment-stack What-If experience, I will use a simple example from my Bicep template library: [azure-resource-encryption-examples - option2.bicep](https://github.com/slavizh/BicepTemplates/tree/main/azure-resource-encryption-examples).
