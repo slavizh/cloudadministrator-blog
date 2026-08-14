@@ -4,7 +4,7 @@ excerpt: "Deployment stacks introduce a new What-If engine that significantly re
 description: "Learn how deployment stacks reduce noise in Azure What-If results, retain preview results as resources, and detect encryption changes and resource deletions."
 pubDate: 2026-08-14
 updatedDate: 2026-08-04
-heroImage: "/media/noise-reduction-what-if-deployment-stacks/noise-reduction-what-if-deployment-stacks-hero.png"
+heroImage: "/media/noise-reduction-what-if-deployment-stacks/noise-reduction-what-if-deployment-stacks-hero.jpg"
 sourceUrl: "https://cloudadministrator.net/noise-reduction-what-if-deployment-stacks/"
 tags:
   - "Azure"
