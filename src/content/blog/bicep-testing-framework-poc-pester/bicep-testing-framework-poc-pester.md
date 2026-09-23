@@ -1,9 +1,9 @@
 ---
 title: "Bicep Testing Framework PoC with Pester"
-excerpt: ""
-description: ""
+excerpt: "A practical proof of concept showing how to use the experimental Bicep testing framework with Pester to validate Azure Monitor log alert resources and automate assertions in CI/CD pipelines."
+description: "Learn how to use the experimental Bicep testing framework together with Pester to generate resource snapshots, assert expected properties, and automate Azure Bicep validation in a pipeline."
 pubDate: 2026-09-23
-updatedDate: 2026-09-023
+updatedDate: 2026-09-23
 heroImage: "/media/bicep-testing-framework-poc-pester/bicep-testing-framework-poc-pester-hero.png"
 sourceUrl: "https://cloudadministrator.net/bicep-testing-framework-poc-pester/"
 tags:
@@ -16,11 +16,13 @@ tags:
   - "Pester"
   - "Testing Framework"
 ---
-Several months ago I have wrote "[Azure Bicep Snapshots – Test and Validate Your Code and Deployments](https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/)". This blog post revealed the usage of Bicep Snapshots as a way to test bicep templates code. Although it is still valid it is missing the part of being able to automate the testing part and have results available in the pipeline job. Last month [Anthony Martin](https://github.com/anthony-c-martin) from Azure deployments team released [an experimental testing framework covering doing tests in Node, C#, Go, PowerShell or Python](https://anthony-c-martin.github.io/bicep-testing/). He also demoed it in the [last Bicep community call](https://youtu.be/3OUb4VBsw1g?t=903). The files for the demo he did can be found at [GitHub](https://github.com/anthony-c-martin/bicep-testing-demo). Needless to say that I was intrigued by this feature so I want it to try it and blog about it so more people are aware.
+Several months ago, I wrote "[Azure Bicep Snapshots – Test and Validate Your Code and Deployments](https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/)". That post introduced Bicep snapshots as a way to test Bicep template code. It remains relevant, but it was missing one crucial piece: the ability to automate the testing process and make the results visible in a pipeline job.
 
-The framework itself is based on the [Bicep snapshots functionality](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-cli?tabs=bicep-cli#snapshot) so you can re-used your existing snapshots if you have such.  As far as I understand it is also using [JSON-RPC interface](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-cli?tabs=bicep-cli#jsonrpc) to generate the snapshot (the json snapshot that comes out from Bicep parameters file). This makes it very light as you do not have to call the Bicep CLI every time you need to generate snapshot. Instead it is creating a session and within that session you can generated snapshots for multiple bicep parameters files. The snapshots are saved in memory so you do not get additional json files during the testing. That way it does not overwrite your existing snapshots.
+Last month, [Anthony Martin](https://github.com/anthony-c-martin) from the Azure deployments team released [an experimental testing framework for Node, C#, Go, PowerShell, and Python](https://anthony-c-martin.github.io/bicep-testing/). He also demoed it during the [last Bicep community call](https://youtu.be/3OUb4VBsw1g?t=903). The files for that demo are available on [GitHub](https://github.com/anthony-c-martin/bicep-testing-demo). Needless to say, I was intrigued by this feature, so I wanted to try it and write about it to help raise awareness.
 
-They way I have decided to test this is to take the [Log Alerts Snapshots example](https://github.com/slavizh/BicepTemplates/tree/main/log-alert-snapshots) from  "[Azure Bicep Snapshots – Test and Validate Your Code and Deployments](https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/)". So I am making a natural continuation of that blog post and its example. To make things simpler I have added the [Demo.Common.ps1 file that Anthony uses in it demo](https://github.com/anthony-c-martin/bicep-testing-demo/blob/main/demo/Demo.Common.ps1). That one just makes it a little bit easier to process the data coming from the snapshot that is generated.
+The framework is based on the [Bicep snapshot functionality](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-cli?tabs=bicep-cli#snapshot), so you can reuse existing snapshots if you already have them. As far as I understand, it also uses the [JSON-RPC interface](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-cli?tabs=bicep-cli#jsonrpc) to generate a snapshot from a Bicep parameters file. This keeps the process lightweight, because you do not need to call the Bicep CLI every time you want to generate a snapshot. Instead, it creates a session and lets you generate snapshots for multiple Bicep parameters files within that session. The snapshots are kept in memory, so you do not get extra JSON files during testing, and your existing snapshots are not overwritten.
+
+The way I decided to test this was to take the [Log Alerts snapshots example](https://github.com/slavizh/BicepTemplates/tree/main/log-alert-snapshots) from the earlier post, "[Azure Bicep Snapshots – Test and Validate Your Code and Deployments](https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/)". In other words, this is a natural continuation of that example. To keep things simple, I added the [Demo.Common.ps1 helper file Anthony uses in his demo](https://github.com/anthony-c-martin/bicep-testing-demo/blob/main/demo/Demo.Common.ps1). It makes it easier to process the data coming from the generated snapshot.
 
 **Demo.Common.ps1**
 
@@ -522,11 +524,11 @@ if ($pesterResult.Result -ne 'Passed') {
 }
 ```
 
-When you run it locally and manually you will get results like these:
+When you run it locally, you will get results like these:
 
 ![Pester test results for Bicep locally](/media/bicep-testing-framework-poc-pester/pester-results-bicep.png)
 
-Additionally you can create GitHub Action to execute the tests. In my case it is manual execution:
+You can also create a GitHub Action to execute the tests. In my case, the execution is manual:
 
 **pester-tests.yml**
 
@@ -572,12 +574,12 @@ jobs:
           fail_on: 'nothing'
 ```
 
-Once the workflow is executed the tests results are visible in the pipeline:
+Once the workflow runs, the test results are visible in the pipeline:
 
 ![Pester test results for Bicep on GitHub Actions](/media/bicep-testing-framework-poc-pester/pester-results-bicep-github-actions.png)
 
-With having the Pester tests once you change a code and the expected results changes the tests will fail and signal that the change breaks existing functionality.
+With Pester tests in place, any code change that alters the expected result will cause the tests to fail and clearly signal that the change breaks existing functionality.
 
-One thing that is missing is code coverage. Pester does not support code coverage for Bicep templates. If such thing is possible and can be implemented most likely will require additional functionality implemented outside of Pester and the testing tools used for the other languages.
+One thing that is still missing is code coverage. Pester does not support code coverage for Bicep templates. If this is possible in the future, it will likely require additional functionality beyond Pester and the testing tools used for other languages.
 
-I hope this was helpful and I urge you to try the testing framework, give feedback and hopefully it will become official release and not just experimental/poc feature.
+I hope this was helpful. I encourage you to try the testing framework, provide feedback, and hopefully see it become an official release rather than remaining an experimental proof of concept.
