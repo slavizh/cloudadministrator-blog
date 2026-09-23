@@ -584,6 +584,8 @@ Once the workflow runs, the test results are visible in the pipeline:
 
 With Pester tests in place, any code change that alters the expected result will cause the tests to fail and clearly signal that the change breaks existing functionality.
 
+One thing I have not explored is testing with actual deployments, because they introduce a lot of complexity. Suppose a resource has 10 different deployment scenarios; you would need to deploy 10 instances of that resource to test it fully. Depending on the resource, that could become quite expensive. On top of that, these tests could take much longer than local tests, and in many cases you would need to set up any referenced resources in advance.
+
 One thing that is still missing is code coverage. Pester does not support code coverage for Bicep templates. If this is possible in the future, it will likely require additional functionality beyond Pester and the testing tools used for other languages.
 
 I hope this was helpful. I encourage you to try the testing framework, provide feedback, and hopefully see it become an official release rather than remaining an experimental proof of concept.
