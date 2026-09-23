@@ -10,11 +10,15 @@ tags:
   - "Azure"
   - "Azure Bicep"
   - "Bicep"
-  - "IaC"
   - "Infrastructure as Code"
+  - "IaC"
   - "DevOps"
   - "Pester"
-  - "Testing Framework"
+  - "PowerShell"
+  - "Bicep Testing"
+  - "Bicep Snapshots"
+  - "Azure Monitor"
+  - "Log Alerts"
 ---
 Several months ago, I wrote "[Azure Bicep Snapshots – Test and Validate Your Code and Deployments](https://cloudadministrator.net/2026/02/18/azure-bicep-snapshots-test-and-validate-your-code-and-deployments/)". That post introduced Bicep snapshots as a way to test Bicep template code. It remains relevant, but it was missing one crucial piece: the ability to automate the testing process and make the results visible in a pipeline job.
 
