@@ -36,6 +36,9 @@ npm install
 # Start dev server
 npm run dev
 
+# Test search text extraction (Markdown, HTML, and entity decoding)
+npm test
+
 # Build for production (runs astro check + astro build)
 npm run build
 

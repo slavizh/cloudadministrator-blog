@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "start": "astro dev --host 0.0.0.0",
+    "test": "node --experimental-strip-types --test scripts/search-text.test.mjs",
     "build": "node scripts/build.mjs",
     "preview": "astro preview",
     "astro": "astro"
@@ -16,6 +17,7 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.4.0",
+    "parse5": "^8.0.1",
     "typescript": "^6.0.3",
     "zod": "^4.6.7"
   },
