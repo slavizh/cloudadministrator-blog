@@ -14,7 +14,7 @@ const searchIndexUrl = withBase("search-index.json");
   <div class="page-header">
     <p class="eyebrow">Search</p>
     <h1>Search the archive</h1>
-    <p>Search by title, excerpt, or tag across all posts.</p>
+    <p>Search article titles, summaries, tags, and full text.</p>
   </div>
 
   <section style="margin-bottom: 1.5rem;">
@@ -47,7 +47,7 @@ const searchIndexUrl = withBase("search-index.json");
         day: "numeric"
       });
 
-    const buildResultCard = (item) => {
+    const buildResultCard = (item, query) => {
       const article = document.createElement("article");
       article.className = "search-result";
 
@@ -62,7 +62,7 @@ const searchIndexUrl = withBase("search-index.json");
       heading.append(link);
 
       const excerpt = document.createElement("p");
-      excerpt.textContent = item.excerpt;
+      excerpt.textContent = getSnippet(item, query);
       excerpt.style.color = "var(--color-muted-foreground)";
       excerpt.style.fontSize = "0.875rem";
 
@@ -88,27 +88,53 @@ const searchIndexUrl = withBase("search-index.json");
       return empty;
     };
 
+    const queryTerms = (query) => query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
+    const getSnippet = (item, query) => {
+      const terms = queryTerms(query);
+      const excerpt = item.excerpt || item.description || "";
+      const bodyMatchesAllTerms = terms.length > 0 && terms.every((term) => item.content.toLowerCase().includes(term));
+      const source = bodyMatchesAllTerms ? item.content : excerpt || item.content;
+      if (source.length <= 220) return source;
+
+      const normalizedSource = source.toLowerCase();
+      const matchPositions = terms
+        .map((term) => normalizedSource.indexOf(term))
+        .filter((position) => position >= 0);
+      if (matchPositions.length === 0) return `${source.slice(0, 217)}…`;
+
+      const firstMatch = Math.min(...matchPositions);
+      const start = Math.max(0, firstMatch - 80);
+      const end = Math.min(source.length, start + 220);
+      return `${start > 0 ? "…" : ""}${source.slice(start, end)}${end < source.length ? "…" : ""}`;
+    };
+
     const search = (items, query) => {
-      const normalizedQuery = query.trim().toLowerCase();
-      if (!normalizedQuery) {
+      const terms = queryTerms(query);
+      if (terms.length === 0) {
         return items.slice(0, 12);
       }
 
       return items
         .map((item) => {
-          const haystack = [
-            item.title,
-            item.excerpt,
-            item.description,
-            item.tags.join(" ")
-          ]
-            .join(" ")
-            .toLowerCase();
+          const title = item.title.toLowerCase();
+          const summary = `${item.excerpt} ${item.description}`.toLowerCase();
+          const tags = item.tags.join(" ").toLowerCase();
+          const content = item.content.toLowerCase();
+          const matchesAllTerms = terms.every((term) =>
+            title.includes(term) || summary.includes(term) || tags.includes(term) || content.includes(term)
+          );
+          if (!matchesAllTerms) return { item, score: 0 };
 
-          const titleMatch = item.title.toLowerCase().includes(normalizedQuery) ? 2 : 0;
-          const contentMatch = haystack.includes(normalizedQuery) ? 1 : 0;
-
-          return { item, score: titleMatch + contentMatch };
+          const score = terms.reduce((total, term) =>
+            total +
+              (title.includes(term) ? 8 : 0) +
+              (summary.includes(term) ? 4 : 0) +
+              (tags.includes(term) ? 3 : 0) +
+              (content.includes(term) ? 1 : 0),
+          0);
+          const phraseBonus = title.includes(terms.join(" ")) ? 8 : 0;
+          return { item, score: score + phraseBonus };
         })
         .filter((entry) => entry.score > 0)
         .sort((left, right) => right.score - left.score || right.item.pubDate.localeCompare(left.item.pubDate))
@@ -123,7 +149,7 @@ const searchIndexUrl = withBase("search-index.json");
         status.textContent = "Showing the latest 12 posts. Start typing to filter the archive.";
       } else {
         status.textContent =
-          matches.length === 0 ? `No posts matched “${query}”.` : `${matches.length} post(s) matched “${query}”.`;
+          matches.length === 0 ? `No posts matched “${query}”.` : `${matches.length} post(s) matched all search terms in any order.`;
       }
 
       if (matches.length === 0) {
@@ -132,7 +158,7 @@ const searchIndexUrl = withBase("search-index.json");
       }
 
       for (const item of matches) {
-        results.append(buildResultCard(item));
+        results.append(buildResultCard(item, query));
       }
     };
 

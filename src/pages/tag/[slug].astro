@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     params: { slug: tag.slug },
     props: {
       tagName: tag.name,
-      posts: getPostsByTaxonomy(posts, "tags", tag.name)
+      posts: getPostsByTaxonomy(posts, "tags", tag.values)
     }
   }));
 }

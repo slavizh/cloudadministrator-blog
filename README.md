@@ -6,7 +6,7 @@ Personal tech blog by **Stanislav Zhelyazkov** — sharing deep dives on Azure i
 
 ## Tech Stack
 
-- **Framework**: [Astro 6](https://astro.build/)
+- **Framework**: [Astro 7](https://astro.build/)
 - **Styling**: Custom CSS with dark/light mode
 - **Hosting**: [GitHub Pages](https://pages.github.com/)
 - **CDN/Proxy**: [Cloudflare](https://www.cloudflare.com/)
@@ -16,7 +16,7 @@ Personal tech blog by **Stanislav Zhelyazkov** — sharing deep dives on Azure i
 ## Features
 
 - 📝 Markdown blog with syntax highlighting (Shiki dual themes)
-- 🔍 Client-side search across all posts
+- 🔍 Client-side full-text search across all posts
 - 🎠 Featured posts carousel on homepage
 - 🏷️ Tag-based filtering and categorization
 - 🌗 Dark/light mode with system preference detection

@@ -7,6 +7,7 @@ export interface TaxonomyEntry {
   name: string;
   slug: string;
   count: number;
+  values: string[];
 }
 
 export interface ArchiveMonthGroup {
@@ -61,25 +62,34 @@ export function getTaxonomyHref(kind: "tag", value: string) {
 }
 
 export function getTaxonomyEntries(posts: BlogPost[], key: TaxonomyKey) {
-  const counts = new Map<string, number>();
+  const entries = new Map<string, { values: Set<string>; postIds: Set<string> }>();
 
   for (const post of posts) {
     for (const value of post.data[key]) {
-      counts.set(value, (counts.get(value) ?? 0) + 1);
+      const slug = slugifySegment(value);
+      const entry = entries.get(slug) ?? { values: new Set<string>(), postIds: new Set<string>() };
+      entry.values.add(value);
+      entry.postIds.add(post.id);
+      entries.set(slug, entry);
     }
   }
 
-  return [...counts.entries()]
-    .map(([name, count]) => ({
-      name,
-      slug: slugifySegment(name),
-      count
-    }))
+  return [...entries.entries()]
+    .map(([slug, entry]) => {
+      const values = [...entry.values].sort((left, right) => left.localeCompare(right));
+      return {
+        name: values.join(" / "),
+        slug,
+        count: entry.postIds.size,
+        values
+      };
+    })
     .sort((left, right) => right.count - left.count || left.name.localeCompare(right.name));
 }
 
-export function getPostsByTaxonomy(posts: BlogPost[], key: TaxonomyKey, value: string) {
-  return posts.filter((post) => post.data[key].includes(value));
+export function getPostsByTaxonomy(posts: BlogPost[], key: TaxonomyKey, value: string | string[]) {
+  const values = new Set(Array.isArray(value) ? value : [value]);
+  return posts.filter((post) => post.data[key].some((entry) => values.has(entry)));
 }
 
 export function groupPostsByYear(posts: BlogPost[]) {
