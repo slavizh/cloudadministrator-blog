@@ -12,12 +12,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/markdown-remark": "^7.3.8",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.0",
-    "parse5": "^8.0.1",
+    "astro": "^7.4.11",
+    "parse5": "^8.1.1",
     "typescript": "^6.0.3",
     "zod": "^4.6.7"
   },
