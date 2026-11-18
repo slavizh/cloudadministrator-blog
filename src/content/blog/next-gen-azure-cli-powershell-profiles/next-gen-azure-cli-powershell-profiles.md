@@ -117,3 +117,5 @@ Subscription-scoped commands now also expose a consistent **`-SubscriptionId` pa
 For me, the value is combining **recognizable names, easy switching across tenants and subscriptions, and profiles shared between CLI and PowerShell**. I can organize my contexts around how I work, rather than around identifiers, and use either tool without maintaining separate sign-ins. Profiles do not change permissions or make the target automatically safe, so checking the subscription behind the name remains important.
 
 Note that this is initial preview and any limitations will be addressed over time. Any feedback can be logged at the [azclips repository](https://github.com/Azure/azclips/issues).
+
+[Learn more](https://aka.ms/azclips).
