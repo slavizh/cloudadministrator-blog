@@ -3,7 +3,7 @@ title: "Next Gen Azure CLI and Azure PowerShell: Switching Profiles"
 excerpt: "Learn how to use profiles in Next Gen Azure CLI and Azure PowerShell to switch between tenants and subscriptions, target commands, and share sign-in."
 description: "Explore profiles in Next Gen Azure CLI and Azure PowerShell: name tenant and subscription contexts, switch targets, and share sign-in between tools."
 pubDate: 2026-11-18
-heroImage: "/media/next-gen-azure-cli-and-azure-powershell-profiles/profiles-hero.png"
+heroImage: "/media/next-gen-azure-cli-and-azure-powershell-profiles/next-gen-hero.png"
 tags:
   - "Azure"
   - "Azure PowerShell"
